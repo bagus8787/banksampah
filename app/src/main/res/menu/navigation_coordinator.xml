@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_tabungan"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/tabungan"/>
+
+    <item
+        android:id="@+id/navigation_info_sampah"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/info_sampah"/>
+
+    <item
+        android:id="@+id/navigation_peringkat"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/peringkat"/>
+
+    <item
+        android:id="@+id/navigation_laporan"
+        android:icon="@drawable/ic_flag_black_24dp"
+        android:title="@string/laporan"/>
+
+    <item
+        android:id="@+id/navigation_profil"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/profil"/>
+
+</menu>

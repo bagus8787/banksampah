@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:background="@drawable/background"
+        tools:context=".Login.RegisterActivity"
+        tools:targetApi="o">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="Daftar User"
+            android:textColor="@android:color/black"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:background="@drawable/background_text"
+            android:hint="Nama"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/sex"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:background="@drawable/background_text"
+            android:hint="Jenis Kelamin"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/no_tlp"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:background="@drawable/background_text"
+            android:hint="No Telepon"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:background="@drawable/background_text"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_text"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_edit_text"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_text"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/alamat"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_text"
+            android:hint="Alamat"
+            android:inputType="text|textMultiLine"
+            android:paddingHorizontal="16dp"
+            android:minLines="3"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbars="vertical"
+            tools:targetApi="o" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"            >
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/term"
+                android:onClick="onCheckboxClicked"
+                android:textColor="@android:color/holo_green_dark"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_daftar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_button"
+            android:text="Daftar"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shadow"
+            android:text="Login"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

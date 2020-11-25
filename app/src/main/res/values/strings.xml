@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Bank Sampah Sahitya</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="tabungan">Tabungan</string>
+    <string name="info_sampah">Info Sampah</string>
+    <string name="peringkat">Peringkat</string>
+    <string name="profil">Profil</string>
+    <string name="laporan">Laporan</string>
+    <string name="profile">Profile</string>
+    <string name="hallo">Hallo,</string>
+    <string name="nasabah">Nasabah!</string>
+    <string name="tampilan_tabungan_1">Ayo kumpulkan sampahmu dan tukar dengan sejumlah uang hanya di Bank Sampah Sahitya!</string>
+    <string name="total_uang">Total Uang</string>
+    <string name="rp">Rp.</string>
+    <string name="_75_000">75.000</string>
+    <string name="details"><u>Details</u></string>
+    <string name="kg">Kg</string>
+    <string name="_21">21</string>
+    <string name="berat_sampah">Berat Sampah</string>
+    <string name="riwayat_transaksi">Riwayat Transaksi</string>
+    <string name="laporan_tabungan">Laporan Tabungan</string>
+    <string name="minggu_1">MINGGU 1</string>
+    <string name="_11_kg">Berat : 11 Kg</string>
+    <string name="total">Total</string>
+    <string name="_16_kg">Berat : 16 Kg</string>
+    <string name="term">Term &amp; Condition</string>
+    <string name="in_out">Masuk dan Keluar</string>
+    <string name="tabung">Tabung</string>
+    <string name="history">History</string>
+</resources>
