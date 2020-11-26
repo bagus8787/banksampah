@@ -26,8 +26,7 @@
         <activity android:name=".Login.ResetPasswordActivity" />
         <activity android:name=".admin.AddSampahActivity" />
         <activity android:name=".Login.RegisterActivity" />
-        <activity android:name=".Login.LoginActivity" />
-        <activity android:name=".user.MainActivity">
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
