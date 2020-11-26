@@ -4,17 +4,12 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/tabungan"/>
+        android:title="@string/home"/>
 
     <item
-        android:id="@+id/navigation_in_out"
-        android:icon="@drawable/ic_baseline_input"
-        android:title="@string/in_out"/>
-
-    <item
-        android:id="@+id/navigation_tabung"
-        android:icon="@drawable/ic_baseline_beenhere"
-        android:title="@string/tabung"/>
+        android:id="@+id/list_sampah"
+        android:icon="@drawable/ic_baseline_list"
+        android:title="List"/>
 
     <item
         android:id="@+id/navigation_history"

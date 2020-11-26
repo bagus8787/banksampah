@@ -12,7 +12,7 @@
     <string name="profile">Profile</string>
     <string name="hallo">Hallo,</string>
     <string name="nasabah">Nasabah!</string>
-    <string name="tampilan_tabungan_1">Ayo kumpulkan sampahmu dan tukar dengan sejumlah uang hanya di Bank Sampah Sahitya!</string>
+    <string name="tampilan_tabungan_1">Ayo kumpulkan sampahmu dan tukar dengan sejumlah uang hanya di Aplikasi Desih !</string>
     <string name="total_uang">Total Uang</string>
     <string name="rp">Rp.</string>
     <string name="_75_000">75.000</string>
@@ -30,4 +30,11 @@
     <string name="in_out">Masuk dan Keluar</string>
     <string name="tabung">Tabung</string>
     <string name="history">History</string>
+    <string name="home">Home</string>
+
+    <string-array name="jenis_kelamin">
+        <item>Laki - Laki</item>
+        <item>Perempuan</item>
+
+    </string-array>
 </resources>

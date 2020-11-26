@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.sahitya.banksampahsahitya.R;
@@ -32,26 +33,9 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    @BindView(R.id.nama)
-    EditText nama;
+    EditText nama, no_tlp, email, password, password_confirm, alamat;
 
-    @BindView(R.id.no_tlp)
-    EditText no_tlp;
-
-    @BindView(R.id.email)
-    EditText email;
-
-    @BindView(R.id.password)
-    EditText password;
-
-    @BindView(R.id.password_confirm)
-    EditText password_confirm;
-
-    @BindView(R.id.alamat)
-    EditText alamat;
-
-    @BindView(R.id.sex)
-    EditText sex;
+    Spinner sex;
 
     int confirm_agreement = 0;
 
@@ -67,6 +51,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        nama = findViewById(R.id.nama);
+        email = findViewById(R.id.email);
+        no_tlp = findViewById(R.id.no_tlp);
+        password = findViewById(R.id.password);
+        password_confirm = findViewById(R.id.password_confirm);
+        sex = findViewById(R.id.sex);
+        alamat = findViewById(R.id.alamat);
 
         btn_daftar = findViewById(R.id.btn_daftar);
         checkBox = findViewById(R.id.checkbox);
@@ -96,13 +88,13 @@ public class RegisterActivity extends AppCompatActivity {
     @OnClick(R.id.btn_daftar) void signup() {
         progressDialog.show();
         Call<BaseResponse> postRegister = apiInterface.postRegister(
-                nama.getText().toString(),
-                sex.getText().toString(),
-                no_tlp.getText().toString(),
                 email.getText().toString(),
-                password.getText().toString(),
-                password_confirm.getText().toString(),
+                nama.getText().toString(),
+                sex.toString(),
+                no_tlp.getText().toString(),
                 alamat.getText().toString(),
+                password_confirm.getText().toString(),
+                password.getText().toString(),
                 confirm_agreement);
         postRegister.enqueue(new Callback<BaseResponse>() {
             @Override
@@ -111,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (response.code() >= 200 && response.code() < 300) {
                     String message = response.body().getMessage();
+                    Log.d("pesannya", message);
                     Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 
 

@@ -10,8 +10,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.user.Fragment.HomeFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.InfoSampahFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.LaporanFragment;
+import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
+import com.sahitya.banksampahsahitya.user.Fragment.ListFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.PeringkatFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.TabunganFragment;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadFragment(new TabunganFragment());
+        loadFragment(new HomeFragment());
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_navigation_view);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -31,19 +33,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.navigation_home :
-                        loadFragment(new TabunganFragment());
+                        loadFragment(new HomeFragment());
                         return true;
 
-                    case R.id.navigation_in_out :
-                        loadFragment(new InfoSampahFragment());
-                        return true;
-
-                    case R.id.navigation_tabung :
-                        loadFragment(new PeringkatFragment());
+                    case R.id.list_sampah :
+                        loadFragment(new ListFragment());
                         return true;
 
                     case R.id.navigation_history :
-                        loadFragment(new LaporanFragment());
+                        loadFragment(new HistoryFragment());
                         return true;
 
                     case R.id.navigation_profil :
