@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.network;
 
+import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
@@ -41,35 +42,7 @@ public interface ApiInterface {
             @Field("confirm_agreement") int confirm_agreement);
 
     //mahasiswa
-//    @GET("api/home")
-//    Call<Bimbingan> getUser(@Header("Authorization") String token);
-//
-//    @Multipart
-//    @POST("api/home")
-//    Call<BaseResponse> updateData(@Header("Authorization") String token,
-//                                  @Part MultipartBody.Part filename,
-//                                  @Part("status") RequestBody status);
-//
-//    //dosen
-//    @GET("api/bimbingan")
-//    Call<ArrayList<BimbinganResponse>> getBimbinganList(@Header("Authorization") String token);
-//
-//    @GET("api/bimbingan/{id}")
-//    Call<BimbinganResponse> getBimbingan(@Header("Authorization") String token, @Path("id") int id);
-
-    @Multipart
-    @POST("api/bimbingan/revisi/{id}")
-    Call<BaseResponse> revisiBimbingan(@Header("Authorization") String token,
-                                       @Path("id") int id,
-                                       @Part MultipartBody.Part filename,
-                                       @Part("keterangan") RequestBody keterangan,
-                                       @Part("status") RequestBody status);
-
-    @Multipart
-    @POST("api/bimbingan/revisi/{id}")
-    Call<BaseResponse> setujuiBimbingan(@Header("Authorization") String token,
-                                        @Path("id") int id,
-                                        @Part("keterangan") RequestBody keterangan,
-                                        @Part("status") RequestBody status);
+    @GET("api/home")
+    Call<User> getUser(@Header("Authorization") String token);
 
 }
