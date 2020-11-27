@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.admin.HomeAdminActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -87,6 +88,10 @@ public class ScanAdminFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         // inisialisasi IntentIntegrator(scanQR)
         intentIntegrator = new IntentIntegrator(getActivity());
+        intentIntegrator.setPrompt("Scan a barcode");
+        intentIntegrator.setCameraId(0);  // Use a specific camera of the device
+        intentIntegrator.setOrientationLocked(true);
+        intentIntegrator.setBeepEnabled(true);
         intentIntegrator.initiateScan();
     }
 }

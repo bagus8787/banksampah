@@ -31,6 +31,8 @@
     <string name="tabung">Tabung</string>
     <string name="history">History</string>
     <string name="home">Home</string>
+    <string name="list_user">List User</string>
+    <string name="scan">Scan</string>
 
     <string-array name="jenis_kelamin">
         <item>Laki - Laki</item>

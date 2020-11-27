@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.sahitya.banksampahsahitya">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -23,11 +24,14 @@
         <activity android:name=".coordinator.HomeCoordinatorActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".Login.LoginActivity" />
-        <activity android:name=".admin.HomeAdminActivity" />
+<!--        <activity android:name=".admin.HomeAdminActivity" />-->
         <activity android:name=".Login.ResetPasswordActivity" />
         <activity android:name=".admin.AddSampahActivity" />
         <activity android:name=".Login.RegisterActivity" />
-        <activity android:name=".user.MainActivity">
+        <activity android:name=".admin.HomeAdminActivity"
+            android:screenOrientation="sensorPortrait"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

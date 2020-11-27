@@ -2,28 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_tabungan"
+        android:id="@+id/home_admin"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/tabungan"/>
+        android:title="@string/home"/>
 
     <item
-        android:id="@+id/navigation_info_sampah"
-        android:icon="@drawable/ic_info_black_24dp"
-        android:title="@string/info_sampah"/>
+        android:id="@+id/user_list_admin"
+        android:icon="@drawable/ic_baseline_list"
+        android:title="@string/list_user"/>
 
     <item
-        android:id="@+id/navigation_peringkat"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/peringkat"/>
+        android:id="@+id/scan_admin"
+        android:icon="@drawable/ic_qr_code_scan"
+        android:title="@string/scan"/>
 
     <item
-        android:id="@+id/navigation_laporan"
-        android:icon="@drawable/ic_flag_black_24dp"
-        android:title="@string/laporan"/>
+        android:id="@+id/list_sampah"
+        android:icon="@drawable/ic_baseline_list"
+        android:title="@string/list_user"/>
 
     <item
-        android:id="@+id/navigation_profil"
+        android:id="@+id/profile_admin"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="@string/profil"/>
+        android:title="@string/profile"/>
 
 </menu>
