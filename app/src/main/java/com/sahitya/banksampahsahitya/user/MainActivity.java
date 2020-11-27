@@ -10,22 +10,27 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.network.ApiClient;
+import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.user.Fragment.HomeFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.InfoSampahFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.ListFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.PeringkatFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.ProfileFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.TabunganFragment;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
+
+    public SharedPrefManager sharedPrefManager;
+    public ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_user);
 
         loadFragment(new HomeFragment());
+        sharedPrefManager = new SharedPrefManager(this);
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_navigation_view);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

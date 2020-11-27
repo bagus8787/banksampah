@@ -12,13 +12,11 @@ public class User {
     @Expose
     @SerializedName("name") String name;
     @Expose
-    @SerializedName("no_tlp") String no_tlp;
+    @SerializedName("mobile") String mobile;
     @Expose
     @SerializedName("email") String email;
     @Expose
-    @SerializedName("password") String password;
-    @Expose
-    @SerializedName("alamat") String alamat;
+    @SerializedName("warga") Warga warga;
 
     @Expose
     @SerializedName("roles")
@@ -38,6 +36,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -70,6 +76,10 @@ public class User {
 
     public void setRoles(ArrayList<Role> roles) {
         this.roles = roles;
+    }
+
+    public Warga getWarga() {
+        return warga;
     }
 }
 

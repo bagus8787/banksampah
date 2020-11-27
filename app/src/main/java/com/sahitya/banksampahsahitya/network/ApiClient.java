@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    //    private static final String url = "http://secret-mesa-52942.herokuapp.com/";
+//    private static final String url = "http://localhost:8000/";
     private static final String url = "https://trashbank.darklogictech.com/";
     private static ApiInterface REST_CLIENT;
 

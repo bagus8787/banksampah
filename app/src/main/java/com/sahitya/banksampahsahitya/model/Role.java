@@ -4,8 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Role {
-    public final static String ROLE_USER = "user";
-    public final static String ROLE_COODINATOR = "coordinator";
+    public final static String ROLE_USER = "warga";
+    public final static String ROLE_COODINATOR = "koordinator";
     public final static String ROLE_ADMIN = "admin";
 
     @Expose

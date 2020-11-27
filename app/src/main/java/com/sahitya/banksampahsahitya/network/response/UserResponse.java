@@ -8,23 +8,11 @@ import com.sahitya.banksampahsahitya.model.User;
 public class UserResponse extends BaseResponse {
 
     @Expose
-    @SerializedName("status") String status;
-    @Expose
     @SerializedName("token")
     Token token;
     @Expose
-    @SerializedName("expires_in") int expires_in;
-    @Expose
     @SerializedName("user")
     User user;
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getToken() {
         return token.getAccess_token();
@@ -32,14 +20,6 @@ public class UserResponse extends BaseResponse {
 
     public void setToken(Token token) {
         this.token = token;
-    }
-
-    public int getExpires_in() {
-        return expires_in;
-    }
-
-    public void setExpires_in(int expires_in) {
-        this.expires_in = expires_in;
     }
 
     public User getUser() {
