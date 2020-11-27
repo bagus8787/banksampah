@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.sahitya.banksampahsahitya.Login.LoginActivity;
+import com.sahitya.banksampahsahitya.admin.HomeAdminActivity;
+import com.sahitya.banksampahsahitya.coordinator.HomeCoordinatorActivity;
 import com.sahitya.banksampahsahitya.model.Role;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
@@ -44,11 +46,11 @@ public class ScreenActivity extends AppCompatActivity {
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
                     } else if (sharedPrefManager.getRole().equals(Role.ROLE_COODINATOR)) {
-                        startActivity(new Intent(ScreenActivity.this, MainActivity.class)
+                        startActivity(new Intent(ScreenActivity.this, HomeCoordinatorActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
                     } else if (sharedPrefManager.getRole().equals(Role.ROLE_ADMIN)) {
-                        startActivity(new Intent(ScreenActivity.this, MainActivity.class)
+                        startActivity(new Intent(ScreenActivity.this, HomeAdminActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
                     }

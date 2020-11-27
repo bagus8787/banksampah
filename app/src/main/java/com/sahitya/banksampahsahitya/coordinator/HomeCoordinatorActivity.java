@@ -18,6 +18,7 @@ import com.sahitya.banksampahsahitya.coordinator.Fragment.HomeCoordinatorFragmen
 import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorFragment;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.ProfilCoordinatorFragment;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.ScanCoordinatorFragment;
+import com.sahitya.banksampahsahitya.fragment.baseUser.ProfileFragment;
 
 public class HomeCoordinatorActivity extends AppCompatActivity {
 
@@ -45,7 +46,7 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.profile_c :
-                        loadFragment(new ProfilCoordinatorFragment());
+                        loadFragment(new ProfileFragment());
                         return true;
 
                     default:

@@ -21,7 +21,6 @@
         
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".coordinator.HomeCoordinatorActivity" />
         <activity android:name=".CameraActivity" />
 
         <!-- ADMIN -->
@@ -30,8 +29,9 @@
             android:screenOrientation="sensorPortrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        
+
         <!-- KOOR -->
+        <activity android:name=".coordinator.HomeCoordinatorActivity" />
 
         <!-- USER -->
         <activity android:name=".user.PengaturanActivity" />

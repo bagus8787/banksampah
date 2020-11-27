@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.admin.HomeAdminActivity;
+import com.sahitya.banksampahsahitya.coordinator.HomeCoordinatorActivity;
 import com.sahitya.banksampahsahitya.model.Role;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.ApiClient;
@@ -101,19 +103,14 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         finish();
-//                        Toast.makeText(mContext, "Warga", Toast.LENGTH_SHORT).show();
                     } else if (user.isCoordinator()) {
-//                        startActivity(new Intent(LoginActivity.this, MainActivity.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                        finish();
-                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
-                        Toast.makeText(mContext, "Koor", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, HomeCoordinatorActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
                     } else if (user.isAdmin()) {
-//                        startActivity(new Intent(LoginActivity.this, MainActivity.class)
-//                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                        finish();
-                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
-                        Toast.makeText(mContext, "Admin", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, HomeAdminActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
                     }
                 } else {
                     Toast.makeText(mContext, "Emai/Password salah", Toast.LENGTH_SHORT).show();

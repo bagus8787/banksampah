@@ -10,12 +10,12 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.fragment.baseUser.ProfileFragment;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.user.Fragment.HomeFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
 import com.sahitya.banksampahsahitya.user.Fragment.ListFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {

@@ -52,8 +52,10 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() >= 200 && response.code() < 300) {
                     User user = response.body();
-                    mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, user.getWarga().getPointTotal());
-                    tv_saldo.setText(Integer.toString(user.getWarga().getPointTotal()));
+                    if (user.getWarga() != null) {
+                        mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, user.getWarga().getPointTotal());
+                        tv_saldo.setText(Integer.toString(user.getWarga().getPointTotal()));
+                    }
                 }
             }
 
