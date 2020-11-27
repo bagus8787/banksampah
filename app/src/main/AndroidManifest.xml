@@ -15,18 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScreenActivity"></activity>
+        <activity android:name=".ScreenActivity"/>
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".user.PengaturanActivity" />
         <activity android:name=".user.EditProfilActivity" />
         <activity android:name=".coordinator.HomeCoordinatorActivity" />
-        <activity android:name=".CameraActivity" /> <!-- <activity android:name=".user.MainActivity" /> -->
+        <activity android:name=".CameraActivity" />
+        <activity android:name=".Login.LoginActivity" />
         <activity android:name=".admin.HomeAdminActivity" />
         <activity android:name=".Login.ResetPasswordActivity" />
         <activity android:name=".admin.AddSampahActivity" />
         <activity android:name=".Login.RegisterActivity" />
-        <activity android:name=".Login.LoginActivity">
+        <activity android:name=".user.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
