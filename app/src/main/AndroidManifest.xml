@@ -29,7 +29,7 @@
         <activity android:name=".admin.HomeAdminActivity"
             android:screenOrientation="sensorPortrait"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         
         <!-- KOOR -->
 
