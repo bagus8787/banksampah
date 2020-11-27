@@ -72,25 +72,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         final TextView no_tlp_profil = view.findViewById(R.id.no_tlp_profil);
         final TextView email_profil = view.findViewById(R.id.email_profil);
 
-        Call<User> getUser = mainActivity.apiInterface.getUser(mainActivity.sharedPrefManager.getSPToken());
-        getUser.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code() >= 200 && response.code() < 300) {
-                    User user = response.body();
-//                    Toast.makeText(MahasiswaActivity.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
-                    nama_profil.setText(response.body().getName());
-                    no_tlp_profil.setText(response.body().getMobile());
-                    email_profil.setText(response.body().getEmail());
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
+        nama_profil.setText(mainActivity.sharedPrefManager.getSPNama());
+        no_tlp_profil.setText(mainActivity.sharedPrefManager.getSPMpbile());
+        email_profil.setText(mainActivity.sharedPrefManager.getSPEmail());
     }
 
     @Override

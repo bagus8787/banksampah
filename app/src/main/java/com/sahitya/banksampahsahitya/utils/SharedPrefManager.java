@@ -11,6 +11,9 @@ public class SharedPrefManager {
 
     public static final String SP_NAMA = "spNama";
     public static final String SP_EMAIL = "spEmail";
+    public static final String SP_MOBILE = "spMobile";
+    public static final String SP_POINT_TOTAL = "spPointTotal";
+
     public static final String SP_TOKEN = "spToken";
 
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
@@ -47,6 +50,14 @@ public class SharedPrefManager {
 
     public String getSPEmail(){
         return sp.getString(SP_EMAIL, "");
+    }
+
+    public String getSPMpbile(){
+        return sp.getString(SP_MOBILE, "");
+    }
+
+    public Integer getSPPointTotal(){
+        return sp.getInt(SP_POINT_TOTAL, 0);
     }
 
     public String getSPToken(){

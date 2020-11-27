@@ -17,6 +17,7 @@ import retrofit2.Response;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.user.MainActivity;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,16 +45,15 @@ public class HomeFragment extends Fragment {
         final TextView tv_name = view.findViewById(R.id.tv_name);
         final TextView tv_saldo = view.findViewById(R.id.tv_saldo);
 
+        tv_name.setText(mainActivity.sharedPrefManager.getSPNama());
         Call<User> getUser = mainActivity.apiInterface.getUser(mainActivity.sharedPrefManager.getSPToken());
         getUser.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() >= 200 && response.code() < 300) {
                     User user = response.body();
-//                    Toast.makeText(MahasiswaActivity.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
-                    tv_name.setText(response.body().getName());
-                    tv_saldo.setText(Integer.toString(response.body().getWarga().getPointTotal()));
-
+                    mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, user.getWarga().getPointTotal());
+                    tv_saldo.setText(Integer.toString(user.getWarga().getPointTotal()));
                 }
             }
 
@@ -62,6 +62,7 @@ public class HomeFragment extends Fragment {
                 t.printStackTrace();
             }
         });
+
     }
 
 }

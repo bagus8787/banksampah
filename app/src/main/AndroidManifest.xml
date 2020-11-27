@@ -17,32 +17,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config">>
-        <activity android:name=".ScreenActivity"/>
+        android:networkSecurityConfig="@xml/network_security_config">
+        
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".user.PengaturanActivity" />
-        <activity android:name=".user.EditProfilActivity" />
         <activity android:name=".coordinator.HomeCoordinatorActivity" />
         <activity android:name=".CameraActivity" />
-<<<<<<< HEAD
-        <activity android:name=".Login.LoginActivity" />
-<!--        <activity android:name=".admin.HomeAdminActivity" />-->
-        <activity android:name=".Login.ResetPasswordActivity" />
+
+        <!-- ADMIN -->
         <activity android:name=".admin.AddSampahActivity" />
-        <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".admin.HomeAdminActivity"
             android:screenOrientation="sensorPortrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden">
-=======
+        
+        <!-- KOOR -->
+
+        <!-- USER -->
+        <activity android:name=".user.PengaturanActivity" />
+        <activity android:name=".user.EditProfilActivity" />
         <activity android:name=".user.MainActivity" />
-        <activity android:name=".admin.HomeAdminActivity" />
+
+        <!-- LOGIN -->
         <activity android:name=".Login.ResetPasswordActivity" />
-        <activity android:name=".admin.AddSampahActivity" />
         <activity android:name=".Login.RegisterActivity" />
-        <activity android:name=".Login.LoginActivity">
->>>>>>> 8a01917d23f1a15230b636940365fde6b16e295a
+        <activity android:name=".Login.LoginActivity"/>
+        
+        <activity android:name=".ScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

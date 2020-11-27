@@ -85,6 +85,12 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
     }
 
+    @OnClick(R.id.sa_login) void sa_login() {
+        Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(login);
+        finish();
+    }
+
     @OnClick(R.id.btn_daftar) void signup() {
         progressDialog.show();
         Call<BaseResponse> postRegister = apiInterface.postRegister(

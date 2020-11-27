@@ -103,7 +103,7 @@
                     android:layout_marginRight="0dp"
                     android:layout_toEndOf="@+id/tv_saldowede"
                     android:layout_toRightOf="@+id/tv_saldowede"
-                    android:text="15000"
+                    android:text="-"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
