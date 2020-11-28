@@ -17,6 +17,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.HomeAdminActivity;
+import com.sahitya.banksampahsahitya.camera.Potrait;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,13 +41,29 @@ public class ScanAdminFragment extends Fragment implements View.OnClickListener{
         View rootView = inflater.inflate(R.layout.fragment_scan, container, false);
 
 //       initialize object
-        buttonScan = rootView.findViewById(R.id.buttonScan);
-        textViewNama = rootView.findViewById(R.id.textViewNama);
-        textViewTinggi = rootView.findViewById(R.id.textViewTinggi);
+        buttonScan = rootView.findViewById(R.id.btn_Scan);
+        textViewNama = rootView.findViewById(R.id.txt_textViewNama);
+        textViewTinggi = rootView.findViewById(R.id.txt_textViewTinggi);
         // attaching onclickListener
         buttonScan.setOnClickListener(this);
 
         return rootView;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        new IntentIntegrator(this.getActivity());
+        intentIntegrator = IntentIntegrator.forSupportFragment(this);
+        // use forSupportFragment or forFragment method to use fragments instead of activity
+//        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
+        intentIntegrator.setCaptureActivity(Potrait.class);
+        intentIntegrator.setPrompt("Scan a barcode");
+        intentIntegrator.setCameraId(0);  // Use a specific camera of the device
+        intentIntegrator.setOrientationLocked(false);
+        intentIntegrator.setBeepEnabled(true);
+        intentIntegrator.initiateScan();
     }
 
     @Override
@@ -87,7 +104,10 @@ public class ScanAdminFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         // inisialisasi IntentIntegrator(scanQR)
-        intentIntegrator = new IntentIntegrator(getActivity());
+        intentIntegrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
+        // use forSupportFragment or forFragment method to use fragments instead of activity
+//        intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
+        intentIntegrator.setCaptureActivity(Potrait.class);
         intentIntegrator.setPrompt("Scan a barcode");
         intentIntegrator.setCameraId(0);  // Use a specific camera of the device
         intentIntegrator.setOrientationLocked(true);

@@ -8,7 +8,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <application
+        android:hardwareAccelerated="true"
         android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,12 +24,12 @@
         
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".CameraActivity" />
+        <activity android:name=".camera.CameraActivity" />
 
         <!-- ADMIN -->
         <activity android:name=".admin.AddSampahActivity" />
         <activity android:name=".admin.HomeAdminActivity"
-            android:screenOrientation="sensorPortrait"
+            android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden"/>
 
@@ -42,8 +45,19 @@
         <activity android:name=".Login.ResetPasswordActivity" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.LoginActivity"/>
-        
-        <activity android:name=".ScreenActivity">
+
+        <!--Potrait Camera Scan-->
+        <activity android:name=".camera.Potrait"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
+
+        <activity android:name=".ScreenActivity"
+            android:screenOrientation="sensorPortrait"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -23,7 +23,7 @@
             android:text="Name" />
 
         <TextView
-            android:id="@+id/textViewNama"
+            android:id="@+id/txt_textViewNama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="nama disini"
@@ -35,7 +35,7 @@
             android:text="Tinggi" />
 
         <TextView
-            android:id="@+id/textViewTinggi"
+            android:id="@+id/txt_textViewTinggi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="tinggi disini"
@@ -45,7 +45,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonScan"
+        android:id="@+id/btn_Scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
