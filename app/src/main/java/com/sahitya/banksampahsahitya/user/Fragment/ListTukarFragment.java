@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,13 +30,11 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListAmbilSaldoFragment extends Fragment {
-
-
+public class ListTukarFragment extends Fragment {
     private AdapterListTransaksi adapter;
     private PointHistoryViewModel viewModel;
 
-    public ListAmbilSaldoFragment() {
+    public ListTukarFragment() {
         // Required empty public constructor
     }
 
@@ -81,7 +84,7 @@ public class ListAmbilSaldoFragment extends Fragment {
     }
 
     public void reloadPoint() {
-        viewModel.getPoints("beli");
+        viewModel.getPoints("jual");
     }
 
 }

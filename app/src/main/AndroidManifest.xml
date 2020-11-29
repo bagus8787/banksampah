@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
-        
+
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".camera.CameraActivity" />
@@ -40,6 +40,7 @@
         <activity android:name=".user.PengaturanActivity" />
         <activity android:name=".user.EditProfilActivity" />
         <activity android:name=".user.MainActivity" />
+        <activity android:name=".user.DetailTransaksiActivity"/>
 
         <!-- LOGIN -->
         <activity android:name=".Login.ResetPasswordActivity" />
@@ -48,7 +49,7 @@
 
         <!--Potrait Camera Scan-->
         <activity android:name=".camera.Potrait"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>

@@ -54,7 +54,7 @@ public class HistoryFragment extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ListPointFragment(), "Penukaran Sampah");
+        adapter.addFragment(new ListTukarFragment(), "Penukaran Sampah");
         adapter.addFragment(new ListAmbilSaldoFragment(), "Pengambilan Saldo");
         viewPager.setAdapter(adapter);
 
