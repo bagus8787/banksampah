@@ -10,6 +10,7 @@ import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import com.sahitya.banksampahsahitya.model.User;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,7 @@ public class UserListRepository {
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
                 if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
                     userResponseLiveData.postValue(response.body());
+                    Log.d("vsdvsdvsdv :" , String.valueOf(userResponseLiveData));
                 }
             }
 

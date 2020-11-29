@@ -47,6 +47,7 @@ public interface ApiInterface {
     @GET("api/home")
     Call<User> getUser(@Header("Authorization") String token);
 
+    //user list
     @GET("api/admin/warga")
     Call<ArrayList<User>> getUserList(@Header("Authorization") String token);
 
