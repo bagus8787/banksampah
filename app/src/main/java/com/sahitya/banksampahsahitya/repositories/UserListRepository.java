@@ -28,7 +28,7 @@ public class UserListRepository {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
-    public void getUserList(String type) {
+    public void getUserList() {
         Call<ArrayList<User>> getUserList = apiInterface.getUserList(sharedPrefManager.getSPToken());
         getUserList.enqueue(new Callback<ArrayList<User>>() {
             @Override

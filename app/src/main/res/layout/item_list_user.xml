@@ -39,7 +39,7 @@
                         android:id="@+id/it_nama_user"
                         android:layout_width="185dp"
                         android:layout_height="wrap_content"
-                        android:text="Bagus"
+                        android:text="Bagxsdasdus"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"/>
 

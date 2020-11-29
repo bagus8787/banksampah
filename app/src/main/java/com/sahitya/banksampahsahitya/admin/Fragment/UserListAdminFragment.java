@@ -40,11 +40,11 @@ public class UserListAdminFragment extends Fragment {
 
         viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         viewModel.init();
-        viewModel.getPointResponseLiveData().observe(this, new Observer<ArrayList<User>>() {
+        viewModel.getUserResponseLiveData().observe(this, new Observer<ArrayList<User>>() {
             @Override
-            public void onChanged(ArrayList<User> pointResponse) {
-                if (pointResponse != null) {
-                    adapter.setDataList(pointResponse);
+            public void onChanged(ArrayList<User> userListResponse) {
+                if (userListResponse != null) {
+                    adapter.setDataList(userListResponse);
 
                     Log.d("hasile : ", String.valueOf(adapter));
                 }

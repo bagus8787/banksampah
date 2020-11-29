@@ -5,9 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import com.sahitya.banksampahsahitya.model.PointHistory;
-import com.sahitya.banksampahsahitya.repositories.PointRepository;
-
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
@@ -30,10 +27,10 @@ public class UserViewModel extends AndroidViewModel{
     }
 
     public void getUserList() {
-//       userListRepository.getUserResponseLiveData();
+       userListRepository.getUserList();
     }
 
-    public LiveData<ArrayList<User>> getPointResponseLiveData() {
+    public LiveData<ArrayList<User>> getUserResponseLiveData() {
         return userResponseLiveData;
     }
 }
