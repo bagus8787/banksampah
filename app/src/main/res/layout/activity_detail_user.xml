@@ -44,7 +44,7 @@
                 android:text="Nama"/>
 
             <EditText
-                android:id="@+id/it_nama_user"
+                android:id="@+id/it_nama"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"

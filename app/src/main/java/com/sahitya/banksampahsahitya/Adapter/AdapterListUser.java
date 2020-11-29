@@ -59,14 +59,18 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
 
         TextView it_name_user, it_id_user;
 
+        User user;
+
         public ListUserViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+            user = new User(dataList);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     context.startActivity(new Intent(context, DetailUserActivity.class)
+                            .putExtra("DATA_USER", user)
                             .putExtra("IT_ID_USER", id)
 //                            .putExtra("IT_POINT", point)
 //                            .putExtra("IT_BARCODE", barcode)
