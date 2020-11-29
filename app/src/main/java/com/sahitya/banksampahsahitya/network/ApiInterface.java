@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.network;
 
+import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
@@ -19,6 +20,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -44,5 +46,12 @@ public interface ApiInterface {
     //mahasiswa
     @GET("api/home")
     Call<User> getUser(@Header("Authorization") String token);
+
+    @GET("api/home/transaksi")
+    Call<ArrayList<PointHistory>> getUserTransaksi(@Header("Authorization") String token, @Query("type") String type);
+
+    @FormUrlEncoded
+    @POST("api/kasir/scan")
+    Call<BaseResponse> scanBarcode(@Header("Authorization") String token, @Field("barcode") String barcode);
 
 }
