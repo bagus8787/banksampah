@@ -48,7 +48,7 @@ public interface ApiInterface {
     Call<User> getUser(@Header("Authorization") String token);
 
     @GET("api/admin/warga")
-    Call<ArrayList<User>> getUserList(String spToken, @Header("Authorization") String token);
+    Call<ArrayList<User>> getUserList(@Header("Authorization") String token);
 
     @GET("api/home/transaksi")
     Call<ArrayList<PointHistory>> getUserTransaksi(@Header("Authorization") String token, @Query("type") String type);

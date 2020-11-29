@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class UserViewModel extends AndroidViewModel{
     private UserListRepository userListRepository;
-    private LiveData<ArrayList<User>> pointResponseLiveData;
+    private LiveData<ArrayList<User>> userResponseLiveData;
 
     public UserViewModel(@NonNull Application application) {
         super(application);
@@ -26,14 +26,14 @@ public class UserViewModel extends AndroidViewModel{
 
     public void init() {
         userListRepository = new UserListRepository();
-        pointResponseLiveData = userListRepository.getPointResponseLiveData();
+        userResponseLiveData = userListRepository.getUserResponseLiveData();
     }
 
-    public void getPoints(String type) {
-        userListRepository.getPoints(type);
+    public void getUserList() {
+//       userListRepository.getUserResponseLiveData();
     }
 
     public LiveData<ArrayList<User>> getPointResponseLiveData() {
-        return pointResponseLiveData;
+        return userResponseLiveData;
     }
 }

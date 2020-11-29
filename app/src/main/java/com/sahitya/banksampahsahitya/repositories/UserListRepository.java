@@ -18,34 +18,34 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserListRepository {
-    private MutableLiveData<ArrayList<User>> pointResponseLiveData;
+    private MutableLiveData<ArrayList<User>> userResponseLiveData;
     private ApiInterface apiInterface;
     private SharedPrefManager sharedPrefManager;
 
     public UserListRepository() {
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
-        pointResponseLiveData = new MutableLiveData<>();
+        userResponseLiveData = new MutableLiveData<>();
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
-    public void getPoints(String type) {
-        Call<ArrayList<User>> getUserList = apiInterface.getUserList(sharedPrefManager.getSPToken(), type);
+    public void getUserList(String type) {
+        Call<ArrayList<User>> getUserList = apiInterface.getUserList(sharedPrefManager.getSPToken());
         getUserList.enqueue(new Callback<ArrayList<User>>() {
             @Override
             public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
                 if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
-                    pointResponseLiveData.postValue(response.body());
+                    userResponseLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
-                pointResponseLiveData.postValue(null);
+                userResponseLiveData.postValue(null);
             }
         });
     }
 
-    public LiveData<ArrayList<User>> getPointResponseLiveData() {
-        return pointResponseLiveData;
+    public LiveData<ArrayList<User>> getUserResponseLiveData() {
+        return userResponseLiveData;
     }
 }

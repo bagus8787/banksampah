@@ -65,7 +65,7 @@ public class UserListAdminFragment extends Fragment {
             @Override
             public void onRefresh() {
                 swipeRefreshLayout.setRefreshing(false);
-//                reloadPoint();
+                reloadUserList();
             }
         });
 
@@ -75,6 +75,10 @@ public class UserListAdminFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        reloadPoint();
+        reloadUserList();
+    }
+
+    public void reloadUserList() {
+        viewModel.getUserList();
     }
 }
