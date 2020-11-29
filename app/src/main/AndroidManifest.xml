@@ -3,60 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sahitya.banksampahsahitya">
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
-
     <application
-        android:hardwareAccelerated="true"
         android:name=".MyApp"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config">
-
+        android:usesCleartextTraffic="true">
+        <activity android:name=".admin.DetailUserActivity"></activity>
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".camera.CameraActivity" />
-
-        <!-- ADMIN -->
+        <activity android:name=".camera.CameraActivity" /> <!-- ADMIN -->
         <activity android:name=".admin.AddSampahActivity" />
-        <activity android:name=".admin.HomeAdminActivity"
+        <activity
+            android:name=".admin.HomeAdminActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
-
-        <!-- KOOR -->
-        <activity android:name=".coordinator.HomeCoordinatorActivity" />
-
-        <!-- USER -->
+            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- KOOR -->
+        <activity android:name=".coordinator.HomeCoordinatorActivity" /> <!-- USER -->
         <activity android:name=".user.PengaturanActivity" />
         <activity android:name=".user.EditProfilActivity" />
         <activity android:name=".user.MainActivity" />
-        <activity android:name=".user.DetailTransaksiActivity"/>
-
-        <!-- LOGIN -->
+        <activity android:name=".user.DetailTransaksiActivity" /> <!-- LOGIN -->
         <activity android:name=".Login.ResetPasswordActivity" />
         <activity android:name=".Login.RegisterActivity" />
-        <activity android:name=".Login.LoginActivity"/>
-
-        <!--Potrait Camera Scan-->
-        <activity android:name=".camera.Potrait"
+        <activity android:name=".Login.LoginActivity" /> <!-- Potrait Camera Scan -->
+        <activity
+            android:name=".camera.Potrait"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
-
-        <activity android:name=".ScreenActivity"
-            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".ScreenActivity"
             android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorPortrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>

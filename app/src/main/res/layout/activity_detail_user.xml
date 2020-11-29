@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".user.EditProfilActivity">
+    tools:context=".admin.DetailUserActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,99 +16,121 @@
         tools:targetApi="o">
 
         <LinearLayout
+            android:id="@+id/li_1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_baseline_account_circle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/li_1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:text="Edit Profil"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
                 android:textColor="@android:color/black"
-                android:textSize="40sp"
-                android:textStyle="bold" />
+                android:text="Nama"/>
 
             <EditText
-                android:id="@+id/nama"
+                android:id="@+id/it_nama_user"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
-                android:hint="Nama"
-                android:inputType="textPersonName"
+                android:text="Bagus"
+                android:focusable="false"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
-            <Spinner
-                android:padding="10dp"
-                android:layout_marginTop="16dp"
-                android:id="@+id/sex"
-                android:entries="@array/jenis_kelamin"
-                android:background="@drawable/background_text"
-                android:hint="Jenis Kelamin"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"
+                android:text="Jenis Kelamin"/>
 
             <EditText
-                android:id="@+id/no_tlp"
-                android:layout_marginTop="16dp"
+                android:id="@+id/it_jenkel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
+                android:focusable="false"
                 android:background="@drawable/background_text"
-                android:hint="No Telepon"
+                android:text="Laki - Laki"
                 android:inputType="number"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"
+                android:text="No Telepon"/>
+
             <EditText
-                android:id="@+id/email"
-                android:layout_marginTop="16dp"
+                android:id="@+id/it_no_tlp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
+                android:focusable="false"
                 android:background="@drawable/background_text"
-                android:hint="Email"
+                android:text="No Telepon"
+                android:inputType="number"
+                android:paddingHorizontal="16dp"
+                tools:targetApi="o" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"
+                android:text="Email"/>
+
+            <EditText
+                android:id="@+id/it_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_edit_text"
+                android:focusable="false"
+                android:background="@drawable/background_text"
+                android:text="Email"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
-            <EditText
-                android:id="@+id/password"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edit_text"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/background_text"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:paddingHorizontal="16dp"
-                tools:targetApi="o" />
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"
+                android:text="Alamat"/>
 
             <EditText
-                android:id="@+id/password_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_edit_text"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/background_text"
-                android:hint="Password Confirm"
-                android:inputType="textPassword"
-                android:paddingHorizontal="16dp"
-                tools:targetApi="o" />
-
-            <EditText
-                android:id="@+id/alamat"
+                android:id="@+id/it_alamat"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginTop="16dp"
+                android:focusable="false"
                 android:background="@drawable/background_text"
-                android:hint="Alamat"
+                android:text="Alamat"
                 android:inputType="text|textMultiLine"
-                android:paddingHorizontal="16dp"
                 android:minLines="3"
+                android:paddingHorizontal="16dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
                 tools:targetApi="o" />
-
 
             <Button
                 android:id="@+id/btn_edit_profile"
@@ -120,8 +143,9 @@
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
 
-
         </LinearLayout>
+
+
 
     </RelativeLayout>
 

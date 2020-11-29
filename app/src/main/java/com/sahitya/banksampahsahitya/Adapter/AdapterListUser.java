@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.admin.DetailUserActivity;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.user.DetailTransaksiActivity;
 import com.sahitya.banksampahsahitya.model.User;
@@ -36,7 +37,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
     public void onBindViewHolder(ListUserViewHolder holder, int position) {
 
         holder.setName(dataList.get(position).getEmail());
-//        holder.setBarcode(dataList.get(position).getBarcode());
+        holder.setId(String.valueOf(dataList.get(position).getId()));
     }
 
     @Override
@@ -54,9 +55,9 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
         boolean verified;
         String verifiedText;
         Integer point;
-        String name;
+        String name, id;
 
-        TextView it_name_user, it_ambil_point;
+        TextView it_name_user, it_id_user;
 
         public ListUserViewHolder(View itemView) {
             super(itemView);
@@ -65,19 +66,25 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    context.startActivity(new Intent(context, DetailTransaksiActivity.class)
-//                            .putExtra("IT_VERIFIED", verifiedText)
+                    context.startActivity(new Intent(context, DetailUserActivity.class)
+                            .putExtra("IT_ID_USER", id)
 //                            .putExtra("IT_POINT", point)
 //                            .putExtra("IT_BARCODE", barcode)
-//                    );
+                    );
                 }
             });
         }
 
         public void setName(String name) {
             this.name = name;
-            it_name_user = (TextView)mView.findViewById(R.id.it_nama_user);
+            it_name_user = (TextView)mView.findViewById(R.id.it_email_user);
             it_name_user.setText(name);
+        }
+
+        public void setId(String id){
+            this.id = id;
+            it_id_user = (TextView)mView.findViewById(R.id.it_status_user);
+            it_id_user.setText(id);
         }
 
 //        public void setVerified(boolean verified){
