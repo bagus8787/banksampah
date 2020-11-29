@@ -117,7 +117,7 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<BaseResponse> call, Throwable t) {
-                            Toast.makeText(HomeCoordinatorActivity.this, "Error: "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(HomeCoordinatorActivity.this, "Error: "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }

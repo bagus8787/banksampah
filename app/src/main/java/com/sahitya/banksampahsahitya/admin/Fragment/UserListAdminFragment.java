@@ -2,65 +2,79 @@ package com.sahitya.banksampahsahitya.admin.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.model.User;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserListAdminFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.sahitya.banksampahsahitya.Adapter.AdapterListUser;
+import com.sahitya.banksampahsahitya.viewmodels.UserViewModel;
+import java.util.ArrayList;
+
+import android.util.Log;
+
 public class UserListAdminFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private AdapterListUser adapter;
+    private UserViewModel viewModel;
 
     public UserListAdminFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UserListAdminFragment newInstance(String param1, String param2) {
-        UserListAdminFragment fragment = new UserListAdminFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        adapter = new AdapterListUser(getContext());
+
+        viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel.init();
+        viewModel.getPointResponseLiveData().observe(this, new Observer<ArrayList<User>>() {
+            @Override
+            public void onChanged(ArrayList<User> pointResponse) {
+                if (pointResponse != null) {
+                    adapter.setDataList(pointResponse);
+
+                    Log.d("hasile : ", String.valueOf(adapter));
+                }
+            }
+        });
     }
 
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_list, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_user_list, container, false);
+
+        SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.layoutRefresh);
+        RecyclerView recyclerView = rootView.findViewById(R.id.rv_list_user);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+//                reloadPoint();
+            }
+        });
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+//        reloadPoint();
     }
 }
