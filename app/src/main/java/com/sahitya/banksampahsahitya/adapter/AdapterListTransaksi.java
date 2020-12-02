@@ -33,9 +33,11 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
 
     @Override
     public void onBindViewHolder(TransaksiViewHolder holder, int position) {
+        holder.setType(dataList.get(position).getType());
         holder.setVerified(dataList.get(position).isVerified());
-        holder.setPoint(dataList.get(position).getPoint());
+        holder.setPoint(dataList.get(position).getPoint(), dataList.get(position).getPointTotal());
         holder.setBarcode(dataList.get(position).getBarcode());
+        holder.setDescription(dataList.get(position).getDescription());
     }
 
     @Override
@@ -54,8 +56,11 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         String verifiedText;
         Integer point;
         String barcode;
+        String type;
+        String description;
+        Integer point_total;
 
-        TextView it_ambil_verified, it_ambil_point;
+        TextView it_ambil_verified, it_ambil_point, it_ambil_type;
 
         public TransaksiViewHolder(View itemView) {
             super(itemView);
@@ -68,6 +73,9 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
                             .putExtra("IT_VERIFIED", verifiedText)
                             .putExtra("IT_POINT", point)
                             .putExtra("IT_BARCODE", barcode)
+                            .putExtra("IT_TYPE", type)
+                            .putExtra("IT_DESCRIPTION", description)
+                            .putExtra("IT_POINT_TOTAL", point_total)
                     );
                 }
             });
@@ -84,14 +92,26 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
             it_ambil_verified.setText(verifiedText);
         }
 
-        public void setPoint(Integer point) {
+        public void setPoint(Integer point, Integer point_total) {
             this.point = point;
+            this.point_total = point_total;
             it_ambil_point = (TextView)mView.findViewById(R.id.it_ambil_point);
-            it_ambil_point.setText(point.toString());
+            it_ambil_point.setText(point_total.toString());
+        }
+
+        public void setType(String type) {
+            this.type = type;
+            it_ambil_type = (TextView)mView.findViewById(R.id.it_ambil_type);
+            it_ambil_type.setText(type.toUpperCase());
+
         }
 
         public void setBarcode(String barcode) {
             this.barcode = barcode;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
         }
     }
 }

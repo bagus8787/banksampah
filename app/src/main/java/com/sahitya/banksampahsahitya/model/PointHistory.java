@@ -23,6 +23,9 @@ public class PointHistory {
     @SerializedName("verified") boolean verified;
     @Expose
     BarcodeImage barcode_image;
+    @Expose
+    @SerializedName("warga")
+    Warga warga;
 
     public int getId() {
         return id;
@@ -94,4 +97,8 @@ public class PointHistory {
     public boolean isVerified() {
         return verified;
     }
+
+    public Warga getWarga() { return warga;}
+
+    public void setWarga(Warga warga) {this.warga = warga;}
 }

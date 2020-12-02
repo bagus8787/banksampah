@@ -10,6 +10,12 @@ public class Warga {
     @Expose
     @SerializedName("id") int id;
     @Expose
+    @SerializedName("name") String name;
+    @Expose
+    @SerializedName("email") String email;
+    @Expose
+    @SerializedName("mobile") String mobile;
+    @Expose
     @SerializedName("address") String address;
     @Expose
     @SerializedName("sex") String sex;
@@ -17,7 +23,6 @@ public class Warga {
     @SerializedName("rt") String rt;
     @Expose
     @SerializedName("point_total") int point_total;
-
     @Expose
     @SerializedName("points")
     ArrayList<PointHistory> points;
@@ -65,5 +70,30 @@ public class Warga {
     public ArrayList<PointHistory> getPoints() {
         return points;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }
 
