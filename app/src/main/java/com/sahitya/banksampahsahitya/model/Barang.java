@@ -50,4 +50,19 @@ public class Barang {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return type.concat(" - ").concat(name).concat(": Rp. ").concat(point.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Barang){
+            Barang c = (Barang )obj;
+            if(c.getName().equals(name) && c.getId()==id ) return true;
+        }
+
+        return false;
+    }
 }

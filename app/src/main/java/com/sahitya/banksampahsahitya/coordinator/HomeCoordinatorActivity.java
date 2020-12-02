@@ -15,6 +15,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
+import com.sahitya.banksampahsahitya.base.activity.TukarBarangActivity;
 import com.sahitya.banksampahsahitya.camera.Potrait;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.HomeCoordinatorFragment;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorFragment;
@@ -38,7 +39,7 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
         sharedPrefManager = new SharedPrefManager(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        BottomNavigationView navigationView = findViewById(R.id.bottom_navigation_view);
+        BottomNavigationView navigationView = findViewById(R.id.bottom_navigation_koor);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -61,7 +62,7 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
                         intentIntegrator.setCameraId(0);
                         intentIntegrator.setOrientationLocked(true);
                         intentIntegrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-                        intentIntegrator.setPrompt("Scan Barcode Verifikasi");
+                        intentIntegrator.setPrompt("Scan Barcode Warga");
                         intentIntegrator.initiateScan();
                         return true;
 
@@ -84,14 +85,14 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null){
             if (result.getContents() == null){
                 Toast.makeText(this, "Hasil tidak ditemukan", Toast.LENGTH_SHORT).show();
             }else{
                 String hasil = result.getContents();
-                startActivity(new Intent(this, DetailTransaksiActivity.class).putExtra("IT_BARCODE", hasil));
+                startActivity(new Intent(this, TukarBarangActivity.class).putExtra("IT_BARCODE", hasil));
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data);

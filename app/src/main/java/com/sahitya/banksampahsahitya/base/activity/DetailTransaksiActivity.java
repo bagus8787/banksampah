@@ -1,4 +1,4 @@
-package com.sahitya.banksampahsahitya.coordinator;
+package com.sahitya.banksampahsahitya.base.activity;
 
 import android.os.Bundle;
 import android.view.View;

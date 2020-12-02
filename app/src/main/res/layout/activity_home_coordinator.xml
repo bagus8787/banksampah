@@ -8,7 +8,7 @@
     tools:context="com.sahitya.banksampahsahitya.coordinator.HomeCoordinatorActivity">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
+        android:id="@+id/bottom_navigation_koor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"

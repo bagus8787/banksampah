@@ -3,6 +3,7 @@ package com.sahitya.banksampahsahitya.network;
 import com.sahitya.banksampahsahitya.model.Barang;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
@@ -33,6 +34,9 @@ public interface ApiInterface {
     @POST("api/auth/refresh")
     Call<UserResponse> refreshToken(@Header("Authorization") String token);
 
+    @GET("api/auth/logout")
+    Call<BaseResponse> logout(@Header("Authorization") String token);
+
     @FormUrlEncoded
     @POST("api/auth/signup")
     Call<BaseResponse> postRegister(
@@ -45,9 +49,12 @@ public interface ApiInterface {
             @Field("password") String password,
             @Field("confirm_agreement") int confirm_agreement);
 
-    //mahasiswa
+    //user
     @GET("api/home")
     Call<User> getUser(@Header("Authorization") String token);
+
+    @GET("api/auth/barcode")
+    Call<BaseResponse> getMyBarcode(@Header("Authorization") String token);
 
     //user list
     @GET("api/admin/warga")
@@ -70,9 +77,13 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("api/kasir/tukar_barang/{id}")
-    Call<PointHistory> tukarBarang(@Header("Authorization") String token, @Path("id") Integer id,
+    Call<BaseResponse> tukarBarang(@Header("Authorization") String token, @Path("id") Integer id,
                                    @Field("barang") Integer barang,
                                    @Field("count") Integer count);
+    @FormUrlEncoded
+    @POST("api/kasir/scan_warga")
+    Call<Warga> getWargaByBarcode(@Header("Authorization") String token, @Field("barcode") String barcode);
+
 
 //    barang
     @GET("api/config/barang_type")

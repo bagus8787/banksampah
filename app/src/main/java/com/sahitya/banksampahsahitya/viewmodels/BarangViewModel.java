@@ -3,9 +3,7 @@ package com.sahitya.banksampahsahitya.viewmodels;
 import android.app.Application;
 
 import com.sahitya.banksampahsahitya.model.Barang;
-import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.repositories.BarangRepository;
-import com.sahitya.banksampahsahitya.repositories.PointRepository;
 
 import java.util.ArrayList;
 
