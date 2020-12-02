@@ -29,6 +29,6 @@ public class DetailUserActivity extends AppCompatActivity {
         it_email = findViewById(R.id.it_email);
         it_no_telp = findViewById(R.id.no_tlp);
 
-        it_nama.setText(user.getId());
+        it_nama.setText(Integer.toString(user.getId()));
     }
 }

@@ -19,8 +19,15 @@ public class User implements Parcelable {
     @Expose
     @SerializedName("email") String email;
     @Expose
+    @SerializedName("address") String address;
+    @Expose
     @SerializedName("warga") Warga warga;
-
+    @Expose
+    @SerializedName("sex") String sex;
+    @Expose
+    @SerializedName("rt") String rt;
+    @Expose
+    @SerializedName("point_total") int point_total;
     @Expose
     @SerializedName("roles")
     ArrayList<Role> roles;
@@ -86,6 +93,38 @@ public class User implements Parcelable {
     }
 
     public User(ArrayList<User> dataList){
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getRt() {
+        return rt;
+    }
+
+    public void setRt(String rt) {
+        this.rt = rt;
+    }
+
+    public int getPointTotal() {
+        return point_total;
+    }
+
+    public void setPointTotal(int point_total) {
+        this.point_total = point_total;
     }
 
     public User(Parcel in) {

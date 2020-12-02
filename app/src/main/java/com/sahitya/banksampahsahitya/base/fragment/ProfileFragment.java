@@ -1,4 +1,4 @@
-package com.sahitya.banksampahsahitya.fragment.baseUser;
+package com.sahitya.banksampahsahitya.base.fragment;
 
 import android.content.Context;
 import android.content.Intent;

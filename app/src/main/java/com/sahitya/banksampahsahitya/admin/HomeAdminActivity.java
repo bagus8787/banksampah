@@ -11,13 +11,9 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.Fragment.HomeAdminFragment;
-import com.sahitya.banksampahsahitya.admin.Fragment.ProfilAdminFragment;
 import com.sahitya.banksampahsahitya.admin.Fragment.ScanAdminFragment;
 import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
-import com.sahitya.banksampahsahitya.fragment.baseUser.ProfileFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.HomeFragment;
-import com.sahitya.banksampahsahitya.user.Fragment.ListFragment;
+import com.sahitya.banksampahsahitya.base.fragment.ProfileFragment;
 
 public class HomeAdminActivity extends AppCompatActivity {
 

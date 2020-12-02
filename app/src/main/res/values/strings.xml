@@ -6,6 +6,7 @@
     <string name="home_fragment">Home Fragment</string>
     <string name="tabungan">Tabungan</string>
     <string name="info_sampah">Info Sampah</string>
+    <string name="list_sampah">List Sampah</string>
     <string name="peringkat">Peringkat</string>
     <string name="profil">Profil</string>
     <string name="laporan">Laporan</string>
@@ -38,5 +39,14 @@
         <item>Laki - Laki</item>
         <item>Perempuan</item>
 
+    </string-array>
+
+    <string-array name="barang_type">
+        <item></item>
+        <item>plastik</item>
+        <item>kertas</item>
+        <item>logam</item>
+        <item>kaca</item>
+        <item>lain</item>
     </string-array>
 </resources>

@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
-import com.sahitya.banksampahsahitya.fragment.baseUser.ProfileFragment;
+import com.sahitya.banksampahsahitya.base.fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.user.Fragment.HomeFragment;

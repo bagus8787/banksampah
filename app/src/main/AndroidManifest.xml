@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.DetailUserActivity"></activity>
+        <activity android:name=".base.activity.FormBarangActivity"></activity>
+        <activity android:name=".base.activity.DetailBarangActivity" />
+        <activity android:name=".admin.DetailUserActivity" />
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".camera.CameraActivity" /> <!-- ADMIN -->
@@ -31,6 +33,7 @@
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" /> <!-- KOOR -->
+        <activity android:name=".coordinator.DetailTransaksiActivity" />
         <activity android:name=".coordinator.HomeCoordinatorActivity" /> <!-- USER -->
         <activity android:name=".user.PengaturanActivity" />
         <activity android:name=".user.EditProfilActivity" />
@@ -43,7 +46,7 @@
             android:name=".camera.Potrait"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ScreenActivity"
             android:clearTaskOnLaunch="true"
