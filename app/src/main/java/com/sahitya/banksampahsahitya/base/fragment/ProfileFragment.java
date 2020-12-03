@@ -1,4 +1,4 @@
-package com.sahitya.banksampahsahitya.fragment.baseUser;
+package com.sahitya.banksampahsahitya.base.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +8,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +27,7 @@ import com.sahitya.banksampahsahitya.PanduanActivity;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
+import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.user.EditProfilActivity;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.user.PengaturanActivity;
@@ -30,6 +35,8 @@ import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     public SharedPrefManager sharedPrefManager;
+    public ApiInterface apiInterface;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -41,6 +48,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         RelativeLayout edit_profil = rootView.findViewById(R.id.rv_edit_profil);
         RelativeLayout pengaturan = rootView.findViewById(R.id.rv_pengaturan);
@@ -97,9 +105,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
             case R.id.btn_logout:
                 sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
-                startActivity(new Intent(getActivity(), LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                getActivity().finish();
+                Call<BaseResponse> logout = apiInterface.logout(sharedPrefManager.getSPToken());
+                logout.enqueue(new Callback<BaseResponse>() {
+                    @Override
+                    public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                        if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                            startActivity(new Intent(getActivity(), LoginActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                            getActivity().finish();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponse> call, Throwable t) {
+
+                    }
+                });
                 break;
         }
     }

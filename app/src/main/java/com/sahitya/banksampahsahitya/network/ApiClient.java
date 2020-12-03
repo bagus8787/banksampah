@@ -2,7 +2,13 @@ package com.sahitya.banksampahsahitya.network;
 
 import com.sahitya.banksampahsahitya.network.interceptor.TokenAuthenticator;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -10,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 //     private static final String url = "http://10.0.2.2:8000/";
-   private static final String url = "https://trashbank.darklogictech.com/";
+   private static final String url = "http://trashbank.darklogictech.com/";
     private static ApiInterface REST_CLIENT;
 
     private static Retrofit retrofit;
@@ -42,6 +48,8 @@ public class ApiClient {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
                 .addInterceptor(new TokenAuthenticator())
                 .build();
 

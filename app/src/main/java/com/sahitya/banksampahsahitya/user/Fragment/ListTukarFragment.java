@@ -46,7 +46,7 @@ public class ListTukarFragment extends Fragment {
 
         viewModel = ViewModelProviders.of(this).get(PointHistoryViewModel.class);
         viewModel.init();
-        viewModel.getPointResponseLiveData().observe(this, new Observer<ArrayList<PointHistory>>() {
+        viewModel.getPointsResponseLiveData().observe(this, new Observer<ArrayList<PointHistory>>() {
             @Override
             public void onChanged(ArrayList<PointHistory> pointResponse) {
                 if (pointResponse != null) {
@@ -84,7 +84,7 @@ public class ListTukarFragment extends Fragment {
     }
 
     public void reloadPoint() {
-        viewModel.getPoints("jual");
+        viewModel.getPoints("tukar");
     }
 
 }

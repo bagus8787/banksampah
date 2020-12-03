@@ -5,19 +5,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.model.BarcodeImage;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +31,9 @@ import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 public class HomeFragment extends Fragment {
 
     MainActivity mainActivity;
+    ProfileViewModel profileViewModel;
+    BarcodeImage barcode;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -44,26 +53,36 @@ public class HomeFragment extends Fragment {
 
         final TextView tv_name = view.findViewById(R.id.tv_name);
         final TextView tv_saldo = view.findViewById(R.id.tv_saldo);
+        final ImageView image_barcode = view.findViewById(R.id.image_barcode);
 
         tv_name.setText(mainActivity.sharedPrefManager.getSPNama());
-        Call<User> getUser = mainActivity.apiInterface.getUser(mainActivity.sharedPrefManager.getSPToken());
-        getUser.enqueue(new Callback<User>() {
+
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        profileViewModel.init();
+        profileViewModel.getProfileResponseLiveData().observe(this, new Observer<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.code() >= 200 && response.code() < 300) {
-                    User user = response.body();
-                    if (user.getWarga() != null) {
-                        mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, user.getWarga().getPointTotal());
-                        tv_saldo.setText(Integer.toString(user.getWarga().getPointTotal()));
+            public void onChanged(User userResponse) {
+                if (userResponse != null) {
+                    if (userResponse.getWarga() != null) {
+                        mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
+                        tv_saldo.setText(Integer.toString(userResponse.getWarga().getPointTotal()));
                     }
                 }
             }
+        });
 
+        profileViewModel.getBarcodeResponseLiveData().observe(this, new Observer<BarcodeImage>() {
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
+            public void onChanged(BarcodeImage barcodeResponse) {
+                if (barcodeResponse != null) {
+                    image_barcode.setImageBitmap(barcodeResponse.getImage());
+                    image_barcode.setVisibility(View.VISIBLE);
+                }
             }
         });
+
+        profileViewModel.getProfile();
+        profileViewModel.getBarcode();
 
     }
 

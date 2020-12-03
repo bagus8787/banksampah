@@ -1,9 +1,12 @@
 package com.sahitya.banksampahsahitya.repositories;
 
+import android.util.Log;
+
 import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
+import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import java.util.ArrayList;
@@ -15,34 +18,91 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PointRepository {
-    private MutableLiveData<ArrayList<PointHistory>> pointResponseLiveData;
+    private MutableLiveData<ArrayList<PointHistory>> pointsLiveData;
+    private MutableLiveData<PointHistory> pointLiveData;
     private ApiInterface apiInterface;
     private SharedPrefManager sharedPrefManager;
 
     public PointRepository() {
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
-        pointResponseLiveData = new MutableLiveData<>();
+        pointsLiveData = new MutableLiveData<>();
+        pointLiveData = new MutableLiveData<>();
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
     public void getPoints(String type) {
-        Call<ArrayList<PointHistory>> getUserTransaksi = apiInterface.getUserTransaksi(sharedPrefManager.getSPToken(), type);
-        getUserTransaksi.enqueue(new Callback<ArrayList<PointHistory>>() {
+        Call<ArrayList<PointHistory>> getUserPoints = apiInterface.getUserPoints(sharedPrefManager.getSPToken(), type);
+        getUserPoints.enqueue(new Callback<ArrayList<PointHistory>>() {
             @Override
             public void onResponse(Call<ArrayList<PointHistory>> call, Response<ArrayList<PointHistory>> response) {
                 if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
-                    pointResponseLiveData.postValue(response.body());
+                    pointsLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PointHistory>> call, Throwable t) {
-                pointResponseLiveData.postValue(null);
+                pointsLiveData.postValue(null);
             }
         });
     }
 
-    public LiveData<ArrayList<PointHistory>> getPointResponseLiveData() {
-        return pointResponseLiveData;
+    public void getPoint(int trx_id) {
+        Call<PointHistory> getUserPoint = apiInterface.getUserPoint(sharedPrefManager.getSPToken(), trx_id);
+        getUserPoint.enqueue(new Callback<PointHistory>() {
+            @Override
+            public void onResponse(Call<PointHistory> call, Response<PointHistory> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    pointLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PointHistory> call, Throwable t) {
+                pointLiveData.postValue(null);
+            }
+        });
+    }
+
+    public void getTransaksi(String barcode) {
+        Call<PointHistory> getByBarcode = apiInterface.getByBarcode(sharedPrefManager.getSPToken(), barcode);
+        getByBarcode.enqueue(new Callback<PointHistory>() {
+            @Override
+            public void onResponse(Call<PointHistory> call, Response<PointHistory> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    pointLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PointHistory> call, Throwable t) {
+                pointLiveData.postValue(null);
+            }
+        });
+    }
+
+    public void transaksiVerify(String barcode) {
+        Call<BaseResponse> verifyBarcode = apiInterface.verifyBarcode(sharedPrefManager.getSPToken(), barcode);
+        verifyBarcode.enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    Log.d("Point", response.body().getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public LiveData<ArrayList<PointHistory>> getPointsResponseLiveData() {
+        return pointsLiveData;
+    }
+
+    public LiveData<PointHistory> getPointResponseLiveData() {
+        return pointLiveData;
     }
 }

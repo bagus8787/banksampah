@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.HomeAdminActivity;
 import com.sahitya.banksampahsahitya.coordinator.HomeCoordinatorActivity;
@@ -16,9 +17,13 @@ import com.sahitya.banksampahsahitya.model.Role;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
+import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -113,7 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
                 } else {
-                    Toast.makeText(mContext, "Emai/Password salah", Toast.LENGTH_SHORT).show();
+                    try {
+                        Gson gson = new Gson();
+                        BaseResponse errorResponse = gson.fromJson(
+                                response.errorBody().string(),
+                                BaseResponse.class);
+
+                        Toast.makeText(mContext, errorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    } catch (Exception e){
+
+                    }
                 }
 
             }

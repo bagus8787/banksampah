@@ -1,9 +1,11 @@
-package com.sahitya.banksampahsahitya.model;
+package com.sahitya.banksampahsahitya.network.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sahitya.banksampahsahitya.model.BarcodeImage;
+import com.sahitya.banksampahsahitya.model.Warga;
 
-public class PointHistory {
+public class PointHistoryResponse {
 
     @Expose
     @SerializedName("id") int id;

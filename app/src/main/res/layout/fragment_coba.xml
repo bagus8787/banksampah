@@ -126,7 +126,8 @@
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/shadow_card_view"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
 
@@ -153,10 +154,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
+                            android:gravity="center_horizontal"
                             android:text="Track"
                             android:textAlignment="center"
-                            android:textSize="16sp"
-                            android:gravity="center_horizontal" />
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -176,9 +177,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
+                            android:gravity="center_horizontal"
                             android:text="Chat"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal" />
+                            android:textAlignment="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -197,11 +198,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="4dp"
-                            android:text="Laundry"
-                            android:textAlignment="center"
                             android:gravity="center_horizontal"
-                            android:layout_gravity="center_horizontal" />
+                            android:text="Laundry"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -222,9 +223,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
+                            android:gravity="center_horizontal"
                             android:text="History"
-                            android:textAlignment="center"
-                            android:gravity="center_horizontal" />
+                            android:textAlignment="center" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -264,6 +265,23 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:id="@+id/image_barcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:visibility="gone"
+                    shimmer:srcCompat="@color/colorAccent" />
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 

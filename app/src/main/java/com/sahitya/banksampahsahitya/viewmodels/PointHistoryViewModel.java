@@ -13,7 +13,8 @@ import androidx.lifecycle.LiveData;
 
 public class PointHistoryViewModel extends AndroidViewModel {
     private PointRepository pointRepository;
-    private LiveData<ArrayList<PointHistory>> pointResponseLiveData;
+    private LiveData<ArrayList<PointHistory>> pointsLivedata;
+    private LiveData<PointHistory> pointLiveData;
 
     public PointHistoryViewModel(@NonNull Application application) {
         super(application);
@@ -21,14 +22,31 @@ public class PointHistoryViewModel extends AndroidViewModel {
 
     public void init() {
         pointRepository = new PointRepository();
-        pointResponseLiveData = pointRepository.getPointResponseLiveData();
+        pointsLivedata = pointRepository.getPointsResponseLiveData();
+        pointLiveData = pointRepository.getPointResponseLiveData();
     }
 
     public void getPoints(String type) {
         pointRepository.getPoints(type);
     }
 
-    public LiveData<ArrayList<PointHistory>> getPointResponseLiveData() {
-        return pointResponseLiveData;
+    public void getPoint(int trx_id) {
+        pointRepository.getPoint(trx_id);
+    }
+
+    public void getTransaksi(String barcode) {
+        pointRepository.getTransaksi(barcode);
+    }
+
+    public void transaksiVerify(String barcode) {
+        pointRepository.transaksiVerify(barcode);
+    }
+
+    public LiveData<ArrayList<PointHistory>> getPointsResponseLiveData() {
+        return pointsLivedata;
+    }
+
+    public LiveData<PointHistory> getPointResponseLiveData() {
+        return pointLiveData;
     }
 }
