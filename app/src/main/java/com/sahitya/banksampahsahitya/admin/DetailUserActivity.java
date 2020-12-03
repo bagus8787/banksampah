@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.model.Warga;
+import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
@@ -34,13 +35,13 @@ public class DetailUserActivity extends AppCompatActivity {
 
     int roles = 0;
 
-    String id_user, nama_user;
+    Integer id_user;
+    String nama_user;
 
     Context mContext;
 
     ApiInterface apiInterface;
     SharedPrefManager sharedPrefManager;
-    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +51,12 @@ public class DetailUserActivity extends AppCompatActivity {
         mContext = this;
 
         sharedPrefManager = new SharedPrefManager(this);
-
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
         user = getIntent().getParcelableExtra("DATA_USER");
 
-        id_user = getIntent().getStringExtra("IT_ID_USER");
+        id_user = getIntent().getIntExtra("IT_ID_USER", 0);
+        Log.d("User", id_user.toString());
+        Log.d("User", user.toString());
         nama_user = getIntent().getStringExtra("IT_NAMA_USER");
 
         it_nama = findViewById(R.id.it_nama);
@@ -62,7 +65,7 @@ public class DetailUserActivity extends AppCompatActivity {
         it_sex = findViewById(R.id.it_jenkel);
 
         it_nama.setText(nama_user);
-        it_sex.setText(id_user);
+        it_sex.setText(id_user.toString());
 
         btn_coor = findViewById(R.id.btn_coor);
 
@@ -71,20 +74,16 @@ public class DetailUserActivity extends AppCompatActivity {
         btn_coor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Warga> AdminUpdateUser = apiInterface.UpdateUser(
+                Call<Warga> updateWarga = apiInterface.updateWarga(
                         sharedPrefManager.getSPToken(),
-                        Integer.valueOf(id_user),
+                        id_user,
                         it_nama.getText().toString(),
                         it_email.getText().toString(),
                         it_sex.getText().toString()
                         );
-                AdminUpdateUser.enqueue(new Callback<Warga>() {
+                updateWarga.enqueue(new Callback<Warga>() {
                 @Override
                 public void onResponse(Call<Warga> call, Response<Warga> response) {
-                    progressDialog.dismiss();
-
-                    Log.d("isinyaa : ", String.valueOf(AdminUpdateUser));
-
                     if (response.code() >= 200 && response.code() < 300) {
 //                        String message = response.body().getMessage();
                         Log.d("pesannya", String.valueOf(response.code()));
@@ -99,7 +98,7 @@ public class DetailUserActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Warga> call, Throwable t) {
-                    progressDialog.dismiss();
+
                 }
             });
             }

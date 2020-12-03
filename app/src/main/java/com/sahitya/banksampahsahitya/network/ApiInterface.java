@@ -62,9 +62,10 @@ public interface ApiInterface {
     Call<BaseResponse> getUser(@Header("Authorization") String token, @Path("id") Integer id);
 
     //updateUser
+    @FormUrlEncoded
     @POST("api/admin/warga/{id}")
-    Call<Warga> UpdateUser(@Header("Authorization") String token, @Path("id") Integer id,
-            @Field("name") String username,
+    Call<Warga> updateWarga(@Header("Authorization") String token, @Path("id") Integer id,
+            @Field("user_name") String username,
             @Field("address") String address,
             @Field("sex") String sex);
     

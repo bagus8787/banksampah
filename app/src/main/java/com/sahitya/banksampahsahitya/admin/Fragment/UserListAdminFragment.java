@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 
-import com.sahitya.banksampahsahitya.Adapter.AdapterListUser;
+import com.sahitya.banksampahsahitya.adapter.AdapterListUser;
 import com.sahitya.banksampahsahitya.viewmodels.UserViewModel;
 import java.util.ArrayList;
 
