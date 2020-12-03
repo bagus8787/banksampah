@@ -1,4 +1,4 @@
-package com.sahitya.banksampahsahitya.Adapter;
+package com.sahitya.banksampahsahitya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -37,7 +37,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
     public void onBindViewHolder(ListUserViewHolder holder, int position) {
 
         holder.setName(dataList.get(position).getName());
-        holder.setId(String.valueOf(dataList.get(position).getId()));
+        holder.setId(dataList.get(position).getId());
 //        holder.sex(String.valueOf(dataList.get(position).getId()));
     }
 
@@ -55,8 +55,8 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
         View mView;
         boolean verified;
         String verifiedText;
-        Integer point;
-        String name, id;
+        Integer point, id;
+        String name;
 
         TextView it_name_user, it_id_user;
 
@@ -87,10 +87,10 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
             it_name_user.setText(name);
         }
 
-        public void setId(String id){
+        public void setId(Integer id){
             this.id = id;
             it_id_user = (TextView)mView.findViewById(R.id.it_status_user);
-            it_id_user.setText(id);
+            it_id_user.setText(id.toString());
         }
 
 //        public void setVerified(boolean verified){
