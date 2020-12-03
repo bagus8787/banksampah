@@ -39,4 +39,15 @@
         <item>Perempuan</item>
 
     </string-array>
+
+    <string name="about">Aplikasi Desih adalah sebuah aplikasi bank sampah digital yang berada di desa Denanyar Jombang Jawa timur. Aplikasi ini memudahkan pengguna untuk melakukan transaksi penabungan sampah daur ulang agar menjadi lebih mudah dan efektif. /n
+Terms and condition \n
+a.	user diharapkan dapat menerapkan perilaku kejujuran. Penipuan dapat dikenakan sanksi yang berat. \n
+b.	Setiap penyetoran sampah, total saldo hari itu akan dipotong dengan biaya PPN sebesar 10% untuk keperluan logistic. \n
+c.	Pengambilan saldo dapat dilakukan dengan petugas kami (perwakilan coordinator tiap RT) dan ketika saldo berkurang maka tidak dapat di refund kembali. \n
+d.	Konversi berat sampah dilakukan secara otomatis oleh aplikasi maka pastikan memilih jenis sampah yang tepat dan memasukkan berat sampah yang sesuai dengan berat yang telah ditimbang oleh petugas kami (perwakilan coordinator tiap RT). \n
+e.	Pastikan setiap user menggunakan smartphone pribadi (tidak meminjam akun dari user lain) agar akumulasi jumlah saldo benar. \n
+f.	Kami akan mengambil langkah yang tepat untuk melindungi privasi Anda. Setiap kali Anda memberikan informasi yang sensitif (misalnya, nomor handphone) kami akan mengambil langkah-langkah yang wajar untuk melindungi privasi tersebut. Kami juga akan mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda dalam penyimpanan. Nomor handphone hanya digunakan untuk proses verifikasi dan bukan disimpan untuk tujuan pemasaran. \n
+g.	Situs ini memiliki langkah-langkah keamanan untuk melindungi kehilangan, penyalahgunaan dan perubahan informasi di dalam kendali kita. Langkah-langkah ini meliputi metode perlindungan data dasar dan kompleks, dalam penyimpanan offline tertentu informasi dan securitizing server database kami. Situs ini memberikan pilihan bagi para pengunjung untuk menghapus informasi mereka dari database kami untuk tidak menerima informasi kedepannya atau untuk tidak lagi menerima layanan kami. \n
+</string>
 </resources>

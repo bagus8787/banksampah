@@ -36,8 +36,9 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
     @Override
     public void onBindViewHolder(ListUserViewHolder holder, int position) {
 
-        holder.setName(dataList.get(position).getEmail());
+        holder.setName(dataList.get(position).getName());
         holder.setId(String.valueOf(dataList.get(position).getId()));
+//        holder.sex(String.valueOf(dataList.get(position).getId()));
     }
 
     @Override
@@ -72,6 +73,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
                     context.startActivity(new Intent(context, DetailUserActivity.class)
                             .putExtra("DATA_USER", user)
                             .putExtra("IT_ID_USER", id)
+                            .putExtra("IT_NAMA_USER", name)
 //                            .putExtra("IT_POINT", point)
 //                            .putExtra("IT_BARCODE", barcode)
                     );
@@ -81,7 +83,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
 
         public void setName(String name) {
             this.name = name;
-            it_name_user = (TextView)mView.findViewById(R.id.it_email_user);
+            it_name_user = (TextView)mView.findViewById(R.id.it_nama_user);
             it_name_user.setText(name);
         }
 

@@ -2,23 +2,18 @@ package com.sahitya.banksampahsahitya.network;
 
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -44,8 +39,20 @@ public interface ApiInterface {
             @Field("confirm_agreement") int confirm_agreement);
 
     //mahasiswa
+
     @GET("api/home")
     Call<User> getUser(@Header("Authorization") String token);
+
+    //updateUser
+//    @Path("id")
+    @GET("api/admin/warga/{id}")
+    Call<BaseResponse> getUser(@Header("Authorization") String token, @Path("id") Integer id);
+
+    @POST("api/admin/warga/{id}")
+    Call<Warga> UpdateUser(@Header("Authorization") String token, @Path("id") Integer id,
+            @Field("name") String username,
+            @Field("address") String address,
+            @Field("sex") String sex);
 
     //user list
     @GET("api/admin/warga")
