@@ -24,11 +24,12 @@
         <activity android:name=".base.activity.TukarBarangActivity"></activity>
         <activity android:name=".base.activity.FormBarangActivity" />
         <activity android:name=".base.activity.DetailBarangActivity" />
-        <activity android:name=".admin.DetailUserActivity" />
         <activity android:name=".PanduanActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".camera.CameraActivity" /> <!-- ADMIN -->
         <activity android:name=".admin.AddSampahActivity" />
+        <activity android:name=".admin.DetailUserActivity"
+            android:parentActivityName=".admin.HomeAdminActivity"/>
         <activity android:name=".admin.UpdateUserActivity"></activity>
         <activity
             android:name=".admin.HomeAdminActivity"

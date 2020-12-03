@@ -2,6 +2,7 @@ package com.sahitya.banksampahsahitya.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class DetailUserActivity extends AppCompatActivity {
 
-    EditText it_nama, it_no_telp, it_email, it_sex;
+    EditText it_nama, it_no_telp, it_email, it_sex, it_address;
     Button btn_coor;
 
     User user;
@@ -36,7 +37,7 @@ public class DetailUserActivity extends AppCompatActivity {
     int roles = 0;
 
     Integer id_user;
-    String nama_user;
+    String nama_user, email_user, sex_user, nope_user, address_user;
 
     Context mContext;
 
@@ -52,20 +53,26 @@ public class DetailUserActivity extends AppCompatActivity {
 
         sharedPrefManager = new SharedPrefManager(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        user = getIntent().getParcelableExtra("DATA_USER");
 
         id_user = getIntent().getIntExtra("IT_ID_USER", 0);
         Log.d("User", id_user.toString());
-        Log.d("User", user.toString());
         nama_user = getIntent().getStringExtra("IT_NAMA_USER");
+        sex_user = getIntent().getStringExtra("IT_SEX_USER");
+        email_user = getIntent().getStringExtra("IT_EMAIL_USER");
+        nope_user = getIntent().getStringExtra("IT_NOPE_USER");
+        address_user = getIntent().getStringExtra("IT_ADDRESS_USER");
 
         it_nama = findViewById(R.id.it_nama);
         it_email = findViewById(R.id.it_email);
         it_no_telp = findViewById(R.id.it_no_tlp);
         it_sex = findViewById(R.id.it_jenkel);
+        it_address = findViewById(R.id.it_alamat);
 
         it_nama.setText(nama_user);
-        it_sex.setText(id_user.toString());
+        it_sex.setText(sex_user);
+        it_address.setText(address_user);
+        it_email.setText(email_user);
+        it_no_telp.setText(nope_user);
 
         btn_coor = findViewById(R.id.btn_coor);
 
@@ -78,7 +85,7 @@ public class DetailUserActivity extends AppCompatActivity {
                         sharedPrefManager.getSPToken(),
                         id_user,
                         it_nama.getText().toString(),
-                        it_email.getText().toString(),
+                        it_address.getText().toString(),
                         it_sex.getText().toString()
                         );
                 updateWarga.enqueue(new Callback<Warga>() {
@@ -87,7 +94,7 @@ public class DetailUserActivity extends AppCompatActivity {
                     if (response.code() >= 200 && response.code() < 300) {
 //                        String message = response.body().getMessage();
                         Log.d("pesannya", String.valueOf(response.code()));
-//                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "User berhasil di update", Toast.LENGTH_SHORT).show();
 
 
                     } else {

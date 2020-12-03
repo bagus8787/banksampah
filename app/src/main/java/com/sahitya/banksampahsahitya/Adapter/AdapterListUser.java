@@ -38,7 +38,10 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
 
         holder.setName(dataList.get(position).getName());
         holder.setId(dataList.get(position).getId());
-//        holder.sex(String.valueOf(dataList.get(position).getId()));
+        holder.setEmail(dataList.get(position).getEmail());
+        holder.setSex(dataList.get(position).getSex());
+        holder.setAddress(dataList.get(position).getAddress());
+        holder.setStatus(dataList.get(position).getRoleName());
     }
 
     @Override
@@ -56,9 +59,9 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
         boolean verified;
         String verifiedText;
         Integer point, id;
-        String name;
+        String name, email, status, address, sex;
 
-        TextView it_name_user, it_id_user;
+        TextView it_name_user, it_id_user, it_email_user, it_status_user;
 
         User user;
 
@@ -74,8 +77,9 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
                             .putExtra("DATA_USER", user)
                             .putExtra("IT_ID_USER", id)
                             .putExtra("IT_NAMA_USER", name)
-//                            .putExtra("IT_POINT", point)
-//                            .putExtra("IT_BARCODE", barcode)
+                            .putExtra("IT_EMAIL_USER", email)
+                            .putExtra("IT_ADDRESS_USER", address)
+                            .putExtra("IT_SEX_USER", sex)
                     );
                 }
             });
@@ -87,10 +91,28 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
             it_name_user.setText(name);
         }
 
+        public void setEmail(String email) {
+            this.email = email;
+            it_email_user = (TextView)mView.findViewById(R.id.it_email_user);
+            it_email_user.setText(email);
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+            it_status_user = (TextView)mView.findViewById(R.id.it_status_user);
+            it_status_user.setText(status);
+        }
+
         public void setId(Integer id){
             this.id = id;
-            it_id_user = (TextView)mView.findViewById(R.id.it_status_user);
-            it_id_user.setText(id.toString());
+        }
+
+        public void setAddress(String address){
+            this.address = address;
+        }
+
+        public void setSex(String sex){
+            this.sex = sex;
         }
 
 //        public void setVerified(boolean verified){

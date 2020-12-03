@@ -31,7 +31,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/nama"
+                android:id="@+id/it_nama_p"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
@@ -43,7 +43,7 @@
             <Spinner
                 android:padding="10dp"
                 android:layout_marginTop="16dp"
-                android:id="@+id/sex"
+                android:id="@+id/it_sex_p"
                 android:entries="@array/jenis_kelamin"
                 android:background="@drawable/background_text"
                 android:hint="Jenis Kelamin"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"/>
 
             <EditText
-                android:id="@+id/no_tlp"
+                android:id="@+id/it_nope_p"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
@@ -62,7 +62,7 @@
                 tools:targetApi="o" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/it_email_p"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
@@ -73,7 +73,7 @@
                 tools:targetApi="o" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/it_password_p"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:layout_marginTop="16dp"
@@ -84,7 +84,7 @@
                 tools:targetApi="o" />
 
             <EditText
-                android:id="@+id/password_confirm"
+                android:id="@+id/it_password_confirm_p"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:layout_marginTop="16dp"
@@ -95,7 +95,7 @@
                 tools:targetApi="o" />
 
             <EditText
-                android:id="@+id/alamat"
+                android:id="@+id/it_address_p"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_marginTop="16dp"
