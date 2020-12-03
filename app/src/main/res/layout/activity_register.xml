@@ -109,20 +109,29 @@
             android:scrollbars="vertical"
             tools:targetApi="o" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"            >
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/checkbox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="onCheckboxClicked"
-                android:textColor="@android:color/holo_green_dark"/>
+                android:text="@string/i_accept"
+                android:textColor="@android:color/holo_green_dark" />
 
-        </RelativeLayout>
+            <TextView
+                android:id="@+id/open_term_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="@string/term" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_daftar"

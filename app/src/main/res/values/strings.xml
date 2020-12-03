@@ -27,13 +27,37 @@
     <string name="_11_kg">Berat : 11 Kg</string>
     <string name="total">Total</string>
     <string name="_16_kg">Berat : 16 Kg</string>
-    <string name="term">Term &amp; Condition</string>
     <string name="in_out">Masuk dan Keluar</string>
     <string name="tabung">Tabung</string>
     <string name="history">History</string>
     <string name="home">Home</string>
     <string name="list_user">List User</string>
     <string name="scan">Scan</string>
+    <string name="i_accept">I Accept</string>
+
+    <string name="term">Terms &amp; Condition</string>
+    <string name="show_term">lihat Terms &amp; Condition kami</string>
+    <string name="term_condition">
+        <![CDATA[
+<p><strong>Terms and Condition</strong></p>
+<p>&nbsp;</p>
+<ol>
+    <li style="text-align: justify;">user diharapkan dapat menerapkan perilaku kejujuran. Penipuan dapat dikenakan sanksi yang berat.</li>
+    <li style="text-align: justify;">Setiap penyetoran sampah, total saldo hari itu akan dipotong dengan biaya PPN sebesar 10% untuk keperluan logistic.</li>
+    <li style="text-align: justify;">Pengambilan saldo dapat dilakukan dengan petugas kami (perwakilan coordinator tiap RT) dan ketika saldo berkurang maka tidak dapat di refund kembali</li>
+    <li style="text-align: justify;">Konversi berat sampah dilakukan secara otomatis oleh aplikasi maka pastikan memilih jenis sampah yang tepat dan memasukkan berat sampah yang sesuai dengan berat yang telah ditimbang oleh petugas kami (perwakilan coordinator tiap RT).</li>
+    <li style="text-align: justify;">Pastikan setiap user menggunakan smartphone pribadi (tidak meminjam akun dari user lain) agar akumulasi jumlah saldo benar.</li>
+    <li style="text-align: justify;">Kami akan mengambil langkah yang tepat untuk melindungi privasi Anda. Setiap kali Anda memberikan informasi yang sensitif (misalnya, nomor handphone) kami akan mengambil langkah-langkah yang wajar untuk melindungi privasi tersebut. Kami juga akan mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda dalam penyimpanan. Nomor handphone hanya digunakan untuk proses verifikasi dan bukan disimpan untuk tujuan pemasaran.</li>
+    <li style="text-align: justify;">Situs ini memiliki langkah-langkah keamanan untuk melindungi kehilangan, penyalahgunaan dan perubahan informasi di dalam kendali kita. Langkah-langkah ini meliputi metode perlindungan data dasar dan kompleks, dalam penyimpanan offline tertentu informasi dan securitizing server database kami. Situs ini memberikan pilihan bagi para pengunjung untuk menghapus informasi mereka dari database kami untuk tidak menerima informasi kedepannya atau untuk tidak lagi menerima layanan kami.</li>
+</ol>
+        ]]>
+    </string>
+    <string name="about_text">
+        Aplikasi Desih adalah sebuah aplikasi bank sampah digital yang berada di desa Denanyar Jombang Jawa timur. Aplikasi ini memudahkan pengguna untuk melakukan transaksi penabungan sampah daur ulang agar menjadi lebih mudah dan efektif.
+    </string>
+    <string name="contact_1">+62 823-3473-3284 (admin 1)</string>
+    <string name="contact_2">+62 896-3430-8819 (admin 2)</string>
+    <string name="contact_3">+62 822-1972-5794 (admin 3)</string>
 
     <string-array name="jenis_kelamin">
         <item>Laki - Laki</item>
@@ -43,10 +67,10 @@
 
     <string-array name="barang_type">
         <item></item>
-        <item>plastik</item>
-        <item>kertas</item>
-        <item>logam</item>
-        <item>kaca</item>
-        <item>lain</item>
+        <item>PLASTIK</item>
+        <item>KERTAS</item>
+        <item>LOGAM</item>
+        <item>KACA</item>
+        <item>LAIN</item>
     </string-array>
 </resources>

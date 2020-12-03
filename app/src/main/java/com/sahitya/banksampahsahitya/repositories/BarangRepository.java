@@ -48,7 +48,7 @@ public class BarangRepository {
     }
 
     public void getBarangs(String type) {
-        Call<ArrayList<Barang>> getBarangList = apiInterface.getBarangList(sharedPrefManager.getSPToken(), type);
+        Call<ArrayList<Barang>> getBarangList = apiInterface.getBarangList(sharedPrefManager.getSPToken(), type.toLowerCase());
         getBarangList.enqueue(new Callback<ArrayList<Barang>>() {
             @Override
             public void onResponse(Call<ArrayList<Barang>> call, Response<ArrayList<Barang>> response) {
@@ -82,7 +82,7 @@ public class BarangRepository {
     }
 
     public void storeBarang(String name, Integer point, String type) {
-        Call<BaseResponse> storeBarang = apiInterface.storeBarang(sharedPrefManager.getSPToken(), name, point, type);
+        Call<BaseResponse> storeBarang = apiInterface.storeBarang(sharedPrefManager.getSPToken(), name, point, type.toLowerCase());
         storeBarang.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -103,7 +103,7 @@ public class BarangRepository {
     }
 
     public void updateBarang(Integer id, String name, Integer point, String type) {
-        Call<BaseResponse> updateBarang = apiInterface.updateBarang(sharedPrefManager.getSPToken(), id, name, point, type);
+        Call<BaseResponse> updateBarang = apiInterface.updateBarang(sharedPrefManager.getSPToken(), id, name, point, type.toLowerCase());
         updateBarang.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

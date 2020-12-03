@@ -16,16 +16,20 @@ import com.sahitya.banksampahsahitya.viewmodels.BarangViewModel;
 
 public class DetailBarangActivity extends AppCompatActivity {
     private BarangViewModel viewModel;
+    private Integer IT_ID;
+    String IT_NAME;
+    Integer IT_POINT;
+    String IT_TYPE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
 
-        Integer IT_ID = getIntent().getIntExtra("IT_ID", 0);
-        String IT_NAME = getIntent().getStringExtra("IT_NAME");
-        Integer IT_POINT = getIntent().getIntExtra("IT_POINT", 0);
-        String IT_TYPE = getIntent().getStringExtra("IT_TYPE");
+        IT_ID = getIntent().getIntExtra("IT_ID", 0);
+        IT_NAME = getIntent().getStringExtra("IT_NAME");
+        IT_POINT = getIntent().getIntExtra("IT_POINT", 0);
+        IT_TYPE = getIntent().getStringExtra("IT_TYPE");
 
         TextView detail_nama = findViewById(R.id.detail_barang_nama);
         TextView detail_point = findViewById(R.id.detail_barang_point);
@@ -54,12 +58,21 @@ public class DetailBarangActivity extends AppCompatActivity {
             @Override
             public void onChanged(Barang barangResponse) {
                 if (barangResponse != null) {
-                    detail_nama.setText(barangResponse.getName());
-                    detail_point.setText(barangResponse.getPoint());
-                    detail_type.setText(barangResponse.getType());
+                    IT_NAME = barangResponse.getName();
+                    IT_POINT = barangResponse.getPoint();
+                    IT_TYPE = barangResponse.getType();
+                    detail_nama.setText(IT_NAME);
+                    detail_point.setText(IT_POINT.toString());
+                    detail_type.setText(IT_TYPE);
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        viewModel.getBarang(IT_ID);
     }
 }

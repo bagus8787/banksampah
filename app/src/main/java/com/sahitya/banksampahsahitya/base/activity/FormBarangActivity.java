@@ -86,14 +86,6 @@ public class FormBarangActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(BarangViewModel.class);
         viewModel.init();
-        viewModel.getBarangResponseLiveData().observe(this, new Observer<Barang>() {
-            @Override
-            public void onChanged(Barang barangResponse) {
-                if (barangResponse != null) {
-
-                }
-            }
-        });
 
     }
 

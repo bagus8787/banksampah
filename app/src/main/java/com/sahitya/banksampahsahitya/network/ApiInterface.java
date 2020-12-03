@@ -19,6 +19,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -27,16 +28,20 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
 
+    @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("api/auth/login")
     Call<UserResponse> postLogin(@Field("email") String email,
                                  @Field("password") String password);
+
+    @Headers({"Accept: application/json"})
     @POST("api/auth/refresh")
     Call<UserResponse> refreshToken(@Header("Authorization") String token);
 
     @GET("api/auth/logout")
     Call<BaseResponse> logout(@Header("Authorization") String token);
 
+    @Headers({"Accept: application/json"})
     @FormUrlEncoded
     @POST("api/auth/signup")
     Call<BaseResponse> postRegister(

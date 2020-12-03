@@ -1,19 +1,24 @@
 package com.sahitya.banksampahsahitya.Login;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.ApiClient;
@@ -22,6 +27,9 @@ import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     Button btn_daftar;
     CheckBox checkBox;
+    TextView open_term_condition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +71,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         btn_daftar = findViewById(R.id.btn_daftar);
         checkBox = findViewById(R.id.checkbox);
+
+        open_term_condition = findViewById(R.id.open_term_dialog);
+
+        open_term_condition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WebView webView = new WebView(RegisterActivity.this);
+                String termText = RegisterActivity.this.getString(R.string.term_condition);
+                webView.loadData(termText, "text/html", "utf-8");
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setTitle(R.string.term)
+                        .setView(webView)
+                        .setNeutralButton("OK", null)
+                        .show();
+            }
+        });
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,12 +134,23 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (response.code() >= 200 && response.code() < 300) {
                     String message = response.body().getMessage();
-                    Log.d("pesannya", message);
                     Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-
-
+                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 } else {
-                    Toast.makeText(mContext, "Emai/Password salah", Toast.LENGTH_SHORT).show();
+                    try {
+                        Gson gson = new Gson();
+                        BaseResponse errorResponse = gson.fromJson(
+                                response.errorBody().string(),
+                                BaseResponse.class);
+
+                        for (Map.Entry<String, ArrayList<String>> entry : errorResponse.getErrors().entrySet()) {
+                            String key = entry.getKey();
+                            String value = entry.getValue().get(0);
+                            Toast.makeText(mContext, key.concat(": ").concat(value), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e){
+
+                    }
                 }
 
             }

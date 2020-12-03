@@ -2,14 +2,18 @@ package com.sahitya.banksampahsahitya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Shader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.Barang;
 import com.sahitya.banksampahsahitya.base.activity.DetailBarangActivity;
+import com.sahitya.banksampahsahitya.model.Role;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import java.util.ArrayList;
 
@@ -18,9 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdapterListBarang extends RecyclerView.Adapter<AdapterListBarang.BarangViewHolder> {
     private ArrayList<Barang> dataList;
     private Context context;
+    private SharedPrefManager sharedPrefManager;
 
     public AdapterListBarang(Context context) {
         this.context = context;
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
     }
 
     @Override
@@ -65,12 +71,14 @@ public class AdapterListBarang extends RecyclerView.Adapter<AdapterListBarang.Ba
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context, DetailBarangActivity.class)
-                            .putExtra("IT_ID", id)
-                            .putExtra("IT_NAME", name)
-                            .putExtra("IT_POINT", point)
-                            .putExtra("IT_TYPE", type)
-                    );
+                    if (sharedPrefManager.getRole().endsWith(Role.ROLE_ADMIN) || sharedPrefManager.getRole().endsWith(Role.ROLE_COODINATOR)) {
+                        context.startActivity(new Intent(context, DetailBarangActivity.class)
+                                .putExtra("IT_ID", id)
+                                .putExtra("IT_NAME", name)
+                                .putExtra("IT_POINT", point)
+                                .putExtra("IT_TYPE", type)
+                        );
+                    }
                 }
             });
         }

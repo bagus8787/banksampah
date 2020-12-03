@@ -31,6 +31,7 @@ public class ListSampahCoordinatorFragment extends Fragment {
 
     private AdapterListBarang adapter;
     private BarangViewModel viewModel;
+    Spinner spinner;
 
     public ListSampahCoordinatorFragment() {
         // Required empty public constructor
@@ -65,7 +66,7 @@ public class ListSampahCoordinatorFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        Spinner spinner = rootView.findViewById(R.id.sp_barang);
+        spinner = rootView.findViewById(R.id.sp_barang);
         Button barang_create = rootView.findViewById(R.id.barang_create_btn);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -93,7 +94,7 @@ public class ListSampahCoordinatorFragment extends Fragment {
             @Override
             public void onRefresh() {
                 swipeRefreshLayout.setRefreshing(false);
-                viewModel.getBarangs("");
+                viewModel.getBarangs(spinner.getSelectedItem().toString());
             }
         });
 
@@ -104,5 +105,11 @@ public class ListSampahCoordinatorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewModel.getBarangs("");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        viewModel.getBarangs(spinner.getSelectedItem().toString());
     }
 }
