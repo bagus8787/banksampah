@@ -79,6 +79,7 @@ public interface ApiInterface {
     Call<Warga> updateWarga(@Header("Authorization") String token, @Path("id") Integer id,
             @Field("user_name") String username,
             @Field("address") String address,
+            @Field("mobile") String mobile,
             @Field("sex") String sex);
     
     //user list

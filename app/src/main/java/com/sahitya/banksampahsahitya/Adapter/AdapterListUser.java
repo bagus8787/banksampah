@@ -41,6 +41,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
         holder.setId(dataList.get(position).getId());
         holder.setEmail(dataList.get(position).getEmail());
         holder.setSex(dataList.get(position).getSex());
+        holder.setNope(dataList.get(position).getMobile());
         holder.setAddress(dataList.get(position).getAddress());
         holder.setStatus(dataList.get(position).getRoleName());
     }
@@ -60,7 +61,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
         boolean verified;
         String verifiedText;
         Integer point, id;
-        String name, email, status, address, sex;
+        String name, email, status, address, sex, nope;
 
         TextView it_name_user, it_id_user, it_email_user, it_status_user;
 
@@ -76,11 +77,11 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
                 public void onClick(View v) {
 
                     context.startActivity(new Intent(context, DetailUserActivity.class)
-                            .putExtra("DATA_USER", user)
                             .putExtra("IT_ID_USER", id)
                             .putExtra("IT_NAMA_USER", name)
                             .putExtra("IT_EMAIL_USER", email)
                             .putExtra("IT_ADDRESS_USER", address)
+                            .putExtra("IT_NOPE_USER", nope)
                             .putExtra("IT_SEX_USER", sex)
                     );
                 }
@@ -115,6 +116,10 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
 
         public void setSex(String sex){
             this.sex = sex;
+        }
+
+        public void setNope(String nope){
+            this.nope = nope;
         }
 
 //        public void setVerified(boolean verified){

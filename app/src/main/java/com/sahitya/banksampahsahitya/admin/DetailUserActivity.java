@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,8 +28,9 @@ import retrofit2.Response;
 
 public class DetailUserActivity extends AppCompatActivity {
 
-    EditText it_nama, it_no_telp, it_email, it_sex, it_address;
+    EditText it_nama, it_no_telp, it_email, it_address;
     Button btn_coor, btn_update;
+    Spinner it_sex;
 
     User user;
 
@@ -73,7 +75,7 @@ public class DetailUserActivity extends AppCompatActivity {
         it_address = findViewById(R.id.it_alamat);
 
         it_nama.setText(nama_user);
-        it_sex.setText(sex_user);
+        it_sex.setSelection(getIndex(it_sex, sex_user));
         it_address.setText(address_user);
         it_email.setText(email_user);
         it_no_telp.setText(nope_user);
@@ -81,7 +83,7 @@ public class DetailUserActivity extends AppCompatActivity {
         btn_update = findViewById(R.id.btn_edit_profile);
         btn_coor = findViewById(R.id.btn_coor);
 
-        Log.d("shared : ", String.valueOf(nama_user));
+        Log.d("shared : ", String.valueOf(address_user));
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,8 +92,9 @@ public class DetailUserActivity extends AppCompatActivity {
                         sharedPrefManager.getSPToken(),
                         id_user,
                         it_nama.getText().toString(),
+                        it_no_telp.getText().toString(),
                         it_address.getText().toString(),
-                        it_sex.getText().toString()
+                        it_sex.getSelectedItem().toString()
                         );
                 updateWarga.enqueue(new Callback<Warga>() {
                 @Override
@@ -114,6 +117,16 @@ public class DetailUserActivity extends AppCompatActivity {
             });
             }
         });
+    }
+
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     @Override
