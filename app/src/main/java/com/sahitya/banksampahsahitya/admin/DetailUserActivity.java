@@ -28,7 +28,7 @@ import retrofit2.Response;
 public class DetailUserActivity extends AppCompatActivity {
 
     EditText it_nama, it_no_telp, it_email, it_sex, it_address;
-    Button btn_coor;
+    Button btn_coor, btn_update;
 
     User user;
 
@@ -74,11 +74,12 @@ public class DetailUserActivity extends AppCompatActivity {
         it_email.setText(email_user);
         it_no_telp.setText(nope_user);
 
+        btn_update = findViewById(R.id.btn_edit_profile);
         btn_coor = findViewById(R.id.btn_coor);
 
         Log.d("shared : ", String.valueOf(nama_user));
 
-        btn_coor.setOnClickListener(new View.OnClickListener() {
+        btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Call<Warga> updateWarga = apiInterface.updateWarga(

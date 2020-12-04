@@ -146,7 +146,8 @@ public class RegisterActivity extends AppCompatActivity {
                         for (Map.Entry<String, ArrayList<String>> entry : errorResponse.getErrors().entrySet()) {
                             String key = entry.getKey();
                             String value = entry.getValue().get(0);
-                            Toast.makeText(mContext, key.concat(": ").concat(value), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mContext, key.concat(": ").concat(value), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Email sudah terdaftar", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e){
 

@@ -87,7 +87,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_login) void login() {
         progressDialog.show();
-        Call<UserResponse> postLogin = apiInterface.postLogin(email_lg.getText().toString(),
+        Call<UserResponse> postLogin = apiInterface.postLogin(
+                email_lg.getText().toString(),
                 password_lg.getText().toString());
         postLogin.enqueue(new Callback<UserResponse>() {
             @Override
@@ -124,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                                 response.errorBody().string(),
                                 BaseResponse.class);
 
-                        Toast.makeText(mContext, errorResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Email atau password salah", Toast.LENGTH_SHORT).show();
                     } catch (Exception e){
 
                     }

@@ -12,6 +12,9 @@ public class SharedPrefManager {
     public static final String SP_NAMA = "spNama";
     public static final String SP_EMAIL = "spEmail";
     public static final String SP_MOBILE = "spMobile";
+    public static final String SP_ADDRESS = "spAddress";
+    public static final String SP_SEX = "spSex";
+
     public static final String SP_POINT_TOTAL = "spPointTotal";
 
     public static final String SP_TOKEN = "spToken";
@@ -46,6 +49,14 @@ public class SharedPrefManager {
 
     public String getSPNama(){
         return sp.getString(SP_NAMA, "");
+    }
+
+    public String getSpAddress(){
+        return sp.getString(SP_ADDRESS, "");
+    }
+
+    public String getSpSex(){
+        return sp.getString(SP_SEX, "");
     }
 
     public String getSPEmail(){

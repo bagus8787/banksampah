@@ -57,6 +57,19 @@ public interface ApiInterface {
     @GET("api/auth/barcode")
     Call<BaseResponse> getMyBarcode(@Header("Authorization") String token);
 
+    @FormUrlEncoded
+    @POST("api/home/update_profile")
+    Call<BaseResponse> updateUser(@Header("Authorization") String token,
+            @Field("email") String email,
+            @Field("name") String name,
+            @Field("sex") String sex,
+            @Field("mobile") String mobile,
+            @Field("rt") String rt,
+            @Field("address") String address,
+            @Field("avatar_type") String avatar_type,
+            @Field("avatar_location") String avatar_location
+            );
+
     // Warga
     @GET("api/admin/warga/{id}")
     Call<BaseResponse> getUser(@Header("Authorization") String token, @Path("id") Integer id);

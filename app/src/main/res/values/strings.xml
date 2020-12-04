@@ -36,10 +36,9 @@
     <string name="i_accept">I Accept</string>
 
     <string name="term">Terms &amp; Condition</string>
-    <string name="show_term">lihat Terms &amp; Condition kami</string>
+    <string name="show_term">Lihat Terms &amp; Condition kami</string>
     <string name="term_condition">
         <![CDATA[
-<p><strong>Terms and Condition</strong></p>
 <p>&nbsp;</p>
 <ol>
     <li style="text-align: justify;">user diharapkan dapat menerapkan perilaku kejujuran. Penipuan dapat dikenakan sanksi yang berat.</li>

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@android:color/white"
     tools:context=".user.EditProfilActivity">
 
     <RelativeLayout
+        android:background="@drawable/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="32dp"
         tools:targetApi="o">
@@ -18,17 +19,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_baseline_arrow_back_ios" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="22dp"
                 android:text="Edit Profil"
                 android:textColor="@android:color/black"
                 android:textSize="40sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Nama"/>
 
             <EditText
                 android:id="@+id/it_nama_p"
@@ -40,9 +55,15 @@
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Jenis Kelamin"/>
+
             <Spinner
                 android:padding="10dp"
-                android:layout_marginTop="16dp"
                 android:id="@+id/it_sex_p"
                 android:entries="@array/jenis_kelamin"
                 android:background="@drawable/background_text"
@@ -50,9 +71,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Nomor Telepon"/>
+
             <EditText
                 android:id="@+id/it_nope_p"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
@@ -61,9 +88,15 @@
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Email"/>
+
             <EditText
                 android:id="@+id/it_email_p"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
@@ -72,33 +105,51 @@
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Password"/>
+
             <EditText
                 android:id="@+id/it_password_p"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/background_text"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Paasword Confirm"/>
+
             <EditText
                 android:id="@+id/it_password_confirm_p"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/background_text"
                 android:hint="Password Confirm"
                 android:inputType="textPassword"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="Alamat"/>
+
             <EditText
                 android:id="@+id/it_address_p"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/background_text"
                 android:hint="Alamat"
                 android:inputType="text|textMultiLine"
@@ -108,6 +159,25 @@
                 android:scrollbars="vertical"
                 tools:targetApi="o" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:textColor="@android:color/black"
+                android:text="RT"/>
+
+            <EditText
+                android:id="@+id/it_rt_p"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/background_text"
+                android:hint="05"
+                android:inputType="text|textMultiLine"
+                android:paddingHorizontal="16dp"
+                android:minLines="3"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:scrollbars="vertical"
+                tools:targetApi="o" />
 
             <Button
                 android:id="@+id/btn_edit_profile"
