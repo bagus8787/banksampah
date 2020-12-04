@@ -138,4 +138,8 @@ public interface ApiInterface {
     @DELETE("api/admin/barang/{id}")
     Call<BaseResponse> deleteBarang(@Header("Authorization") String token, @Path("id") Integer id);
 
+    @FormUrlEncoded
+    @POST("api/home/ambil_point")
+    Call<BaseResponse> ambilPoint(@Header("Authorization") String token, @Field("point") Integer point);
+
 }

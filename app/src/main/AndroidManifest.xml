@@ -21,7 +21,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".base.activity.TukarBarangActivity"></activity>
+        <activity android:name=".user.AmbilSaldoActivity"></activity>
+        <activity android:name=".base.activity.TukarBarangActivity" />
         <activity android:name=".base.activity.FormBarangActivity" />
         <activity android:name=".base.activity.DetailBarangActivity" />
         <activity android:name=".PanduanActivity" />

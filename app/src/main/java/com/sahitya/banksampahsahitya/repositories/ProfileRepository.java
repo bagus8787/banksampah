@@ -64,6 +64,23 @@ public class ProfileRepository {
         });
     }
 
+    public void ambilPoint(Integer point) {
+        Call<BaseResponse> ambilPoint = apiInterface.ambilPoint(sharedPrefManager.getSPToken(), point);
+        ambilPoint.enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() >= 200 && response.code() < 300) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+    }
+
 
     public LiveData<User> getProfileResponseLiveData() {
         return profileLiveData;

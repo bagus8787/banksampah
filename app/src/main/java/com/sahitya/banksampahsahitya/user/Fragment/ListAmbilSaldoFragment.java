@@ -1,10 +1,12 @@
 package com.sahitya.banksampahsahitya.user.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.adapter.AdapterListTransaksi;
 import com.sahitya.banksampahsahitya.model.PointHistory;
+import com.sahitya.banksampahsahitya.user.AmbilSaldoActivity;
 import com.sahitya.banksampahsahitya.viewmodels.PointHistoryViewModel;
 
 import java.util.ArrayList;
@@ -77,6 +80,21 @@ public class ListAmbilSaldoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        reloadPoint();
+
+        Button ambil_btn = view.findViewById(R.id.ambil_saldo_btn);
+
+        ambil_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), AmbilSaldoActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         reloadPoint();
     }
 

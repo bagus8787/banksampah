@@ -59,7 +59,7 @@ public class ListTukarFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list_ambil_saldo, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_list_point, container, false);
 
         SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.layoutRefresh);
         RecyclerView recyclerView = rootView.findViewById(R.id.rv_list_point);
