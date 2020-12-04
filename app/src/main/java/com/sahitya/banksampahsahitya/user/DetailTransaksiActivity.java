@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.user;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -16,6 +17,10 @@ public class DetailTransaksiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_transaksi);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         String IT_VERIFIED = getIntent().getStringExtra("IT_VERIFIED");
         Integer IT_POINT = getIntent().getIntExtra("IT_POINT", 0);
@@ -45,4 +50,11 @@ public class DetailTransaksiActivity extends AppCompatActivity {
         ambil_verified.setText(IT_VERIFIED);
         ambil_description.setText(IT_DESCRIPTION);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

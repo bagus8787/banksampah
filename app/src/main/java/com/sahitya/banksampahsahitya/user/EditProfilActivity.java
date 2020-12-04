@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.user;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.sahitya.banksampahsahitya.MyApp;
@@ -43,14 +44,16 @@ public class EditProfilActivity extends AppCompatActivity {
 
     Button btn_update;
 
-    ImageView btn_back;
-
     Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profil);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -69,30 +72,13 @@ public class EditProfilActivity extends AppCompatActivity {
         rt = findViewById(R.id.it_rt_p);
 
         nama.setText(sharedPrefManager.getSPNama());
-        nope.setText(sharedPrefManager.getSPMpbile());
+        nope.setText(sharedPrefManager.getSPMobile());
         email.setText(sharedPrefManager.getSPEmail());
         address.setText(sharedPrefManager.getSpAddress());
-//        sex.set(sharedPrefManager.getSpSex());
+        sex.setSelection(getIndex(sex, sharedPrefManager.getSpSex()));
+        rt.setText(sharedPrefManager.getSpRt());
 
-        btn_back =findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sharedPrefManager.getRole().equals(Role.ROLE_USER)) {
-                    startActivity(new Intent(EditProfilActivity.this, MainActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                } else if (sharedPrefManager.getRole().equals(Role.ROLE_COODINATOR)) {
-                    startActivity(new Intent(EditProfilActivity.this, HomeCoordinatorActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                } else if (sharedPrefManager.getRole().equals(Role.ROLE_ADMIN)) {
-                    startActivity(new Intent(EditProfilActivity.this, HomeAdminActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                }
-            }
-        });
+        Log.d("sex :", String.valueOf(sex));
 
         btn_update = findViewById(R.id.btn_edit_profile);
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +88,7 @@ public class EditProfilActivity extends AppCompatActivity {
                         sharedPrefManager.getSPToken(),
                         email.getText().toString(),
                         nama.getText().toString(),
-                        nama.getText().toString(),
+                        sex.getSelectedItem().toString(),
                         nope.getText().toString(),
                         rt.getText().toString(),
                         address.getText().toString(),
@@ -117,6 +103,12 @@ public class EditProfilActivity extends AppCompatActivity {
                             Log.d("pesannya", String.valueOf(response.code()));
                             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_ADDRESS, address.getText().toString());
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email.getText().toString());
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA, nama.getText().toString());
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_MOBILE, nope.getText().toString());
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_SEX, sex.getSelectedItem().toString());
+                            sharedPrefManager.saveSPString(SharedPrefManager.SP_RT, rt.getText().toString());
 
                         } else {
                             Toast.makeText(mContext, "Ada kesalahan", Toast.LENGTH_SHORT).show();
@@ -132,4 +124,21 @@ public class EditProfilActivity extends AppCompatActivity {
             }
         });
     }
+
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

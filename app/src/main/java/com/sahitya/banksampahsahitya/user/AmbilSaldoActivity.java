@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.user;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -20,6 +21,11 @@ public class AmbilSaldoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ambil_saldo);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+
         profileRepository = new ProfileRepository();
 
         EditText jumlah = findViewById(R.id.ambil_jumlah);
@@ -36,4 +42,11 @@ public class AmbilSaldoActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

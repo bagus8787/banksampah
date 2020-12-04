@@ -1,6 +1,7 @@
 package com.sahitya.banksampahsahitya.user.Fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.BarcodeImage;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
+import com.sahitya.banksampahsahitya.user.EditProfilActivity;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
@@ -54,8 +56,17 @@ public class HomeFragment extends Fragment {
         final TextView tv_name = view.findViewById(R.id.tv_name);
         final TextView tv_saldo = view.findViewById(R.id.tv_saldo);
         final ImageView image_barcode = view.findViewById(R.id.image_barcode);
+        final ImageView image_btn = view.findViewById(R.id.buttonprofile);
 
         tv_name.setText(mainActivity.sharedPrefManager.getSPNama());
+
+        image_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent p = new Intent(getActivity(), EditProfilActivity.class);
+                startActivity(p);
+            }
+        });
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         profileViewModel.init();

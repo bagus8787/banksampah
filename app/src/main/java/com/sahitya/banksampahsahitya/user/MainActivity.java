@@ -1,6 +1,7 @@
 package com.sahitya.banksampahsahitya.user;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_user);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         loadFragment(new HomeFragment());
         sharedPrefManager = new SharedPrefManager(this);

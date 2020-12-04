@@ -45,6 +45,7 @@
                         android:layout_height="30dp"
                         android:background="@drawable/ic_account_circle_black_24dp"
                         android:backgroundTint="@android:color/black" />
+
                 </LinearLayout>
 
                 <TextView

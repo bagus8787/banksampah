@@ -2,6 +2,7 @@ package com.sahitya.banksampahsahitya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,7 @@ public class AdapterListUser extends RecyclerView.Adapter<AdapterListUser.ListUs
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     context.startActivity(new Intent(context, DetailUserActivity.class)
                             .putExtra("DATA_USER", user)
                             .putExtra("IT_ID_USER", id)

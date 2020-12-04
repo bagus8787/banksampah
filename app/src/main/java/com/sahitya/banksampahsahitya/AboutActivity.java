@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,10 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
 
         TextView show_term_condition = findViewById(R.id.show_term_condition);
@@ -45,24 +50,11 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        ImageView btn_back = findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (sharedPrefManager.getRole().equals(Role.ROLE_USER)) {
-                    startActivity(new Intent(AboutActivity.this, MainActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                } else if (sharedPrefManager.getRole().equals(Role.ROLE_COODINATOR)) {
-                    startActivity(new Intent(AboutActivity.this, HomeCoordinatorActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                } else if (sharedPrefManager.getRole().equals(Role.ROLE_ADMIN)) {
-                    startActivity(new Intent(AboutActivity.this, HomeAdminActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                    finish();
-                }
-            }
-        });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

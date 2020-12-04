@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.base.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -25,6 +26,10 @@ public class DetailBarangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         IT_ID = getIntent().getIntExtra("IT_ID", 0);
         IT_NAME = getIntent().getStringExtra("IT_NAME");
@@ -74,5 +79,11 @@ public class DetailBarangActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         viewModel.getBarang(IT_ID);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

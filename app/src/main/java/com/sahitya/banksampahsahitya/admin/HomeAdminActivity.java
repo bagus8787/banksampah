@@ -1,6 +1,7 @@
 package com.sahitya.banksampahsahitya.admin;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -19,6 +20,7 @@ import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
 import com.sahitya.banksampahsahitya.base.fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.camera.Potrait;
 import com.sahitya.banksampahsahitya.base.activity.DetailTransaksiActivity;
+import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorFragment;
 
 public class HomeAdminActivity extends AppCompatActivity {
     IntentIntegrator intentIntegrator;
@@ -27,6 +29,10 @@ public class HomeAdminActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_admin);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         loadFragment(new HomeAdminFragment());
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_navigation_view);
@@ -54,6 +60,10 @@ public class HomeAdminActivity extends AppCompatActivity {
 
                     case R.id.profile_admin :
                         loadFragment(new ProfileFragment());
+                        return true;
+
+                    case R.id.list_sampah :
+                        loadFragment(new ListSampahCoordinatorFragment());
                         return true;
 
                     default:

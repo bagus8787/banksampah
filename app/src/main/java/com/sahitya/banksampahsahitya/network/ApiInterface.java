@@ -49,7 +49,6 @@ public interface ApiInterface {
             @Field("password") String password,
             @Field("confirm_agreement") int confirm_agreement);
 
-   
     //user
     @GET("api/home")
     Call<User> getUser(@Header("Authorization") String token);

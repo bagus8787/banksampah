@@ -141,6 +141,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/background_button"
             android:text="Daftar"
+            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@android:color/black"
             android:textSize="24sp" />

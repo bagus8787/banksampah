@@ -1,6 +1,7 @@
 package com.sahitya.banksampahsahitya.coordinator;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -35,6 +36,9 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_coordinator);
         loadFragment(new HomeCoordinatorFragment());
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         sharedPrefManager = new SharedPrefManager(this);
         apiInterface = ApiClient.getClient().create(ApiInterface.class);

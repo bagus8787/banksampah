@@ -1,8 +1,8 @@
 package com.sahitya.banksampahsahitya.admin;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -48,6 +48,10 @@ public class DetailUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_user);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mContext = this;
 
@@ -97,7 +101,6 @@ public class DetailUserActivity extends AppCompatActivity {
                         Log.d("pesannya", String.valueOf(response.code()));
                         Toast.makeText(mContext, "User berhasil di update", Toast.LENGTH_SHORT).show();
 
-
                     } else {
                         Toast.makeText(mContext, "Ada kesalahan", Toast.LENGTH_SHORT).show();
                     }
@@ -112,4 +115,11 @@ public class DetailUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

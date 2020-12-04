@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         final TextView email_profil = view.findViewById(R.id.email_profil);
 
         nama_profil.setText(mainActivity.sharedPrefManager.getSPNama());
-        no_tlp_profil.setText(mainActivity.sharedPrefManager.getSPMpbile());
+        no_tlp_profil.setText(mainActivity.sharedPrefManager.getSPMobile());
         email_profil.setText(mainActivity.sharedPrefManager.getSPEmail());
     }
 
