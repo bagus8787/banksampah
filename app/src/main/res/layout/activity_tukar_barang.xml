@@ -25,6 +25,14 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:text="Tukar Barang"
+                android:textSize="28sp" />
+
+            <TextView
+                android:text="Nama Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -32,8 +40,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/background_text_view"
                 android:hint="Nama"
                 android:textSize="24sp" />
+
+            <TextView
+                android:text="Jenis Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <Spinner
                 android:id="@+id/form_tukar_item"
@@ -42,6 +59,14 @@
                 android:layout_marginBottom="30dp"
                 android:hint="Tipe"
                 android:minHeight="45dp"
+                android:textSize="24sp" />
+
+            <TextView
+                android:text="Jumlah Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -51,7 +76,8 @@
                 android:layout_marginBottom="40dp"
                 android:hint="Jumlah"
                 android:inputType="number"
-                android:textSize="18sp" />
+                android:background="@drawable/background_text_view"
+                android:textSize="24sp" />
 
         </LinearLayout>
 

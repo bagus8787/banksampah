@@ -25,6 +25,14 @@
                 android:layout_marginBottom="30dp"
                 android:gravity="center"
                 android:text="Verifikasi Pengambilan Saldo"
+                android:textSize="20sp" />
+
+            <TextView
+                android:text="Nama Warga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -32,7 +40,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/background_text_view"
                 android:gravity="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Email Warga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -40,7 +57,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:background="@drawable/background_text_view"
                 android:gravity="center_horizontal"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Status Verifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
@@ -48,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
+                android:background="@drawable/background_text_view"
                 android:gravity="center_horizontal"
                 android:textSize="18sp" />
 

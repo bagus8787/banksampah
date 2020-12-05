@@ -74,6 +74,7 @@ e.	Pastikan setiap user menggunakan smartphone pribadi (tidak meminjam akun dari
 f.	Kami akan mengambil langkah yang tepat untuk melindungi privasi Anda. Setiap kali Anda memberikan informasi yang sensitif (misalnya, nomor handphone) kami akan mengambil langkah-langkah yang wajar untuk melindungi privasi tersebut. Kami juga akan mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda dalam penyimpanan. Nomor handphone hanya digunakan untuk proses verifikasi dan bukan disimpan untuk tujuan pemasaran. \n
 g.	Situs ini memiliki langkah-langkah keamanan untuk melindungi kehilangan, penyalahgunaan dan perubahan informasi di dalam kendali kita. Langkah-langkah ini meliputi metode perlindungan data dasar dan kompleks, dalam penyimpanan offline tertentu informasi dan securitizing server database kami. Situs ini memberikan pilihan bagi para pengunjung untuk menghapus informasi mereka dari database kami untuk tidak menerima informasi kedepannya atau untuk tidak lagi menerima layanan kami. \n
 </string>
+    <string name="silahkan">Berikan code barcode di bawah ini ke coordinator untuk melakukan penukaran sampah atau barang</string>
     <string-array name="barang_type">
         <item></item>
         <item>PLASTIK</item>

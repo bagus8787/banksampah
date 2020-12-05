@@ -24,24 +24,87 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
                 android:text="Detail Transaksi"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/stv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Status Verifikasi"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/img_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_toEndOf="@+id/stv"
+                    android:layout_toRightOf="@+id/stv"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/ic_baseline_check_circle" />
+
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/detail_ambil_verified"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:gravity="center_horizontal"
+                android:background="@drawable/background_text_view"
+                android:text="Verifikasi"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Jumlah Penukaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/detail_ambil_point"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_text_view"
+                android:layout_marginBottom="10dp"
+                android:text="10000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Detail Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detail_ambil_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
-                android:gravity="center"
-                android:textSize="24sp" />
+                android:background="@drawable/background_text_view"
+                android:textSize="18sp"
+                android:text="juj" />
 
             <ImageView
                 android:id="@+id/detail_ambil_barcode"
@@ -52,12 +115,16 @@
                 app:srcCompat="@android:color/background_dark" />
 
             <TextView
-                android:id="@+id/detail_ambil_description"
+                android:id="@+id/txt_scan"
+                android:text="Berikan barcode di atas untuk memverifikasi pengambilan saldo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="juj" />
+                android:layout_marginTop="5dp"
+                android:textAlignment="center"
+                android:textSize="13sp"
+                android:visibility="invisible"
+                android:gravity="center_horizontal" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -121,7 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
         Call<BaseResponse> postRegister = apiInterface.postRegister(
                 email.getText().toString(),
                 nama.getText().toString(),
-                sex.toString(),
+                sex.getSelectedItem().toString(),
                 no_tlp.getText().toString(),
                 alamat.getText().toString(),
                 password_confirm.getText().toString(),

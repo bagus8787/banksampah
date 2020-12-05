@@ -26,8 +26,6 @@
             android:orientation="vertical"
             android:padding="35dp">
 
-
-
             <TextView
                 android:id="@+id/form_barang_title"
                 android:layout_width="match_parent"
@@ -36,6 +34,14 @@
                 android:gravity="center"
                 android:text="Edit Barang"
                 android:textStyle="bold"
+                android:textSize="28sp" />
+
+            <TextView
+                android:text="Nama Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <EditText
@@ -45,6 +51,14 @@
                 android:layout_marginBottom="5dp"
                 android:hint="Nama"
                 android:inputType="text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="Jenis Sampah/Barang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <Spinner
@@ -57,6 +71,14 @@
                 android:minHeight="45dp"
                 android:textSize="18sp"
                 style="@android:style/Widget.Holo.Light.Spinner"/>
+
+            <TextView
+                android:text="Harga per /Kg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/form_barang_point"

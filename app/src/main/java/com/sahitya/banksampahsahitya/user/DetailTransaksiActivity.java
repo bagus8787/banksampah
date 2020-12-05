@@ -35,16 +35,37 @@ public class DetailTransaksiActivity extends AppCompatActivity {
         ImageView ambil_barcode = findViewById(R.id.detail_ambil_barcode);
         TextView ambil_description = findViewById(R.id.detail_ambil_description);
 
+        //text di bawah scan
+        TextView txt_scan = findViewById(R.id.txt_scan);
+
+        //image checklist verifikasi
+        ImageView img_check = findViewById(R.id.img_check);
+
         if (IT_BARCODE != "") {
             BarcodeImage barcode = new BarcodeImage(IT_BARCODE);
             ambil_barcode.setVisibility(View.VISIBLE);
             ambil_barcode.setImageBitmap(barcode.getImage());
+
         }
 
         if (IT_TYPE.equals("tukar")) {
             ambil_point.setText(IT_POINT_TOTAL.toString());
+            if (IT_VERIFIED.equals("Verified")){
+                img_check.setVisibility(View.VISIBLE);
+
+            } else {
+//                txt_scan.setVisibility(View.VISIBLE);
+            }
         } else {
             ambil_point.setText(IT_POINT.toString());
+
+            if (IT_VERIFIED.equals("Verified")){
+                img_check.setVisibility(View.VISIBLE);
+
+            } else {
+                txt_scan.setVisibility(View.VISIBLE);
+            }
+
         }
 
         ambil_verified.setText(IT_VERIFIED);
