@@ -22,7 +22,7 @@ public class DetailTransaksiActivity extends AppCompatActivity {
     String IT_BARCODE = "";
 
     private PointHistoryViewModel viewModel;
-    private  PointHistory pointHistory;
+    private PointHistory pointHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class DetailTransaksiActivity extends AppCompatActivity {
                 if (pointResponse != null) {
                     ambil_verified.setText(pointResponse.isVerified() ? "Verified" : "Unverified");
                     ambil_point.setText(Integer.toString(pointResponse.getPoint()));
+                    ambil_nama.setText(pointResponse.getWarga().getName());
                     ambil_nama.setText(pointResponse.getWarga().getName());
                     ambil_email.setText(pointResponse.getWarga().getEmail().concat(" : ").concat(pointResponse.getWarga().getMobile()));
                 }

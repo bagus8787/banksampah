@@ -39,22 +39,29 @@
                 android:gravity="right"
                 android:paddingLeft="2dp"
                 android:paddingRight="2dp"
-                android:text="@string/_11_kg"
+                android:text="Verified"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="6dp">
 
             <TextView
+                android:id="@+id/rp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="0dp"
                 android:text="@string/rp"
                 android:textColor="@color/colorFont2"
                 android:textSize="20sp"
@@ -64,13 +71,44 @@
                 android:id="@+id/it_ambil_point"
                 android:layout_width="116dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_alignTop="@+id/rp"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/rp"
+                android:layout_toRightOf="@+id/rp"
                 android:text="@string/_75_000"
                 android:textColor="@color/colorFont2"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/it_ambil_update"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toStartOf="@+id/it_ambil_update"
+                android:layout_toLeftOf="@+id/it_ambil_update"
+                android:text="Pengajuan :" />
+
+            <TextView
+                android:id="@+id/it_ambil_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:gravity="end"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:text="19-10-2020 16:06:01"
+                android:textAlignment="textEnd" />
+
+        </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

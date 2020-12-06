@@ -11,7 +11,9 @@ import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.user.DetailTransaksiActivity;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -38,6 +40,9 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         holder.setPoint(dataList.get(position).getPoint(), dataList.get(position).getPointTotal());
         holder.setBarcode(dataList.get(position).getBarcode());
         holder.setDescription(dataList.get(position).getDescription());
+        //date
+        holder.setCreate(dataList.get(position).getCreated_at());
+        holder.setUpdate(dataList.get(position).getUpdated_at());
     }
 
     @Override
@@ -58,9 +63,12 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         String barcode;
         String type;
         String description;
+
+        String create, update;
+
         Integer point_total;
 
-        TextView it_ambil_verified, it_ambil_point, it_ambil_type;
+        TextView it_ambil_verified, it_ambil_point, it_ambil_type, it_ambil_updated;
 
         public TransaksiViewHolder(View itemView) {
             super(itemView);
@@ -76,6 +84,8 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
                             .putExtra("IT_TYPE", type)
                             .putExtra("IT_DESCRIPTION", description)
                             .putExtra("IT_POINT_TOTAL", point_total)
+                            .putExtra("IT_CREATED", create)
+                            .putExtra("IT_UPDATED", update)
                     );
                 }
             });
@@ -113,5 +123,21 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         public void setDescription(String description) {
             this.description = description;
         }
+
+        public void setCreate(String create) {
+            this.create = create;
+        }
+
+        public void setUpdate(String update) {
+
+//            Date date = new Date(location.getTime());
+//            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context.getApplicationContext());
+//            mTimeText.setText("Time: " + dateFormat.format(date));
+
+            this.update = update;
+            it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
+            it_ambil_updated.setText(update);
+        }
+
     }
 }
