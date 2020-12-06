@@ -11,6 +11,10 @@ import android.widget.TextView;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.BarcodeImage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class DetailTransaksiActivity extends AppCompatActivity {
 
     @Override
@@ -32,6 +36,8 @@ public class DetailTransaksiActivity extends AppCompatActivity {
 //        date
         String IT_CREATED = getIntent().getStringExtra("IT_CREATED");
         String IT_UPDATED = getIntent().getStringExtra("IT_UPDATED");
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
 
 
         TextView ambil_verified = findViewById(R.id.detail_ambil_verified);

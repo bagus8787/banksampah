@@ -12,6 +12,8 @@ import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.user.DetailTransaksiActivity;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -63,6 +65,7 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         String barcode;
         String type;
         String description;
+        String date_format_created, date_format_updated;
 
         String create, update;
 
@@ -84,8 +87,8 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
                             .putExtra("IT_TYPE", type)
                             .putExtra("IT_DESCRIPTION", description)
                             .putExtra("IT_POINT_TOTAL", point_total)
-                            .putExtra("IT_CREATED", create)
-                            .putExtra("IT_UPDATED", update)
+                            .putExtra("IT_CREATED", date_format_created)
+                            .putExtra("IT_UPDATED", date_format_updated)
                     );
                 }
             });
@@ -126,17 +129,51 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
 
         public void setCreate(String create) {
             this.create = create;
+
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+
+            try {
+                Date date = format.parse(create);
+
+                Date new_date = new Date();
+
+                SimpleDateFormat newformat = new SimpleDateFormat("dd-MM-yyy");
+
+                String dateTime = newformat.format(new_date);
+
+//                it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
+//                it_ambil_updated.setText(dateTime);
+
+                date_format_created = dateTime;
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
         public void setUpdate(String update) {
-
-//            Date date = new Date(location.getTime());
-//            DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context.getApplicationContext());
-//            mTimeText.setText("Time: " + dateFormat.format(date));
-
             this.update = update;
-            it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
-            it_ambil_updated.setText(update);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+
+            try {
+                Date date = format.parse(update);
+
+                Date new_date = new Date();
+
+                SimpleDateFormat newformat = new SimpleDateFormat("dd-MM-yyy");
+
+                String dateTime = newformat.format(new_date);
+
+                it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
+                it_ambil_updated.setText(dateTime);
+
+                date_format_updated = dateTime;
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
         }
 
     }
