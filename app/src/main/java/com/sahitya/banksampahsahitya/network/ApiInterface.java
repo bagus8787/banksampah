@@ -71,7 +71,7 @@ public interface ApiInterface {
 
     // Warga
     @GET("api/admin/warga/{id}")
-    Call<BaseResponse> getUser(@Header("Authorization") String token, @Path("id") Integer id);
+    Call<BaseResponse> getHistoryUser(@Header("Authorization") String token, @Path("id") Integer id);
 
     //updateUser
     @FormUrlEncoded

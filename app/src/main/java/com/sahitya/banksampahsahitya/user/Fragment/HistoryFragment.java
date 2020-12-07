@@ -58,8 +58,6 @@ public class HistoryFragment extends Fragment {
         adapter.addFragment(new ListAmbilSaldoFragment(), "Pengambilan Saldo");
         viewPager.setAdapter(adapter);
 
-
-
     }
 
     static class Adapter extends FragmentPagerAdapter {

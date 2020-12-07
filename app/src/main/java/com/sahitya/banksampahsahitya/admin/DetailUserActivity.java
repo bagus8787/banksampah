@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
+import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import retrofit2.Call;
@@ -82,6 +84,14 @@ public class DetailUserActivity extends AppCompatActivity {
 
         btn_update = findViewById(R.id.btn_edit_profile);
         btn_coor = findViewById(R.id.btn_coor);
+
+        btn_coor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DetailUserActivity.this, HistoryUserActivity.class);
+                startActivity(i);
+            }
+        });
 
         Log.d("shared : ", String.valueOf(address_user));
 
