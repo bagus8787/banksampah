@@ -71,7 +71,7 @@ public interface ApiInterface {
 
     // Warga
     @GET("api/admin/warga/{id}")
-    Call<BaseResponse> getHistoryUser(@Header("Authorization") String token, @Path("id") Integer id);
+    Call<Warga> getWargaById(@Header("Authorization") String token, @Path("id") Integer id, @Query("type") String point_type);
 
     //updateUser
     @FormUrlEncoded
@@ -105,7 +105,7 @@ public interface ApiInterface {
     @POST("api/kasir/tukar_barang/{id}")
     Call<BaseResponse> tukarBarang(@Header("Authorization") String token, @Path("id") Integer id,
                                    @Field("barang") Integer barang,
-                                   @Field("count") Integer count);
+                                   @Field("count") Float count);
     @FormUrlEncoded
     @POST("api/kasir/scan_warga")
     Call<Warga> getWargaByBarcode(@Header("Authorization") String token, @Field("barcode") String barcode);

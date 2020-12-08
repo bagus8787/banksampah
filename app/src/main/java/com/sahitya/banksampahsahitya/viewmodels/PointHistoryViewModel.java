@@ -42,6 +42,10 @@ public class PointHistoryViewModel extends AndroidViewModel {
         pointRepository.transaksiVerify(barcode);
     }
 
+    public void getWargaPoints(Integer warga_id, String point_type){
+        pointRepository.getWargaPoints(warga_id, point_type);
+    }
+
     public LiveData<ArrayList<PointHistory>> getPointsResponseLiveData() {
         return pointsLivedata;
     }

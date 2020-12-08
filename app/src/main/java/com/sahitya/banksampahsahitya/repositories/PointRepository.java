@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.model.PointHistory;
+import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
@@ -93,6 +94,23 @@ public class PointRepository {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getWargaPoints(Integer warga_id, String point_type) {
+        Call<Warga> getWargaById = apiInterface.getWargaById(sharedPrefManager.getSPToken(), warga_id, point_type);
+        getWargaById.enqueue(new Callback<Warga>() {
+            @Override
+            public void onResponse(Call<Warga> call, Response<Warga> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    pointsLiveData.postValue(response.body().getPoints());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Warga> call, Throwable t) {
 
             }
         });

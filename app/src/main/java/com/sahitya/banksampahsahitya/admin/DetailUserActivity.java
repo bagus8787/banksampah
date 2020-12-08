@@ -31,7 +31,7 @@ import retrofit2.Response;
 public class DetailUserActivity extends AppCompatActivity {
 
     EditText it_nama, it_no_telp, it_email, it_address;
-    Button btn_coor, btn_update;
+    Button btn_update;
     Spinner it_sex;
 
     User user;
@@ -83,15 +83,6 @@ public class DetailUserActivity extends AppCompatActivity {
         it_no_telp.setText(nope_user);
 
         btn_update = findViewById(R.id.btn_edit_profile);
-        btn_coor = findViewById(R.id.btn_coor);
-
-        btn_coor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(DetailUserActivity.this, HistoryUserActivity.class);
-                startActivity(i);
-            }
-        });
 
         Log.d("shared : ", String.valueOf(address_user));
 

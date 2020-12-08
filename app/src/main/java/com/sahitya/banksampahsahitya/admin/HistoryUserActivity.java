@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.sahitya.banksampahsahitya.R;
@@ -18,7 +19,11 @@ public class HistoryUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_user);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
+        String nama = getIntent().getStringExtra("IT_NAMA");
+        actionBar.setTitle("Transaksi dari " + nama);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.hide();
 
         loadFragment(new HistoryFragment());
 
@@ -30,4 +35,11 @@ public class HistoryUserActivity extends AppCompatActivity {
                 .replace(R.id.layout_container_list_user_admin, fragment);
         fragmentTransaction.commit();
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

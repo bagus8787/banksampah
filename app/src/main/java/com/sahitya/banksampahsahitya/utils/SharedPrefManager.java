@@ -23,6 +23,7 @@ public class SharedPrefManager {
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
 
     public static final String SP_ROLE = "spRole";
+    public static final String SP_CUR_USER_ID = "spCurrentUserId";
 
     SharedPreferences sp;
     SharedPreferences.Editor spEditor;
@@ -86,6 +87,26 @@ public class SharedPrefManager {
 
     public String getRole(){
         return sp.getString(SP_ROLE, Role.ROLE_USER);
+    }
+
+    public Integer getCurrentUserId(){
+        return sp.getInt(SP_CUR_USER_ID, 0);
+    }
+
+    public void setCurrentUserId(Integer id) {
+        saveSPInt(SP_CUR_USER_ID, id);
+    }
+
+    public boolean isUser() {
+        return getRole().equals(Role.ROLE_USER);
+    }
+
+    public boolean isCoordinator() {
+        return getRole().equals(Role.ROLE_COODINATOR);
+    }
+
+    public boolean isAdmin() {
+        return getRole().equals(Role.ROLE_ADMIN);
     }
 
 

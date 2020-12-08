@@ -32,6 +32,16 @@ public class User implements Parcelable {
     @SerializedName("roles")
     ArrayList<Role> roles;
 
+    private boolean showMenu = false;
+
+    public boolean isShowMenu() {
+        return showMenu;
+    }
+
+    public void setShowMenu(boolean showMenu) {
+        this.showMenu = showMenu;
+    }
+
     public int getId() {
         return id;
     }
