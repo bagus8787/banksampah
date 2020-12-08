@@ -68,7 +68,7 @@ public class FormBarangActivity extends AppCompatActivity {
                 String nama = form_nama.getText().toString();
                 String type = form_type.getSelectedItem().toString();
                 Integer point = Integer.valueOf(form_point.getText().toString());
-                
+
                 if (nama.isEmpty() || type.isEmpty() || point == 0) {
                     if (nama.isEmpty()) {
                         Toast.makeText(FormBarangActivity.this, "Nama harus diisi", Toast.LENGTH_SHORT).show();
@@ -111,5 +111,11 @@ public class FormBarangActivity extends AppCompatActivity {
         } else if (ACTION.equals("CREATE")) {
             viewModel.storeBarang(nama, point, type);
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

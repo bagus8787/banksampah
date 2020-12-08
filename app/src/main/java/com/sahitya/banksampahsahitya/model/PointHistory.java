@@ -17,7 +17,7 @@ public class PointHistory {
     @SerializedName("updated_at") String updated_at;
 
     @Expose
-    @SerializedName("count") int count;
+    @SerializedName("count") Float count;
     @Expose
     @SerializedName("description") String description;
     @Expose
@@ -42,11 +42,11 @@ public class PointHistory {
         this.id = id;
     }
 
-    public int getCount() {
+    public Float getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Float count) {
         this.count = count;
     }
 

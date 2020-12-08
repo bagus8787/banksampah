@@ -4,24 +4,29 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.BarcodeImage;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DetailTransaksiActivity extends AppCompatActivity {
+    SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_transaksi);
 
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("");
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -54,7 +59,7 @@ public class DetailTransaksiActivity extends AppCompatActivity {
         //image checklist verifikasi
         ImageView img_check = findViewById(R.id.img_check);
 
-        if (IT_BARCODE != "") {
+        if (IT_BARCODE != "" && IT_BARCODE != null) {
             BarcodeImage barcode = new BarcodeImage(IT_BARCODE);
             ambil_barcode.setVisibility(View.VISIBLE);
             ambil_barcode.setImageBitmap(barcode.getImage());
@@ -62,7 +67,7 @@ public class DetailTransaksiActivity extends AppCompatActivity {
         }
 
         if (IT_TYPE.equals("tukar")) {
-            ambil_point.setText(IT_POINT_TOTAL.toString());
+            ambil_point.setText("+ Rp. " + IT_POINT_TOTAL.toString());
             if (IT_VERIFIED.equals("Verified")){
                 img_check.setVisibility(View.VISIBLE);
                 ambil_updated.setText(IT_UPDATED);
@@ -72,13 +77,13 @@ public class DetailTransaksiActivity extends AppCompatActivity {
 //                txt_scan.setVisibility(View.VISIBLE);
             }
         } else {
-            ambil_point.setText(IT_POINT.toString());
+            ambil_point.setText("- Rp. " + IT_POINT.toString());
 
             if (IT_VERIFIED.equals("Verified")){
                 img_check.setVisibility(View.VISIBLE);
                 ambil_updated.setText(IT_UPDATED);
 
-            } else {
+            } else if (sharedPrefManager.isUser()) {
                 txt_scan.setVisibility(View.VISIBLE);
                 ambil_updated.setText("-");
 

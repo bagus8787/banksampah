@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +30,7 @@ public class TukarBarangActivity extends AppCompatActivity {
     BarangViewModel barangViewModel;
     KasirViewModel kasirViewModel;
     KasirRepository kasirRepository;
+    ArrayAdapter<Barang> adapter;
 
     String IT_BARCODE = "";
     Integer WARGA_ID;
@@ -55,8 +57,9 @@ public class TukarBarangActivity extends AppCompatActivity {
         btn_tukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("tukar", String.valueOf((int) tukar_item.getSelectedItemId()));
-                kasirRepository.tukarBarang(WARGA_ID, (int) tukar_item.getSelectedItemId(), Integer.valueOf(tukar_count.getText().toString()));
+                Integer barang_id = adapter.getItem(((int) tukar_item.getSelectedItemId())).getId();
+                Log.d("tukar", barang_id.toString());
+                kasirRepository.tukarBarang(WARGA_ID, barang_id, Float.valueOf(tukar_count.getText().toString()));
                 finish();
             }
         });
@@ -67,7 +70,7 @@ public class TukarBarangActivity extends AppCompatActivity {
             @Override
             public void onChanged(ArrayList<Barang> barangsResponse) {
                 if (barangsResponse != null) {
-                    ArrayAdapter<Barang> adapter = new ArrayAdapter<Barang>(TukarBarangActivity.this, android.R.layout.simple_spinner_dropdown_item, barangsResponse);
+                    adapter = new ArrayAdapter<Barang>(TukarBarangActivity.this, android.R.layout.simple_spinner_dropdown_item, barangsResponse);
                     adapter.setDropDownViewResource(R.layout.spinner_barang_list);
                     tukar_item.setAdapter(adapter);
                 }

@@ -24,7 +24,7 @@ public class KasirRepository {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
     }
 
-    public void tukarBarang(Integer id, Integer barang, Integer count) {
+    public void tukarBarang(Integer id, Integer barang, Float count) {
         Call<BaseResponse> tukarBarang = apiInterface.tukarBarang(sharedPrefManager.getSPToken(), id, barang, count);
         tukarBarang.enqueue(new Callback<BaseResponse>() {
             @Override

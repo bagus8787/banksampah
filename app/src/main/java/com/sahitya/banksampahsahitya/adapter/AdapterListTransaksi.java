@@ -130,14 +130,14 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
         public void setCreate(String create) {
             this.create = create;
 
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             try {
                 Date date = format.parse(create);
 
                 Date new_date = new Date();
 
-                SimpleDateFormat newformat = new SimpleDateFormat("dd-MM-yyy");
+                SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
 
                 String dateTime = newformat.format(new_date);
 
@@ -153,14 +153,14 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
 
         public void setUpdate(String update) {
             this.update = update;
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
             try {
                 Date date = format.parse(update);
 
                 Date new_date = new Date();
 
-                SimpleDateFormat newformat = new SimpleDateFormat("dd-MM-yyy");
+                SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
 
                 String dateTime = newformat.format(new_date);
 
