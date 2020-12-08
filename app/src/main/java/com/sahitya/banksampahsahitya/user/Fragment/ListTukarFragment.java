@@ -20,9 +20,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.adapter.AdapterListTransaksi;
 import com.sahitya.banksampahsahitya.model.PointHistory;
+import com.sahitya.banksampahsahitya.model.Role;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.PointHistoryViewModel;
 
 import java.util.ArrayList;
@@ -33,9 +36,11 @@ import java.util.ArrayList;
 public class ListTukarFragment extends Fragment {
     private AdapterListTransaksi adapter;
     private PointHistoryViewModel viewModel;
+    SharedPrefManager sharedPrefManager;
 
     public ListTukarFragment() {
         // Required empty public constructor
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
     }
 
     @Override
@@ -84,7 +89,11 @@ public class ListTukarFragment extends Fragment {
     }
 
     public void reloadPoint() {
-        viewModel.getPoints("tukar");
+        if (sharedPrefManager.isUser()) {
+            viewModel.getPoints("tukar");
+        } else if (sharedPrefManager.isAdmin() || sharedPrefManager.isCoordinator()) {
+            viewModel.getWargaPoints(sharedPrefManager.getCurrentUserId(),"tukar");
+        }
     }
 
 }

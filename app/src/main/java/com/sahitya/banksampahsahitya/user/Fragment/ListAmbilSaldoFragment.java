@@ -17,10 +17,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.adapter.AdapterListTransaksi;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.user.AmbilSaldoActivity;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.PointHistoryViewModel;
 
 import java.util.ArrayList;
@@ -33,9 +35,11 @@ public class ListAmbilSaldoFragment extends Fragment {
 
     private AdapterListTransaksi adapter;
     private PointHistoryViewModel viewModel;
+    SharedPrefManager sharedPrefManager;
 
     public ListAmbilSaldoFragment() {
         // Required empty public constructor
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
     }
 
     @Override
@@ -83,10 +87,16 @@ public class ListAmbilSaldoFragment extends Fragment {
 
         Button ambil_btn = view.findViewById(R.id.ambil_saldo_btn);
 
+        if (!sharedPrefManager.isUser()) {
+            ambil_btn.setVisibility(View.GONE);
+        }
+
         ambil_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), AmbilSaldoActivity.class));
+                if (sharedPrefManager.isUser()) {
+                    startActivity(new Intent(getContext(), AmbilSaldoActivity.class));
+                }
             }
         });
     }
@@ -98,7 +108,11 @@ public class ListAmbilSaldoFragment extends Fragment {
     }
 
     public void reloadPoint() {
-        viewModel.getPoints("ambil");
+        if (sharedPrefManager.isUser()) {
+            viewModel.getPoints("ambil");
+        } else if (sharedPrefManager.isAdmin() || sharedPrefManager.isCoordinator()) {
+            viewModel.getWargaPoints(sharedPrefManager.getCurrentUserId(),"ambil");
+        }
     }
 
 }
