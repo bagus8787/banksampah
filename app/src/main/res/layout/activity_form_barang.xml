@@ -37,57 +37,77 @@
                 android:textSize="28sp" />
 
             <TextView
-                android:text="Nama Sampah/Barang"
+                android:text="Nama Sampah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/form_barang_nama"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:hint="Nama"
-                android:inputType="text"
-                android:textSize="18sp" />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:id="@+id/form_barang_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:hint="Nama"
+                    android:inputType="text"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:text="Jenis Sampah/Barang"
+                android:text="Jenis Sampah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/form_barang_type"
+
+            <FrameLayout
+                android:background="@drawable/spinner_background"
+                android:layout_marginTop="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:entries="@array/barang_type"
-                android:hint="Tipe"
-                android:minHeight="45dp"
-                android:textSize="18sp"
-                style="@android:style/Widget.Holo.Light.Spinner"/>
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/form_barang_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/barang_type"
+                    android:hint="Tipe"
+                    android:minHeight="@dimen/spinner_min_height"
+                    android:textSize="18sp" />
+            </FrameLayout>
 
             <TextView
-                android:text="Harga per /Kg"
+                android:text="Harga "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/form_barang_point"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:hint="Point"
-                android:inputType="number"
-                android:textSize="18sp" />
+                app:prefixText="Rp. "
+                app:suffixText="/ Kg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:id="@+id/form_barang_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="40dp"
+                    android:hint="Harga"
+                    android:inputType="numberDecimal"
+                    android:textSize="18sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 

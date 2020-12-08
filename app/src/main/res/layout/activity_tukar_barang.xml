@@ -40,44 +40,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/background_text_view"
                 android:hint="Nama"
                 android:textSize="24sp" />
 
             <TextView
-                android:text="Jenis Sampah/Barang"
+                android:text="Jenis Sampah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/form_tukar_item"
+            <FrameLayout
+                android:background="@drawable/spinner_background"
+                android:layout_marginTop="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:hint="Tipe"
-                android:minHeight="45dp"
-                android:textSize="24sp" />
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/form_tukar_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Tipe"
+                    android:minHeight="@dimen/spinner_min_height"
+                    android:textSize="24sp" />
+            </FrameLayout>
 
             <TextView
-                android:text="Jumlah Sampah/Barang"
+                android:text="Banyak Sampah (Kg)"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/form_tukar_count"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:hint="Jumlah"
-                android:inputType="number"
-                android:background="@drawable/background_text_view"
-                android:textSize="24sp" />
+                app:suffixText="Kg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:id="@+id/form_tukar_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Berat"
+                    android:inputType="numberDecimal"
+                    android:textSize="24sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 

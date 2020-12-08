@@ -80,6 +80,7 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="@string/show_term"
+            android:autoLink="all"
             android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

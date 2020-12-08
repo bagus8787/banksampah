@@ -34,7 +34,7 @@ dependencies {
 
     annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
 
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
     implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0'
     implementation 'android.arch.navigation:navigation-ui-ktx:1.0.0'
     implementation 'androidx.core:core-ktx:1.1.0'

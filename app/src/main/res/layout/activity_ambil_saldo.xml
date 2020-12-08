@@ -30,13 +30,20 @@
                 android:textStyle="bold"
                 android:textSize="24sp" />
 
-            <EditText
-                android:id="@+id/ambil_jumlah"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Masukkan Jumlah"
-                android:inputType="number" />
+                app:prefixText="Rp. "
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:id="@+id/ambil_jumlah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Masukkan Jumlah"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 

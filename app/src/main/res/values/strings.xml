@@ -36,13 +36,14 @@
     <string name="i_accept">I Accept</string>
 
     <string name="term">Terms &amp; Condition</string>
-    <string name="show_term">Lihat Terms &amp; Condition kami</string>
+    <string name="term_link"><a href='#'>Terms &amp; Condition</a></string>
+    <string name="show_term"><a href='#'>Lihat Terms &amp; Condition kami</a></string>
     <string name="term_condition">
         <![CDATA[
 <p>&nbsp;</p>
 <ol>
     <li style="text-align: justify;">user diharapkan dapat menerapkan perilaku kejujuran. Penipuan dapat dikenakan sanksi yang berat.</li>
-    <li style="text-align: justify;">Setiap penyetoran sampah, total saldo hari itu akan dipotong dengan biaya PPN sebesar 10% untuk keperluan logistic.</li>
+    <li style="text-align: justify;">Setiap 10% dari saldo akan diambil perbulan dari total saldo bulan itu untuk 5% maintenance app 5% untuk bantuan RW. Jika user belum memiliki saldo di akun Aplikasi Desih  makan saldo tidak akan terpotong.</li>
     <li style="text-align: justify;">Pengambilan saldo dapat dilakukan dengan petugas kami (perwakilan coordinator tiap RT) dan ketika saldo berkurang maka tidak dapat di refund kembali</li>
     <li style="text-align: justify;">Konversi berat sampah dilakukan secara otomatis oleh aplikasi maka pastikan memilih jenis sampah yang tepat dan memasukkan berat sampah yang sesuai dengan berat yang telah ditimbang oleh petugas kami (perwakilan coordinator tiap RT).</li>
     <li style="text-align: justify;">Pastikan setiap user menggunakan smartphone pribadi (tidak meminjam akun dari user lain) agar akumulasi jumlah saldo benar.</li>

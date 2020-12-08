@@ -130,7 +130,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
                 android:gravity="center_vertical"
-                android:text="@string/term" />
+                android:autoLink="all"
+                android:text="@string/term_link" />
 
         </LinearLayout>
 
