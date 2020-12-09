@@ -135,11 +135,9 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
             try {
                 Date date = format.parse(create);
 
-                Date new_date = new Date();
-
                 SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
 
-                String dateTime = newformat.format(new_date);
+                String dateTime = newformat.format(date);
 
 //                it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
 //                it_ambil_updated.setText(dateTime);
@@ -158,11 +156,9 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
             try {
                 Date date = format.parse(update);
 
-                Date new_date = new Date();
-
                 SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
 
-                String dateTime = newformat.format(new_date);
+                String dateTime = newformat.format(date);
 
                 it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
                 it_ambil_updated.setText(dateTime);
