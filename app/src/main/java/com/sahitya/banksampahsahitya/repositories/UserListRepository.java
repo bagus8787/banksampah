@@ -7,6 +7,7 @@ import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
+import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import com.sahitya.banksampahsahitya.model.User;
@@ -43,6 +44,23 @@ public class UserListRepository {
             @Override
             public void onFailure(Call<ArrayList<User>> call, Throwable t) {
                 userResponseLiveData.postValue(null);
+            }
+        });
+    }
+
+    public void setUserRole(Integer id, String role_name) {
+        Call<BaseResponse> setUserRole = apiInterface.setUserRole(sharedPrefManager.getSPToken(), id, role_name);
+        setUserRole.enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+
             }
         });
     }

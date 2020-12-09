@@ -2,12 +2,12 @@ package com.sahitya.banksampahsahitya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +17,8 @@ import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.DetailUserActivity;
 import com.sahitya.banksampahsahitya.admin.HistoryUserActivity;
-import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.Role;
-import com.sahitya.banksampahsahitya.user.DetailTransaksiActivity;
+import com.sahitya.banksampahsahitya.repositories.UserListRepository;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
@@ -32,6 +31,8 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private final int HIDE_MENU = 2;
     SharedPrefManager sharedPrefManager;
 
+    UserListRepository userListRepository;
+
     public AdapterListUser(Context context) {
         this.context = context;
     }
@@ -39,6 +40,7 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         sharedPrefManager = new SharedPrefManager(MyApp.getContext());
+        userListRepository = new UserListRepository();
         if(viewType==SHOW_MENU){
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_user_menu, parent, false);
             return new MenuViewHolder(view);
@@ -89,7 +91,9 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
             ((ListUserViewHolder)holder).itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    showMenu(position);
+                    if (sharedPrefManager.isAdmin()) {
+                        showMenu(position);
+                    }
                     return true;
                 }
             });
@@ -123,13 +127,21 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     closeMenu();
+
+                    String address, rt, sex;
+                    boolean hasWarga = user.getWarga() != null;
+                    address = hasWarga ? user.getWarga().getAddress() : "";
+                    rt = hasWarga ? user.getWarga().getRt() : "";
+                    sex = hasWarga ? user.getWarga().getSex() : "";
                     context.startActivity(new Intent(context, DetailUserActivity.class)
                             .putExtra("IT_ID_USER", user.getId())
                             .putExtra("IT_NAMA_USER", user.getName())
                             .putExtra("IT_EMAIL_USER", user.getEmail())
-                            .putExtra("IT_ADDRESS_USER", user.getAddress())
                             .putExtra("IT_NOPE_USER", user.getMobile())
-                            .putExtra("IT_SEX_USER", user.getSex())
+                            .putExtra("IT_ADDRESS_USER", address)
+                            .putExtra("IT_RT_USER", rt)
+                            .putExtra("IT_SEX_USER", sex)
+                            .putExtra("IT_HAS_WARGA", hasWarga)
                     );
                 }
             });
@@ -150,12 +162,15 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public class MenuViewHolder extends RecyclerView.ViewHolder{
         User user;
+        Button as_admin, as_koor, as_user;
 
         public MenuViewHolder(View view){
             super(view);
 
             Button item_history = view.findViewById(R.id.item_history_btn);
-            Button item_edit = view.findViewById(R.id.item_edit_btn);
+            as_admin = view.findViewById(R.id.as_admin_btn);
+            as_koor = view.findViewById(R.id.as_koor_btn);
+            as_user = view.findViewById(R.id.as_user_btn);
 
             item_history.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -168,12 +183,32 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 }
             });
 
-            item_edit.setOnClickListener(new View.OnClickListener() {
+            as_admin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (sharedPrefManager.isAdmin()) {
+                        toggleRole(user, Role.ROLE_ADMIN);
                         closeMenu();
-                        Toast.makeText(context, "Warga diatur sebagai Koordinator", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            as_koor.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sharedPrefManager.isAdmin()) {
+                        toggleRole(user, Role.ROLE_COODINATOR);
+                        closeMenu();
+                    }
+                }
+            });
+
+            as_user.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sharedPrefManager.isAdmin()) {
+                        toggleRole(user, Role.ROLE_USER);
+                        closeMenu();
                     }
                 }
             });
@@ -181,6 +216,44 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public void setUser(User user) {
             this.user = user;
+            Drawable drawable;
+            switch (user.getRoleName()) {
+                case Role.ROLE_ADMIN:
+                    toggleButtonActive(as_admin, R.drawable.ic_as_admin, true);
+                    toggleButtonActive(as_koor, R.drawable.ic_as_coordinator, false);
+                    toggleButtonActive(as_user, R.drawable.ic_as_user, false);
+                    break;
+                case Role.ROLE_COODINATOR:
+                    toggleButtonActive(as_admin, R.drawable.ic_as_admin, false);
+                    toggleButtonActive(as_koor, R.drawable.ic_as_coordinator, true);
+                    toggleButtonActive(as_user, R.drawable.ic_as_user, false);
+                    break;
+                case Role.ROLE_USER:
+                    toggleButtonActive(as_admin, R.drawable.ic_as_admin, false);
+                    toggleButtonActive(as_koor, R.drawable.ic_as_coordinator, false);
+                    toggleButtonActive(as_user, R.drawable.ic_as_user, true);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void toggleButtonActive(Button button, Integer drawable_id, boolean active) {
+            Drawable clone = context.getResources().getDrawable(drawable_id).getConstantState().newDrawable();
+            if (active) {
+                clone.setColorFilter(context.getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
+                button.setCompoundDrawablesWithIntrinsicBounds(null, clone, null, null);
+                button.setTextColor(context.getResources().getColor(R.color.colorAccent));
+            } else {
+                clone.setColorFilter(context.getResources().getColor(R.color.colorFont), PorterDuff.Mode.SRC_ATOP);
+                button.setCompoundDrawablesWithIntrinsicBounds(null, clone, null, null);
+                button.setTextColor(context.getResources().getColor(R.color.colorFont));
+            }
+        }
+
+        public void toggleRole(User user, String role) {
+            userListRepository.setUserRole(user.getId(), role);
+            Toast.makeText(context, user.getName() + " diatur sebagai " + role, Toast.LENGTH_SHORT).show();
         }
     }
 }

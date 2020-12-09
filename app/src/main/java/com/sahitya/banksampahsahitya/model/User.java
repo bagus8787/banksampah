@@ -79,15 +79,15 @@ public class User implements Parcelable {
     }
 
     public boolean isAdmin() {
-        return !this.getRoleName().equals("") && this.getRoleName().equals(Role.ROLE_ADMIN);
+        return getRoleName().equals(Role.ROLE_ADMIN);
     }
 
     public boolean isCoordinator() {
-        return !this.getRoleName().equals("") && this.getRoleName().equals(Role.ROLE_COODINATOR);
+        return getRoleName().equals(Role.ROLE_COODINATOR);
     }
 
     public boolean isUser() {
-        return !this.getRoleName().equals("") && this.getRoleName().equals(Role.ROLE_USER);
+        return getRoleName().equals(Role.ROLE_USER);
     }
 
     public ArrayList<Role> getRoles() {

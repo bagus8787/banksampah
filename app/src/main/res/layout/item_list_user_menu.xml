@@ -7,7 +7,7 @@
     android:layout_margin="5dp"
     android:elevation="0dp"
     app:cardCornerRadius="5dp"
-    tools:targetApi="o">
+    tools:targetApi="KITKAT">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,30 +21,62 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_user_history"
+            app:drawableTopCompat="@drawable/ic_user_history"
             android:paddingLeft="0dp"
-            android:paddingTop="0dp"
+            android:paddingTop="10dp"
             android:paddingRight="0dp"
             android:paddingBottom="0dp"
             android:text="Transaksi"
             android:textColor="@android:color/black"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:iconPadding="-15dp" />
 
         <Button
-            android:id="@+id/item_edit_btn"
+            android:id="@+id/as_admin_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:drawableTop="@drawable/ic_as_coordinator"
+            app:drawableTopCompat="@drawable/ic_as_admin"
             android:paddingLeft="0dp"
-            android:paddingTop="0dp"
+            android:paddingTop="10dp"
             android:paddingRight="0dp"
             android:paddingBottom="0dp"
-            android:text="Set Koordinator"
+            android:text="Admin"
             android:textColor="@android:color/black"
-            android:textSize="12sp"
+            android:textSize="10sp"
+            app:iconPadding="-15dp" />
+
+        <Button
+            android:id="@+id/as_koor_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:drawableTopCompat="@drawable/ic_as_coordinator"
+            android:paddingLeft="0dp"
+            android:paddingTop="10dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Koordinator"
+            android:textColor="@android:color/black"
+            android:textSize="10sp"
+            app:iconPadding="-15dp" />
+
+        <Button
+            android:id="@+id/as_user_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            app:drawableTopCompat="@drawable/ic_as_user"
+            android:paddingLeft="0dp"
+            android:paddingTop="10dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="Warga"
+            android:textColor="@android:color/black"
+            android:textSize="10sp"
             app:iconPadding="-15dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
