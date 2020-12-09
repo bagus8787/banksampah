@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background"
+        app:srcCompat="@drawable/background"
         android:scaleType="centerCrop"/>
 
     <ScrollView
@@ -43,7 +43,7 @@
                         android:id="@+id/buttonprofile"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@drawable/ic_account_circle_black_24dp"
+                        app:srcCompat="@drawable/ic_account_circle_black_24dp"
                         android:backgroundTint="@android:color/black" />
                 </LinearLayout>
 
@@ -148,7 +148,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
-                            android:src="@drawable/shadow_card_view" />
+                            app:srcCompat="@drawable/shadow_card_view" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -171,7 +171,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
-                            android:src="@drawable/shadow_card_view" />
+                            app:srcCompat="@drawable/shadow_card_view" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -193,7 +193,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
-                            android:src="@drawable/shadow_card_view" />
+                            app:srcCompat="@drawable/shadow_card_view" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -217,7 +217,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
-                            android:src="@drawable/shadow_card_view" />
+                            app:srcCompat="@drawable/shadow_card_view" />
 
                         <TextView
                             android:layout_width="match_parent"

@@ -59,6 +59,7 @@ public class UserListAdminFragment extends Fragment {
         SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.layoutRefresh);
         RecyclerView recyclerView = rootView.findViewById(R.id.rv_list_user);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -76,6 +77,12 @@ public class UserListAdminFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reloadUserList();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        viewModel.getUserList();
     }
 
     public void reloadUserList() {

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="32dp"
-    android:background="@drawable/background"
+    app:srcCompat="@drawable/background"
     tools:context=".Login.LoginActivity"
     tools:targetApi="o">
 
@@ -14,31 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="35dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginBottom="32dp"
+            android:gravity="center_horizontal"
             android:text="Masuk"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="40sp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/email_lg"
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
+                android:layout_marginTop="16dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
@@ -46,9 +45,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/password_lg"
@@ -68,9 +67,9 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/background_button"
             android:text="Login"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/sa_register"
@@ -82,4 +81,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>

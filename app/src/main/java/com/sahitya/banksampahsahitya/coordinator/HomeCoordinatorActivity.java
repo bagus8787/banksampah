@@ -3,6 +3,7 @@ package com.sahitya.banksampahsahitya.coordinator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,6 +31,10 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
     private IntentIntegrator intentIntegrator;
     private SharedPrefManager sharedPrefManager;
     private ApiInterface apiInterface;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

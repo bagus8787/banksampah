@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    app:srcCompat="@drawable/background"
     tools:context=".admin.DetailUserActivity">
 
     <RelativeLayout
@@ -37,6 +37,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kosongkan field jika tidak ingin mengubah" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="2dp"
@@ -48,11 +54,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
-                android:text="Bagus"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
             <TextView
+                android:id="@+id/lbl_it_gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="2dp"
@@ -82,7 +88,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
-                android:text="No Telepon"
                 android:inputType="number"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
@@ -100,12 +105,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_edit_text"
                 android:background="@drawable/background_text"
-                android:text="Email"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="16dp"
                 tools:targetApi="o" />
 
             <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:text="Password"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/it_password_p2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_edit_text"
+                android:background="@drawable/background_text"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
+                tools:targetApi="o" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:text="Password Confirm"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/it_password_confirm_p2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_edit_text"
+                android:background="@drawable/background_text"
+                android:hint="Password Confirm"
+                android:inputType="textPassword"
+                android:paddingHorizontal="16dp"
+                tools:targetApi="o" />
+
+            <TextView
+                android:id="@+id/lbl_it_rt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="2dp"
+                android:text="RT"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/it_rt_p2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/rt_list"
+                android:background="@drawable/background_text"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/lbl_it_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="2dp"
@@ -118,7 +175,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:background="@drawable/background_text"
-                android:text="Alamat"
                 android:inputType="text|textMultiLine"
                 android:minLines="3"
                 android:paddingHorizontal="16dp"

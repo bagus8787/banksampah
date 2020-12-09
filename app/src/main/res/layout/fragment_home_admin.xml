@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     tools:context=".admin.Fragment.HomeAdminFragment"
-    android:background="@drawable/background">
+    app:srcCompat="@drawable/background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
                 android:text="@string/hallo"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
@@ -30,6 +31,7 @@
                 android:id="@+id/tv_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Admin Desih"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
@@ -45,6 +47,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
                 android:text="Saldo : "
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
@@ -53,7 +56,7 @@
                 android:id="@+id/tv_saldo_nasabah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp. 15000"
+                android:text="-"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />

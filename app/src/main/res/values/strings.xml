@@ -74,7 +74,7 @@ d.	Konversi berat sampah dilakukan secara otomatis oleh aplikasi maka pastikan m
 e.	Pastikan setiap user menggunakan smartphone pribadi (tidak meminjam akun dari user lain) agar akumulasi jumlah saldo benar. \n
 f.	Kami akan mengambil langkah yang tepat untuk melindungi privasi Anda. Setiap kali Anda memberikan informasi yang sensitif (misalnya, nomor handphone) kami akan mengambil langkah-langkah yang wajar untuk melindungi privasi tersebut. Kami juga akan mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda dalam penyimpanan. Nomor handphone hanya digunakan untuk proses verifikasi dan bukan disimpan untuk tujuan pemasaran. \n
 g.	Situs ini memiliki langkah-langkah keamanan untuk melindungi kehilangan, penyalahgunaan dan perubahan informasi di dalam kendali kita. Langkah-langkah ini meliputi metode perlindungan data dasar dan kompleks, dalam penyimpanan offline tertentu informasi dan securitizing server database kami. Situs ini memberikan pilihan bagi para pengunjung untuk menghapus informasi mereka dari database kami untuk tidak menerima informasi kedepannya atau untuk tidak lagi menerima layanan kami. \n
-</string>
+    </string>
     <string name="silahkan">Berikan code barcode di bawah ini ke coordinator untuk melakukan penukaran sampah atau barang</string>
     <string-array name="barang_type">
         <item></item>
@@ -83,5 +83,21 @@ g.	Situs ini memiliki langkah-langkah keamanan untuk melindungi kehilangan, peny
         <item>LOGAM</item>
         <item>KACA</item>
         <item>LAIN</item>
+    </string-array>
+    <string-array name="rt_list">
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
     </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package com.sahitya.banksampahsahitya;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.Application;
 import android.content.Context;
@@ -14,6 +15,10 @@ public class MyApp extends Application {
 
     public static MyApp getInstance() {
         return instance;
+    }
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
     public static Context getContext(){

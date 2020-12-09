@@ -3,6 +3,7 @@ package com.sahitya.banksampahsahitya.admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,6 +25,10 @@ import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorF
 
 public class HomeAdminActivity extends AppCompatActivity {
     IntentIntegrator intentIntegrator;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

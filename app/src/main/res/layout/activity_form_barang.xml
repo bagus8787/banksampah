@@ -1,127 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background"
+    app:srcCompat="@drawable/background"
     tools:context=".base.activity.FormBarangActivity">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:orientation="vertical"
+        app:srcCompat="@drawable/background">
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </RelativeLayout>
-
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="35dp">
+            android:layout_margin="20dp">
 
-            <TextView
-                android:id="@+id/form_barang_title"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:gravity="center"
-                android:text="Edit Barang"
-                android:textStyle="bold"
-                android:textSize="28sp" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="Nama Sampah"
+            </RelativeLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="35dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <TextView
+                    android:id="@+id/form_barang_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="Edit Barang"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/form_barang_nama"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:hint="Nama"
-                    android:inputType="text"
+                    android:text="Nama Sampah"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:text="Jenis Sampah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <EditText
+                        android:id="@+id/form_barang_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:hint="Nama"
+                        android:inputType="text"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <FrameLayout
-                android:background="@drawable/spinner_background"
-                android:layout_marginTop="6dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <Spinner
-                    android:id="@+id/form_barang_type"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/barang_type"
-                    android:hint="Tipe"
-                    android:minHeight="@dimen/spinner_min_height"
+                    android:layout_marginBottom="5dp"
+                    android:text="Jenis Sampah"
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
-            </FrameLayout>
 
-            <TextView
-                android:text="Harga "
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:prefixText="Rp. "
-                app:suffixText="/ Kg"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                <EditText
-                    android:id="@+id/form_barang_point"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    android:hint="Harga"
-                    android:inputType="numberDecimal"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/spinner_background">
+
+                    <Spinner
+                        android:id="@+id/form_barang_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/barang_type"
+                        android:hint="Tipe"
+                        android:minHeight="@dimen/spinner_min_height"
+                        android:textSize="18sp" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Harga "
+                    android:textColor="@android:color/black"
                     android:textSize="18sp" />
-            </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:prefixText="Rp. "
+                    app:suffixText="/ Kg">
 
-        <Button
-            android:id="@+id/form_barang_save_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            android:background="@drawable/background_button"
-            android:text="Save" />
+                    <EditText
+                        android:id="@+id/form_barang_point"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="40dp"
+                        android:hint="Harga"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        android:textSize="18sp" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/form_barang_save_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_button"
+                android:text="Save"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</ScrollView>

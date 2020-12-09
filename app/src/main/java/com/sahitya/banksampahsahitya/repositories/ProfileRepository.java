@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.repositories;
 
+import android.util.Log;
 import android.view.View;
 
 import com.sahitya.banksampahsahitya.MyApp;
@@ -36,6 +37,8 @@ public class ProfileRepository {
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.code() >= 200 && response.code() < 300) {
                     profileLiveData.postValue(response.body());
+                    sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_HAS_WARGA, response.body().getWarga() != null);
+                    Log.d("HasWarga", String.valueOf(response.body().getWarga() != null));
                 }
             }
 

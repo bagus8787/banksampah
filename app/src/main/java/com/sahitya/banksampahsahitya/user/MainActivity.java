@@ -3,6 +3,7 @@ package com.sahitya.banksampahsahitya.user;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     public SharedPrefManager sharedPrefManager;
     public ApiInterface apiInterface;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

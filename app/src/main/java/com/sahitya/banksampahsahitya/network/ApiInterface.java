@@ -59,15 +59,15 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("api/home/update_profile")
     Call<BaseResponse> updateUser(@Header("Authorization") String token,
-            @Field("email") String email,
-            @Field("name") String name,
-            @Field("sex") String sex,
-            @Field("mobile") String mobile,
-            @Field("rt") String rt,
-            @Field("address") String address,
-            @Field("avatar_type") String avatar_type,
-            @Field("avatar_location") String avatar_location
-            );
+                @Field("email") String email,
+                @Field("name") String name,
+                @Field("sex") String sex,
+                @Field("mobile") String mobile,
+                @Field("rt") String rt,
+                @Field("address") String address,
+                @Field("avatar_location") String avatar_location,
+                @Field("password") String password,
+                @Field("password_confirmation") String pass_confirmation);
 
     // Warga
     @GET("api/admin/warga/{id}")
@@ -77,10 +77,14 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("api/admin/warga/{id}")
     Call<Warga> updateWarga(@Header("Authorization") String token, @Path("id") Integer id,
-            @Field("user_name") String username,
+            @Field("name") String username,
             @Field("address") String address,
             @Field("mobile") String mobile,
-            @Field("sex") String sex);
+            @Field("sex") String sex,
+            @Field("email") String email,
+            @Field("rt") String rt,
+            @Field("password") String password,
+            @Field("password_confirmation") String pass_confirmation);
     
     //user list
     @GET("api/admin/warga")
@@ -141,5 +145,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("api/home/ambil_point")
     Call<BaseResponse> ambilPoint(@Header("Authorization") String token, @Field("point") Integer point);
+
+    @POST("api/admin/warga/{id}/as_role/{role}")
+    Call<BaseResponse> setUserRole(@Header("Authorization") String token, @Path("id") Integer id, @Path("role") String role_name);
 
 }

@@ -24,6 +24,7 @@ public class SharedPrefManager {
 
     public static final String SP_ROLE = "spRole";
     public static final String SP_CUR_USER_ID = "spCurrentUserId";
+    public static final String SP_HAS_WARGA = "spHasWarga";
 
     SharedPreferences sp;
     SharedPreferences.Editor spEditor;
@@ -107,6 +108,35 @@ public class SharedPrefManager {
 
     public boolean isAdmin() {
         return getRole().equals(Role.ROLE_ADMIN);
+    }
+
+    public boolean hasWarga() {
+        return sp.getBoolean(SP_HAS_WARGA, false);
+    }
+
+    public void setSpAddress(String SpAddress) {
+        if (!SpAddress.equals(""))
+        saveSPString(SharedPrefManager.SP_ADDRESS, SpAddress);
+    }
+    public void setSpEmail(String SpEmail) {
+        if (!SpEmail.equals(""))
+        saveSPString(SharedPrefManager.SP_EMAIL, SpEmail);
+    }
+    public void setSpNama(String SpNama) {
+        if (!SpNama.equals(""))
+        saveSPString(SharedPrefManager.SP_NAMA, SpNama);
+    }
+    public void setSpMobile(String SpMobile) {
+        if (!SpMobile.equals(""))
+        saveSPString(SharedPrefManager.SP_MOBILE, SpMobile);
+    }
+    public void setSpSex(String SpSex) {
+        if (!SpSex.equals(""))
+        saveSPString(SharedPrefManager.SP_SEX, SpSex);
+    }
+    public void setSpRt(String SpRt) {
+        if (!SpRt.equals(""))
+        saveSPString(SharedPrefManager.SP_RT, SpRt);
     }
 
 
