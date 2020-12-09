@@ -14,11 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.Barang;
 import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.repositories.KasirRepository;
+import com.sahitya.banksampahsahitya.utils.TextValidator;
 import com.sahitya.banksampahsahitya.viewmodels.BarangViewModel;
 import com.sahitya.banksampahsahitya.viewmodels.KasirViewModel;
 
@@ -54,15 +56,35 @@ public class TukarBarangActivity extends AppCompatActivity {
         EditText tukar_count = findViewById(R.id.form_tukar_count);
         Button btn_tukar = findViewById(R.id.tukar_barang_btn);
 
+        tukar_count.addTextChangedListener(new TextValidator(tukar_count) {
+            @Override public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError("Banyak sampah harus diisi");
+                    textView.setText("0");
+                }
+            }
+        });
+
         btn_tukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (tukar_item.getSelectedItem().toString().isEmpty()) {
+                    Toast.makeText(TukarBarangActivity.this, "Pilih jenis sampah!", Toast.LENGTH_SHORT).show();
+                    tukar_item.requestFocus();
+                    return;
+                }
+                if (tukar_count.getText().toString().isEmpty()) {
+                    tukar_count.setError("Banyak sampah harus diisi");
+                    tukar_count.requestFocus();
+                    return;
+                }
                 Integer barang_id = adapter.getItem(((int) tukar_item.getSelectedItemId())).getId();
                 Log.d("tukar", barang_id.toString());
                 kasirRepository.tukarBarang(WARGA_ID, barang_id, Float.valueOf(tukar_count.getText().toString()));
                 finish();
             }
         });
+
 
         barangViewModel = ViewModelProviders.of(this).get(BarangViewModel.class);
         barangViewModel.init();

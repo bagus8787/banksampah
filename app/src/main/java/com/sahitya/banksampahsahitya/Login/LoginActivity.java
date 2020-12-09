@@ -1,12 +1,16 @@
 package com.sahitya.banksampahsahitya.Login;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -21,6 +25,7 @@ import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.sahitya.banksampahsahitya.utils.TextValidator;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -51,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 //        savedInstanceState.clear();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         mContext = this;
 
@@ -60,6 +67,22 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading");
         progressDialog.setCancelable(false);
+
+        email_lg.addTextChangedListener(new TextValidator(email_lg) {
+            @Override public void validate(TextView textView, String text) {
+                if (text.length() == 0) {
+                    textView.setError("Email Harus diisi");
+                }
+            }
+        });
+
+        password_lg.addTextChangedListener(new TextValidator(password_lg) {
+            @Override public void validate(TextView textView, String text) {
+                if (text.length() == 0) {
+                    textView.setError("Password Harus diisi");
+                }
+            }
+        });
 
 //        if (sharedPrefManager.getSPSudahLogin()){
 //            if (sharedPrefManager.getRole().equals(Role.ROLE_USER)) {
@@ -86,6 +109,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_login) void login() {
+        if (email_lg.getText().toString().isEmpty()) {
+            email_lg.setError("Email Harus diisi");
+            email_lg.requestFocus();
+            return;
+        }
+        if (password_lg.getText().toString().isEmpty()) {
+            password_lg.setError("Password Harus diisi");
+            password_lg.requestFocus();
+            return;
+        }
         progressDialog.show();
         Call<UserResponse> postLogin = apiInterface.postLogin(
                 email_lg.getText().toString(),

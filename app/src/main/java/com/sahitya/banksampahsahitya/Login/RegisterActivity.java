@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.Login;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +28,7 @@ import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.sahitya.banksampahsahitya.utils.TextValidator;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -61,6 +63,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         nama = findViewById(R.id.nama);
         email = findViewById(R.id.email);
         no_tlp = findViewById(R.id.no_tlp);
@@ -71,6 +76,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         btn_daftar = findViewById(R.id.btn_daftar);
         checkBox = findViewById(R.id.checkbox);
+
+        password.addTextChangedListener(new TextValidator(password) {
+            @Override public void validate(TextView textView, String text) {
+                if (text.length() <= 8) {
+                    textView.setError("Password minimal 8 karakter");
+                }
+            }
+        });
+
+        password_confirm.addTextChangedListener(new TextValidator(password_confirm) {
+            @Override public void validate(TextView textView, String text) {
+                if (!text.equals(password.getText().toString())) {
+                    textView.setError("Password Konfirmasi tidak sama");
+                }
+            }
+        });
 
         open_term_condition = findViewById(R.id.open_term_dialog);
 
@@ -117,6 +138,49 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_daftar) void signup() {
+        if (nama.getText().toString().isEmpty()) {
+            nama.setError("Nama Harus diisi");
+            nama.requestFocus();
+            return;
+        }
+        if (no_tlp.getText().toString().isEmpty()) {
+            no_tlp.setError("Nomor Telepon Harus diisi");
+            no_tlp.requestFocus();
+            return;
+        }
+        if (email.getText().toString().isEmpty()) {
+            email.setError("Email Harus diisi");
+            email.requestFocus();
+            return;
+        }
+        if (password.getText().toString().isEmpty()) {
+            password.setError("Password Harus diisi");
+            password.requestFocus();
+            return;
+        } else if (password.getText().toString().length() <= 8) {
+            password.setError("Password minimal 8 karakter");
+            password.requestFocus();
+            return;
+        }
+        if (password_confirm.getText().toString().isEmpty()) {
+            password_confirm.setError("Password Harus diisi");
+            password_confirm.requestFocus();
+            return;
+        } else if (!password_confirm.getText().toString().equals(password.getText().toString())) {
+            password_confirm.setError("Password Konfirmasi tidak sama");
+            password_confirm.requestFocus();
+            return;
+        }
+        if (alamat.getText().toString().isEmpty()) {
+            alamat.setError("Alamat Harus diisi");
+            alamat.requestFocus();
+            return;
+        }
+        if (!checkBox.isChecked()) {
+            checkBox.setError("Terms & Condition Harus disetujui");
+            checkBox.requestFocus();
+            return;
+        }
         progressDialog.show();
         Call<BaseResponse> postRegister = apiInterface.postRegister(
                 email.getText().toString(),
@@ -146,8 +210,8 @@ public class RegisterActivity extends AppCompatActivity {
                         for (Map.Entry<String, ArrayList<String>> entry : errorResponse.getErrors().entrySet()) {
                             String key = entry.getKey();
                             String value = entry.getValue().get(0);
-//                            Toast.makeText(mContext, key.concat(": ").concat(value), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(mContext, "Email sudah terdaftar", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mContext, "Email sudah terdaftar", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e){
 

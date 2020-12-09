@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.Barang;
+import com.sahitya.banksampahsahitya.utils.TextValidator;
 import com.sahitya.banksampahsahitya.viewmodels.BarangViewModel;
 
 import java.util.ArrayList;
@@ -62,31 +63,41 @@ public class FormBarangActivity extends AppCompatActivity {
             form_title.setText("Buat Barang Baru");
         }
 
+        form_point.addTextChangedListener(new TextValidator(form_point) {
+            @Override public void validate(TextView textView, String text) {
+                if (text.isEmpty()) {
+                    textView.setError("Harga Harus diisi");
+                    textView.setText("0");
+                }
+            }
+        });
+
         form_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nama = form_nama.getText().toString();
                 String type = form_type.getSelectedItem().toString();
-                Integer point = Integer.valueOf(form_point.getText().toString());
+                Integer point = Integer.parseInt(form_point.getText().toString());
 
-                if (nama.isEmpty() || type.isEmpty() || point == 0) {
-                    if (nama.isEmpty()) {
-                        Toast.makeText(FormBarangActivity.this, "Nama harus diisi", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (type.isEmpty()) {
-                        Toast.makeText(FormBarangActivity.this, "Tipe harus diisi", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    if (point == 0 || point == null) {
-                        Toast.makeText(FormBarangActivity.this, "Point harus diisi", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                } else {
-                    saveBarang(nama, point, type);
-                    Toast.makeText(FormBarangActivity.this, "Barang Disimpan", Toast.LENGTH_SHORT).show();
-                    finish();
+                if (nama.isEmpty()) {
+                    form_nama.setError("Nama harus diisi");
+                    form_nama.requestFocus();
+                    return;
                 }
+                if (type.isEmpty()) {
+                    Toast.makeText(FormBarangActivity.this, "Pilih jenis sampah!", Toast.LENGTH_SHORT).show();
+                    form_type.requestFocus();
+                    return;
+                }
+                if (form_point.getText().toString().isEmpty()) {
+                    form_point.setError("Harga harus diisi");
+                    form_point.requestFocus();
+                    return;
+                }
+
+                saveBarang(nama, point, type);
+                Toast.makeText(FormBarangActivity.this, "Barang Disimpan", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

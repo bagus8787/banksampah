@@ -3,6 +3,7 @@ package com.sahitya.banksampahsahitya.user;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
 import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.ScreenActivity;
@@ -28,6 +29,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,8 +41,8 @@ public class EditProfilActivity extends AppCompatActivity {
     public SharedPrefManager sharedPrefManager;
     public ApiInterface apiInterface;
 
-    EditText nama, nope, email, address, password, rt;
-    Spinner sex;
+    EditText nama, nope, email, address, password, pass_confirm;
+    Spinner sex, rt;
 
     String avatar_location, avatar_type;
 
@@ -61,7 +65,6 @@ public class EditProfilActivity extends AppCompatActivity {
         mContext = this;
 
         avatar_location = "";
-        avatar_type = "";
 
         nama = findViewById(R.id.it_nama_p);
         nope = findViewById(R.id.it_nope_p);
@@ -69,16 +72,28 @@ public class EditProfilActivity extends AppCompatActivity {
         sex = findViewById(R.id.it_sex_p);
         address = findViewById(R.id.it_address_p);
         password = findViewById(R.id.it_password_p);
+        pass_confirm = findViewById(R.id.it_password_confirm_p);
         rt = findViewById(R.id.it_rt_p);
 
-        nama.setText(sharedPrefManager.getSPNama());
-        nope.setText(sharedPrefManager.getSPMobile());
-        email.setText(sharedPrefManager.getSPEmail());
-        address.setText(sharedPrefManager.getSpAddress());
-        sex.setSelection(getIndex(sex, sharedPrefManager.getSpSex()));
-        rt.setText(sharedPrefManager.getSpRt());
+        nama.setHint(sharedPrefManager.getSPNama());
+        nope.setHint(sharedPrefManager.getSPMobile());
+        email.setHint(sharedPrefManager.getSPEmail());
 
-        Log.d("sex :", String.valueOf(sex));
+
+        boolean hasWarga = sharedPrefManager.hasWarga();
+
+        if (hasWarga) {
+            address.setHint(sharedPrefManager.getSpAddress());
+            sex.setSelection(getIndex(sex, sharedPrefManager.getSpSex()));
+            rt.setSelection(getIndex(rt, sharedPrefManager.getSpRt()));
+        } else {
+            rt.setVisibility(View.GONE);
+            sex.setVisibility(View.GONE);
+            address.setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_gender).setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_rt).setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_address).setVisibility(View.GONE);
+        }
 
         btn_update = findViewById(R.id.btn_edit_profile);
         btn_update.setOnClickListener(new View.OnClickListener() {
@@ -90,10 +105,11 @@ public class EditProfilActivity extends AppCompatActivity {
                         nama.getText().toString(),
                         sex.getSelectedItem().toString(),
                         nope.getText().toString(),
-                        rt.getText().toString(),
+                        rt.getSelectedItem().toString(),
                         address.getText().toString(),
-                        avatar_type.toString(),
-                        avatar_location.toString()
+                        avatar_location,
+                        password.getText().toString(),
+                        pass_confirm.getText().toString()
                 );
                 updateUser.enqueue(new Callback<BaseResponse>() {
                     @Override
@@ -103,15 +119,28 @@ public class EditProfilActivity extends AppCompatActivity {
                             Log.d("pesannya", String.valueOf(response.code()));
                             Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
 
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_ADDRESS, address.getText().toString());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, email.getText().toString());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA, nama.getText().toString());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_MOBILE, nope.getText().toString());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_SEX, sex.getSelectedItem().toString());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_RT, rt.getText().toString());
+                            sharedPrefManager.setSpAddress(address.getText().toString());
+                            sharedPrefManager.setSpEmail(email.getText().toString());
+                            sharedPrefManager.setSpNama(nama.getText().toString());
+                            sharedPrefManager.setSpMobile(nope.getText().toString());
+                            sharedPrefManager.setSpSex(sex.getSelectedItem().toString());
+                            sharedPrefManager.setSpRt(rt.getSelectedItem().toString());
 
                         } else {
-                            Toast.makeText(mContext, "Ada kesalahan", Toast.LENGTH_SHORT).show();
+                            try {
+                                Gson gson = new Gson();
+                                BaseResponse errorResponse = gson.fromJson(
+                                        response.errorBody().string(),
+                                        BaseResponse.class);
+
+                                for (Map.Entry<String, ArrayList<String>> entry : errorResponse.getErrors().entrySet()) {
+                                    String key = entry.getKey();
+                                    String value = entry.getValue().get(0);
+                                    Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (Exception e){
+
+                            }
                         }
 
                     }

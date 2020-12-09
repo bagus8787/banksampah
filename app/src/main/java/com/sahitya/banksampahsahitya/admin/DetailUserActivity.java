@@ -15,7 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.model.Role;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.ApiClient;
@@ -24,15 +26,18 @@ import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailUserActivity extends AppCompatActivity {
 
-    EditText it_nama, it_no_telp, it_email, it_address;
+    EditText it_nama, it_no_telp, it_email, it_address, password, pass_confirm;
     Button btn_update;
-    Spinner it_sex;
+    Spinner it_sex, rt;
 
     User user;
 
@@ -41,7 +46,7 @@ public class DetailUserActivity extends AppCompatActivity {
     int roles = 0;
 
     Integer id_user;
-    String nama_user, email_user, sex_user, nope_user, address_user;
+    String nama_user, email_user, sex_user, nope_user, address_user, rtuser;
 
     Context mContext;
 
@@ -69,18 +74,33 @@ public class DetailUserActivity extends AppCompatActivity {
         email_user = getIntent().getStringExtra("IT_EMAIL_USER");
         nope_user = getIntent().getStringExtra("IT_NOPE_USER");
         address_user = getIntent().getStringExtra("IT_ADDRESS_USER");
+        rtuser = getIntent().getStringExtra("IT_RT_USER");
+        Boolean hasWarga = getIntent().getBooleanExtra("IT_HAS_WARGA", false);
 
         it_nama = findViewById(R.id.it_nama);
         it_email = findViewById(R.id.it_email);
         it_no_telp = findViewById(R.id.it_no_tlp);
         it_sex = findViewById(R.id.it_jenkel);
         it_address = findViewById(R.id.it_alamat);
+        password = findViewById(R.id.it_password_p2);
+        pass_confirm = findViewById(R.id.it_password_confirm_p2);
+        rt = findViewById(R.id.it_rt_p2);
 
-        it_nama.setText(nama_user);
-        it_sex.setSelection(getIndex(it_sex, sex_user));
-        it_address.setText(address_user);
-        it_email.setText(email_user);
-        it_no_telp.setText(nope_user);
+        it_nama.setHint(nama_user);
+        it_email.setHint(email_user);
+        it_no_telp.setHint(nope_user);
+        if (hasWarga) {
+            rt.setSelection(getIndex(rt, rtuser));
+            it_sex.setSelection(getIndex(it_sex, sex_user));
+            it_address.setHint(address_user);
+        } else {
+            rt.setVisibility(View.GONE);
+            it_sex.setVisibility(View.GONE);
+            it_address.setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_gender).setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_rt).setVisibility(View.GONE);
+            findViewById(R.id.lbl_it_address).setVisibility(View.GONE);
+        }
 
         btn_update = findViewById(R.id.btn_edit_profile);
 
@@ -95,7 +115,11 @@ public class DetailUserActivity extends AppCompatActivity {
                         it_nama.getText().toString(),
                         it_no_telp.getText().toString(),
                         it_address.getText().toString(),
-                        it_sex.getSelectedItem().toString()
+                        it_sex.getSelectedItem().toString(),
+                        it_email.getText().toString(),
+                        rt.getSelectedItem().toString(),
+                        password.getText().toString(),
+                        pass_confirm.getText().toString()
                         );
                 updateWarga.enqueue(new Callback<Warga>() {
                 @Override
@@ -106,7 +130,20 @@ public class DetailUserActivity extends AppCompatActivity {
                         Toast.makeText(mContext, "User berhasil di update", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(mContext, "Ada kesalahan", Toast.LENGTH_SHORT).show();
+                        try {
+                            Gson gson = new Gson();
+                            BaseResponse errorResponse = gson.fromJson(
+                                    response.errorBody().string(),
+                                    BaseResponse.class);
+
+                            for (Map.Entry<String, ArrayList<String>> entry : errorResponse.getErrors().entrySet()) {
+                                String key = entry.getKey();
+                                String value = entry.getValue().get(0);
+                                Toast.makeText(mContext, value, Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e){
+
+                        }
                     }
 
                 }
