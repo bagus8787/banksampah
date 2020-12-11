@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,10 +33,13 @@ import com.sahitya.banksampahsahitya.user.EditProfilActivity;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.user.PengaturanActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     public SharedPrefManager sharedPrefManager;
     public ApiInterface apiInterface;
+
+    String url_photo;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -73,6 +77,19 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         final TextView nama_profil = view.findViewById(R.id.nama_profil);
         final TextView no_tlp_profil = view.findViewById(R.id.no_tlp_profil);
         final TextView email_profil = view.findViewById(R.id.email_profil);
+
+        final ImageView img_profil_user = view.findViewById(R.id.img_profil_user_fr);
+
+        url_photo = "http://trashbank.darklogictech.com/storage/" + sharedPrefManager.getSPAvatar();
+
+        Log.d("url_photo", "a" + url_photo);
+
+//        Picasso.get().load(url_photo).into(img_profil);
+
+        Picasso.get().load(url_photo)
+                .fit()
+                .error(R.drawable.ic_baseline_account_circle)
+                .into(img_profil_user);
 
         nama_profil.setText(sharedPrefManager.getSPNama());
         no_tlp_profil.setText(sharedPrefManager.getSPMobile());

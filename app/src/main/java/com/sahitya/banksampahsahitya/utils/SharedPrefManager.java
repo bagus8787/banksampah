@@ -16,6 +16,8 @@ public class SharedPrefManager {
     public static final String SP_SEX = "spSex";
     public static final String SP_RT = "spRt";
 
+    public static final String SP_AVATAR = "spAvatar";
+
     public static final String SP_POINT_TOTAL = "spPointTotal";
 
     public static final String SP_TOKEN = "spToken";
@@ -82,6 +84,10 @@ public class SharedPrefManager {
         return sp.getString(SP_TOKEN, "");
     }
 
+    public String getSPAvatar(){
+        return sp.getString(SP_AVATAR, "");
+    }
+
     public Boolean getSPSudahLogin(){
         return sp.getBoolean(SP_SUDAH_LOGIN, false);
     }
@@ -137,6 +143,11 @@ public class SharedPrefManager {
     public void setSpRt(String SpRt) {
         if (!SpRt.equals(""))
         saveSPString(SharedPrefManager.SP_RT, SpRt);
+    }
+
+    public void setSpAvatar(String SpAvatar) {
+        if (!SpAvatar.equals(""))
+            saveSPString(SharedPrefManager.SP_AVATAR, SpAvatar);
     }
 
 

@@ -29,6 +29,8 @@ public class User implements Parcelable {
     @Expose
     @SerializedName("point_total") int point_total;
     @Expose
+    @SerializedName("avatar_location") String avatar_location;
+    @Expose
     @SerializedName("roles")
     ArrayList<Role> roles;
 
@@ -72,6 +74,14 @@ public class User implements Parcelable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatarLocation() {
+        return avatar_location;
+    }
+
+    public void setAvatarLocation(String avatar_location) {
+        this.avatar_location = avatar_location;
     }
 
     public String getRoleName() {

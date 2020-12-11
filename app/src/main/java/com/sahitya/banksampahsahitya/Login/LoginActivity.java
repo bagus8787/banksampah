@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA, user.getName());
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_EMAIL, user.getEmail());
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_MOBILE, user.getMobile());
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_AVATAR, user.getAvatarLocation());
 
                     sharedPrefManager.saveSPString(SharedPrefManager.SP_TOKEN, "Bearer " +response.body().getToken());
                     sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);

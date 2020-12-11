@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<item>
+    <shape
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+
+        <solid android:color="@color/colorFontTitle" />
+
+        <size
+            android:width="30dp"
+            android:height="30dp" />
+
+        <padding
+            android:bottom="0dp"
+            android:left="0dp"
+            android:right="0dp"
+            android:top="0dp" />
+    </shape>
+</item>
+<item android:drawable="@drawable/ic_account_circle_black_24dp" />
+</layer-list>
+

@@ -7,8 +7,11 @@ import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
+import java.io.File;
 import java.util.ArrayList;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -18,6 +21,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -68,6 +72,13 @@ public interface ApiInterface {
                 @Field("avatar_location") String avatar_location,
                 @Field("password") String password,
                 @Field("password_confirmation") String pass_confirmation);
+
+//    UpdateProfil
+    @Multipart
+    @POST("api/home/update_profile")
+    Call<BaseResponse> updateProfil(@Header("Authorization") String token,
+                                    @Part MultipartBody.Part avatar_location,
+                                    @Part("avatar_location") RequestBody status);
 
     // Warga
     @GET("api/admin/warga/{id}")
