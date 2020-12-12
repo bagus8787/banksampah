@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.user.Fragment.HistoryFragment;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -46,7 +48,8 @@ public class DetailUserActivity extends AppCompatActivity {
     int roles = 0;
 
     Integer id_user;
-    String nama_user, email_user, sex_user, nope_user, address_user, rtuser;
+    String nama_user, email_user, sex_user, nope_user, address_user, rtuser, avatar;
+    ImageView it_avatar;
 
     Context mContext;
 
@@ -75,6 +78,7 @@ public class DetailUserActivity extends AppCompatActivity {
         nope_user = getIntent().getStringExtra("IT_NOPE_USER");
         address_user = getIntent().getStringExtra("IT_ADDRESS_USER");
         rtuser = getIntent().getStringExtra("IT_RT_USER");
+        avatar = getIntent().getStringExtra("IT_AVATAR_USER");
         Boolean hasWarga = getIntent().getBooleanExtra("IT_HAS_WARGA", false);
 
         it_nama = findViewById(R.id.it_nama);
@@ -85,6 +89,12 @@ public class DetailUserActivity extends AppCompatActivity {
         password = findViewById(R.id.it_password_p2);
         pass_confirm = findViewById(R.id.it_password_confirm_p2);
         rt = findViewById(R.id.it_rt_p2);
+        it_avatar = findViewById(R.id.it_avatar);
+
+        Picasso.get().load(avatar)
+                .fit()
+                .error(R.drawable.ic_baseline_account_circle)
+                .into(it_avatar);
 
         it_nama.setHint(nama_user);
         it_email.setHint(email_user);

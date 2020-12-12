@@ -115,7 +115,7 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public class ListUserViewHolder extends RecyclerView.ViewHolder {
         View mView;
-        TextView it_name_user, it_id_user, it_email_user, it_status_user;
+        TextView it_name_user, it_point_total, it_email_user, it_status_user;
         User user;
 
         public ListUserViewHolder(View itemView) {
@@ -138,6 +138,7 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             .putExtra("IT_NAMA_USER", user.getName())
                             .putExtra("IT_EMAIL_USER", user.getEmail())
                             .putExtra("IT_NOPE_USER", user.getMobile())
+                            .putExtra("IT_AVATAR_USER", user.getAvatarLocation())
                             .putExtra("IT_ADDRESS_USER", address)
                             .putExtra("IT_RT_USER", rt)
                             .putExtra("IT_SEX_USER", sex)
@@ -152,10 +153,16 @@ public class AdapterListUser extends RecyclerView.Adapter<RecyclerView.ViewHolde
             it_name_user = (TextView)mView.findViewById(R.id.it_nama_user);
             it_email_user = (TextView)mView.findViewById(R.id.it_email_user);
             it_status_user = (TextView)mView.findViewById(R.id.it_status_user);
+            it_point_total = (TextView)mView.findViewById(R.id.it_point_total);
 
             it_name_user.setText(user.getName());
             it_email_user.setText(user.getEmail());
             it_status_user.setText(user.getRoleName());
+            if (user.getWarga() != null) {
+                it_point_total.setText("Rp. " + String.valueOf(user.getWarga().getPointTotal()));
+            } else {
+                it_point_total.setText("Rp. 0");
+            }
         }
 
     }

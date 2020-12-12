@@ -18,13 +18,15 @@
         <LinearLayout
             android:id="@+id/li_1"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:srcCompat="@drawable/ic_baseline_account_circle"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/it_avatar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_baseline_account_circle" />
 
         </LinearLayout>
 
