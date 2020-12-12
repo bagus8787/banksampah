@@ -68,6 +68,7 @@ public class HomeCoordinatorFragment extends Fragment {
             @Override
             public void onChanged(User userResponse) {
                 if (userResponse != null) {
+                    sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
                     if (userResponse.getWarga() != null) {
                         sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
                         tv_saldo.setText(Integer.toString(userResponse.getWarga().getPointTotal()));

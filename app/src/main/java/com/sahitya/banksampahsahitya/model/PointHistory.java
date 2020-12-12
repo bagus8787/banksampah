@@ -3,7 +3,14 @@ package com.sahitya.banksampahsahitya.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class PointHistory {
+
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String PRINT_DATE_FORMAT = "HH:mm:ss dd-MM-yyy";
 
     @Expose
     @SerializedName("id") int id;
@@ -58,19 +65,49 @@ public class PointHistory {
         this.description = description;
     }
 
-    public String getCreated_at() {
+    public String getCreatedAt() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public String getCreatedAtFormatted() {
+        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
+        String formatted = "";
+        try {
+            Date date = format.parse(created_at);
+            SimpleDateFormat newformat = new SimpleDateFormat(PRINT_DATE_FORMAT);
+            String dateTime = newformat.format(date);
+            formatted = dateTime;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatted;
+    }
+
+    public void setCreatedAt(String created_at) {
         this.created_at = created_at;
     }
 
-    public String getUpdated_at() {
+    public String getUpdatedAt() {
         return updated_at;
     }
 
-    public void setUpdated_at(String updated_at) {
+    public String getUpdatedAtFormatted() {
+        SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
+        String formatted = "";
+        try {
+            Date date = format.parse(updated_at);
+            SimpleDateFormat newformat = new SimpleDateFormat(PRINT_DATE_FORMAT);
+            String dateTime = newformat.format(date);
+            formatted = dateTime;
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formatted;
+    }
+
+    public void setUpdatedAt(String updated_at) {
         this.updated_at = updated_at;
     }
 

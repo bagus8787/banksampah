@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sahitya.banksampahsahitya.network.ApiClient;
 
 import java.util.ArrayList;
 
@@ -77,7 +78,8 @@ public class User implements Parcelable {
     }
 
     public String getAvatarLocation() {
-        return avatar_location;
+        String base_url = ApiClient.url;
+        return base_url + "storage/" + avatar_location;
     }
 
     public void setAvatarLocation(String avatar_location) {

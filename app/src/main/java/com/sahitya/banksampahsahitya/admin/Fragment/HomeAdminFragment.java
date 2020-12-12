@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -12,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeAdminFragment#newInstance} factory method to
+ * Use the {@link HomeAdminFragment} factory method to
  * create an instance of this fragment.
  */
 public class HomeAdminFragment extends Fragment {
@@ -45,6 +47,19 @@ public class HomeAdminFragment extends Fragment {
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         profileViewModel.init();
+
+        profileViewModel.getProfileResponseLiveData().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User userResponse) {
+                if (userResponse != null) {
+                    sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
+                    if (userResponse.getWarga() != null) {
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
+//                        tv_saldo.setText(Integer.toString(userResponse.getWarga().getPointTotal()));
+                    }
+                }
+            }
+        });
 
         profileViewModel.getProfile();
 

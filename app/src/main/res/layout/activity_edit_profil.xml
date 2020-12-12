@@ -209,17 +209,6 @@
                 tools:targetApi="o" />
 
             <Button
-                android:id="@+id/btn_edit_img_profile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/background_button"
-                android:text="Update Foto Profil"
-                android:textAllCaps="false"
-                android:textColor="@android:color/black"
-                android:textSize="18sp" />
-
-            <Button
                 android:id="@+id/btn_edit_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

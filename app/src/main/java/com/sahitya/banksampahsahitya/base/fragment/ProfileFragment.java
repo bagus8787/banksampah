@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +28,7 @@ import com.sahitya.banksampahsahitya.Login.LoginActivity;
 import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.PanduanActivity;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
@@ -33,11 +36,13 @@ import com.sahitya.banksampahsahitya.user.EditProfilActivity;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.user.PengaturanActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
+import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
 import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     public SharedPrefManager sharedPrefManager;
     public ApiInterface apiInterface;
+    ProfileViewModel profileViewModel;
 
     String url_photo;
 
@@ -80,12 +85,26 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         final ImageView img_profil_user = view.findViewById(R.id.img_profil_user_fr);
 
-        url_photo = "http://trashbank.darklogictech.com/storage/" + sharedPrefManager.getSPAvatar();
+        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
+        profileViewModel.init();
+        profileViewModel.getProfileResponseLiveData().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User userResponse) {
+                if (userResponse != null) {
+                    sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
+                    url_photo = sharedPrefManager.getSPAvatar();
+                    Picasso.get().load(url_photo)
+                            .fit()
+                            .error(R.drawable.ic_baseline_account_circle)
+                            .into(img_profil_user);
+                    if (userResponse.getWarga() != null) {
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
+                    }
+                }
+            }
+        });
 
-        Log.d("url_photo", "a" + url_photo);
-
-//        Picasso.get().load(url_photo).into(img_profil);
-
+        url_photo = sharedPrefManager.getSPAvatar();
         Picasso.get().load(url_photo)
                 .fit()
                 .error(R.drawable.ic_baseline_account_circle)
@@ -140,5 +159,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 });
                 break;
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        profileViewModel.getProfile();
     }
 }

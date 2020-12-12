@@ -37,14 +37,7 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
 
     @Override
     public void onBindViewHolder(TransaksiViewHolder holder, int position) {
-        holder.setType(dataList.get(position).getType());
-        holder.setVerified(dataList.get(position).isVerified());
-        holder.setPoint(dataList.get(position).getPoint(), dataList.get(position).getPointTotal());
-        holder.setBarcode(dataList.get(position).getBarcode());
-        holder.setDescription(dataList.get(position).getDescription());
-        //date
-        holder.setCreate(dataList.get(position).getCreated_at());
-        holder.setUpdate(dataList.get(position).getUpdated_at());
+        holder.setPointHistory(dataList.get(position));
     }
 
     @Override
@@ -59,18 +52,8 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
 
     public class TransaksiViewHolder extends RecyclerView.ViewHolder {
         View mView;
-        boolean verified;
+        PointHistory pointHistory;
         String verifiedText;
-        Integer point;
-        String barcode;
-        String type;
-        String description;
-        String date_format_created, date_format_updated;
-
-        String create, update;
-
-        Integer point_total;
-
         TextView it_ambil_verified, it_ambil_point, it_ambil_type, it_ambil_updated;
 
         public TransaksiViewHolder(View itemView) {
@@ -82,94 +65,40 @@ public class AdapterListTransaksi extends RecyclerView.Adapter<AdapterListTransa
                 public void onClick(View v) {
                     context.startActivity(new Intent(context, DetailTransaksiActivity.class)
                             .putExtra("IT_VERIFIED", verifiedText)
-                            .putExtra("IT_POINT", point)
-                            .putExtra("IT_BARCODE", barcode)
-                            .putExtra("IT_TYPE", type)
-                            .putExtra("IT_DESCRIPTION", description)
-                            .putExtra("IT_POINT_TOTAL", point_total)
-                            .putExtra("IT_CREATED", date_format_created)
-                            .putExtra("IT_UPDATED", date_format_updated)
+                            .putExtra("IT_POINT", pointHistory.getPoint())
+                            .putExtra("IT_BARCODE", pointHistory.getBarcode())
+                            .putExtra("IT_TYPE", pointHistory.getType())
+                            .putExtra("IT_DESCRIPTION", pointHistory.getDescription())
+                            .putExtra("IT_POINT_TOTAL", pointHistory.getPointTotal())
+                            .putExtra("IT_CREATED", pointHistory.getCreatedAtFormatted())
+                            .putExtra("IT_UPDATED", pointHistory.getUpdatedAtFormatted())
                     );
                 }
             });
         }
 
-        public void setVerified(boolean verified){
-            this.verified = verified;
+        public void setPointHistory(PointHistory pointHistory) {
+            this.pointHistory = pointHistory;
             it_ambil_verified = (TextView)mView.findViewById(R.id.it_ambil_verified);
-            if (verified) {
+            it_ambil_point = (TextView)mView.findViewById(R.id.it_ambil_point);
+            it_ambil_type = (TextView)mView.findViewById(R.id.it_ambil_type);
+            it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
+
+            if (pointHistory.isVerified()) {
                 verifiedText = "Verified";
             } else {
                 verifiedText = "Unverified";
             }
             it_ambil_verified.setText(verifiedText);
-        }
 
-        public void setPoint(Integer point, Integer point_total) {
-            this.point = point;
-            this.point_total = point_total;
-            it_ambil_point = (TextView)mView.findViewById(R.id.it_ambil_point);
-            it_ambil_point.setText(point_total.toString());
-        }
-
-        public void setType(String type) {
-            this.type = type;
-            it_ambil_type = (TextView)mView.findViewById(R.id.it_ambil_type);
-            it_ambil_type.setText(type.toUpperCase());
-
-        }
-
-        public void setBarcode(String barcode) {
-            this.barcode = barcode;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public void setCreate(String create) {
-            this.create = create;
-
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            try {
-                Date date = format.parse(create);
-
-                SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
-
-                String dateTime = newformat.format(date);
-
-//                it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
-//                it_ambil_updated.setText(dateTime);
-
-                date_format_created = dateTime;
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+            if (pointHistory.getType().equals("tukar")) {
+                it_ambil_point.setText("+ Rp. "+String.valueOf(pointHistory.getPointTotal()));
+            } else {
+                it_ambil_point.setText("- Rp. "+String.valueOf(pointHistory.getPointTotal()));
             }
-        }
+            it_ambil_type.setText(pointHistory.getType().toUpperCase());
 
-        public void setUpdate(String update) {
-            this.update = update;
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-            try {
-                Date date = format.parse(update);
-
-                SimpleDateFormat newformat = new SimpleDateFormat("HH:mm:ss dd-MM-yyy");
-
-                String dateTime = newformat.format(date);
-
-                it_ambil_updated = (TextView)mView.findViewById(R.id.it_ambil_update);
-                it_ambil_updated.setText(dateTime);
-
-                date_format_updated = dateTime;
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-
+            it_ambil_updated.setText(pointHistory.getCreatedAt());
         }
 
     }

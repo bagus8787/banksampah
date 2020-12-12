@@ -62,7 +62,7 @@ public class EditProfilActivity extends AppCompatActivity {
 
     String avatar_location, avatar_type;
 
-    Button btn_update_img, btn_update;
+    Button btn_update;
 
     ImageView img_profil, btn_img_profil;
 
@@ -74,6 +74,7 @@ public class EditProfilActivity extends AppCompatActivity {
     private static final String TYPE_1 = "multipart";
 
     Uri uri;
+    File file;
 
     Context mContext;
 
@@ -118,7 +119,7 @@ public class EditProfilActivity extends AppCompatActivity {
         avatar_location = sharedPrefManager.getSPAvatar();
         Log.d("url_foto", avatar_location);
         String url_photo ;
-        url_photo = "http://trashbank.darklogictech.com/storage/" + sharedPrefManager.getSPAvatar();
+        url_photo = sharedPrefManager.getSPAvatar();
 
         Picasso.get().load(url_photo)
                 .fit()
@@ -140,89 +141,51 @@ public class EditProfilActivity extends AppCompatActivity {
             findViewById(R.id.lbl_it_address).setVisibility(View.GONE);
         }
 
-//      Update Img Profile
-        btn_update_img = findViewById(R.id.btn_edit_img_profile);
-
-        btn_update_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (uri != null) {
-                    File file = new File(uri.getPath());
-                    try {
-                        file = FileUtils.from(EditProfilActivity.this, uri);
-                        Log.d("file", "File...:::: uti - "+file .getPath()+" file -" + file + " : " + file .exists());
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    RequestBody requestFile =
-                            RequestBody.create(
-                                    MediaType.parse(getContentResolver().getType(uri)),
-                                    file
-                            );
-
-                    MultipartBody.Part filename = MultipartBody.Part.createFormData("avatar_location", file.getName(), requestFile);
-                    RequestBody status = RequestBody.create(MediaType.parse("text/plain"), "avatar_location");
-
-                    Log.d("dasda", String.valueOf(requestFile));
-
-                    Call<BaseResponse> updateData = apiInterface.updateProfil(sharedPrefManager.getSPToken(), filename, status);
-                    updateData.enqueue(new Callback<BaseResponse>() {
-                        @Override
-                        public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                            if (response.code() >= 200 && response.code() < 300) {
-                                String message = response.body().getMessage();
-//                                User user = response.body().getUser();
-                                Log.d("pesannya", String.valueOf(response.code()));
-                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-
-                                sharedPrefManager.setSpAvatar(avatar_location);
-
-                                sharedPrefManager.saveSPString(SharedPrefManager.SP_AVATAR, sharedPrefManager.getSPAvatar());
-
-//                                sharedPrefManager.saveSPString(SharedPrefManager.SP_AVATAR, avatar_location);
-
-                            } else {
-                                String message = response.body().getMessage();
-                                Log.d("pesannya", String.valueOf(response.code()));
-                                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
-
-                                sharedPrefManager.setSpAvatar(avatar_location);
-
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<BaseResponse> call, Throwable t) {
-                            t.printStackTrace();
-                        }
-                    });
-                } else {
-                    Toast.makeText(EditProfilActivity.this, "Pilih File Terlebih Dahulu", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
 //      Update profile
         btn_update = findViewById(R.id.btn_edit_profile);
 
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MultipartBody.Part filename = null;
+                if (uri != null) {
+                    file = new File(uri.getPath());
+                    try {
+                        file = FileUtils.from(EditProfilActivity.this, uri);
+                        Log.d("file", "File...:::: uti - " + file.getPath() + " file -" + file + " : " + file.exists());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    RequestBody requestFile =
+                            RequestBody.create(
+                                    MediaType.parse(getContentResolver().getType(uri)),
+                                    file
+                            );
+
+                    filename = MultipartBody.Part.createFormData("avatar_location", file.getName(), requestFile);
+                }
+
+                RequestBody femail = RequestBody.create(MediaType.parse("text/plain"), email.getText().toString());
+                RequestBody fnama = RequestBody.create(MediaType.parse("text/plain"), nama.getText().toString());
+                RequestBody fsex = RequestBody.create(MediaType.parse("text/plain"), sex.getSelectedItem().toString());
+                RequestBody fnope = RequestBody.create(MediaType.parse("text/plain"), nope.getText().toString());
+                RequestBody frt = RequestBody.create(MediaType.parse("text/plain"), rt.getSelectedItem().toString());
+                RequestBody faddress = RequestBody.create(MediaType.parse("text/plain"), address.getText().toString());
+                RequestBody fpassword = RequestBody.create(MediaType.parse("text/plain"), password.getText().toString());
+                RequestBody fpass_confirm = RequestBody.create(MediaType.parse("text/plain"), pass_confirm.getText().toString());
 
                 Call<BaseResponse> updateUser = apiInterface.updateUser(
                         sharedPrefManager.getSPToken(),
-                        email.getText().toString(),
-                        nama.getText().toString(),
-                        sex.getSelectedItem().toString(),
-                        nope.getText().toString(),
-                        rt.getSelectedItem().toString(),
-                        address.getText().toString(),
-                        avatar_location,
-                        password.getText().toString(),
-                        pass_confirm.getText().toString()
+                        femail,
+                        fnama,
+                        fsex,
+                        fnope,
+                        frt,
+                        faddress,
+                        filename,
+                        fpassword,
+                        fpass_confirm
                 );
 
                 Log.d("Log_update", updateUser.toString());
@@ -238,9 +201,9 @@ public class EditProfilActivity extends AppCompatActivity {
                             sharedPrefManager.setSpEmail(email.getText().toString());
                             sharedPrefManager.setSpNama(nama.getText().toString());
                             sharedPrefManager.setSpMobile(nope.getText().toString());
-                            sharedPrefManager.setSpAvatar(avatar_location);
                             sharedPrefManager.setSpSex(sex.getSelectedItem().toString());
                             sharedPrefManager.setSpRt(rt.getSelectedItem().toString());
+                            finish();
 
                         } else {
                             try {

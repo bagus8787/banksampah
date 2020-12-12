@@ -60,25 +60,18 @@ public interface ApiInterface {
     @GET("api/auth/barcode")
     Call<BaseResponse> getMyBarcode(@Header("Authorization") String token);
 
-    @FormUrlEncoded
-    @POST("api/home/update_profile")
-    Call<BaseResponse> updateUser(@Header("Authorization") String token,
-                @Field("email") String email,
-                @Field("name") String name,
-                @Field("sex") String sex,
-                @Field("mobile") String mobile,
-                @Field("rt") String rt,
-                @Field("address") String address,
-                @Field("avatar_location") String avatar_location,
-                @Field("password") String password,
-                @Field("password_confirmation") String pass_confirmation);
-
-//    UpdateProfil
     @Multipart
     @POST("api/home/update_profile")
-    Call<BaseResponse> updateProfil(@Header("Authorization") String token,
-                                    @Part MultipartBody.Part avatar_location,
-                                    @Part("avatar_location") RequestBody status);
+    Call<BaseResponse> updateUser(@Header("Authorization") String token,
+                @Part("email") RequestBody email,
+                @Part("name") RequestBody name,
+                @Part("sex") RequestBody sex,
+                @Part("mobile") RequestBody mobile,
+                @Part("rt") RequestBody rt,
+                @Part("address") RequestBody address,
+                @Part MultipartBody.Part avatar_location,
+                @Part("password") RequestBody password,
+                @Part("password_confirmation") RequestBody pass_confirmation);
 
     // Warga
     @GET("api/admin/warga/{id}")
