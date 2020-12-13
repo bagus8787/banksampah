@@ -112,7 +112,7 @@ public class ListKategoriFragment extends Fragment implements View.OnClickListen
 
             case R.id.linearLayout_lain:
                 Intent la = new Intent(getActivity(), ListSampahActivity.class);
-                la.putExtra("JENIS", "LAIN-LAIN");
+                la.putExtra("JENIS", "LAIN");
                 startActivity(la);
 
                 break;
