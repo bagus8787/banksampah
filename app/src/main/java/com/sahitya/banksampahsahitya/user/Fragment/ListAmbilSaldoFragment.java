@@ -109,9 +109,9 @@ public class ListAmbilSaldoFragment extends Fragment {
 
     public void reloadPoint() {
         if (sharedPrefManager.isUser()) {
-            viewModel.getPoints("ambil");
+            viewModel.getPoints("ambil,admin");
         } else if (sharedPrefManager.isAdmin() || sharedPrefManager.isCoordinator()) {
-            viewModel.getWargaPoints(sharedPrefManager.getCurrentUserId(),"ambil");
+            viewModel.getWargaPoints(sharedPrefManager.getCurrentUserId(),"ambil,admin");
         }
     }
 
