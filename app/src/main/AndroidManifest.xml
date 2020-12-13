@@ -10,6 +10,11 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"></supports-screens>
 
     <application
         android:name=".MyApp"
@@ -22,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.HistoryUserActivity"></activity>
+        <activity android:name=".base.activity.ListSampahActivity"></activity>
+        <activity android:name=".admin.HistoryUserActivity" />
         <activity android:name=".user.AmbilSaldoActivity" />
         <activity android:name=".base.activity.TukarBarangActivity" />
         <activity android:name=".base.activity.FormBarangActivity" />
@@ -67,10 +73,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <supports-screens android:smallScreens="true"
-        android:normalScreens="true" android:largeScreens="true"
-        android:anyDensity="true">
-    </supports-screens>
 
 </manifest>

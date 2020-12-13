@@ -8,4 +8,6 @@
     <color name="colorItemBackground">#F6F6F6</color>
     <color name="colorFont2">#6A9923</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="bg">#EDEDED</color>
 </resources>

@@ -18,10 +18,10 @@ import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.Fragment.HomeAdminFragment;
 import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
+import com.sahitya.banksampahsahitya.base.fragment.ListKategoriFragment;
 import com.sahitya.banksampahsahitya.base.fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.camera.Potrait;
 import com.sahitya.banksampahsahitya.base.activity.DetailTransaksiActivity;
-import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorFragment;
 
 public class HomeAdminActivity extends AppCompatActivity {
     IntentIntegrator intentIntegrator;
@@ -68,7 +68,7 @@ public class HomeAdminActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.list_sampah :
-                        loadFragment(new ListSampahCoordinatorFragment());
+                        loadFragment(new ListKategoriFragment());
                         return true;
 
                     default:

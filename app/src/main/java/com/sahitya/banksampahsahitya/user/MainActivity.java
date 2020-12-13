@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sahitya.banksampahsahitya.R;
+import com.sahitya.banksampahsahitya.base.fragment.ListKategoriFragment;
 import com.sahitya.banksampahsahitya.base.fragment.ProfileFragment;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.list_sampah :
-                        loadFragment(new ListFragment());
+                        loadFragment(new ListKategoriFragment());
                         return true;
 
                     case R.id.navigation_history :
