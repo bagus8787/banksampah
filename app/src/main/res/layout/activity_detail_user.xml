@@ -18,14 +18,17 @@
         <LinearLayout
             android:id="@+id/li_1"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="150dp"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/it_avatar"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:civ_border_color="@color/colorFontTitle"
+                app:civ_border_width="1dp"
                 app:srcCompat="@drawable/ic_baseline_account_circle" />
 
         </LinearLayout>

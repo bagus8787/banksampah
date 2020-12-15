@@ -85,7 +85,6 @@
             android:background="@drawable/shadow"
             android:orientation="vertical">
 
-
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
