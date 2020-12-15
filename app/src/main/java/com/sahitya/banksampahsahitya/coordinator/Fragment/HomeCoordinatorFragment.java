@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -61,7 +62,10 @@ public class HomeCoordinatorFragment extends Fragment {
         sharedPrefManager = new SharedPrefManager(getActivity());
 
         tv_name.setText(sharedPrefManager.getSPNama());
-
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            activity.getSupportActionBar().hide();
+        }
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         profileViewModel.init();
         profileViewModel.getProfileResponseLiveData().observe(this, new Observer<User>() {

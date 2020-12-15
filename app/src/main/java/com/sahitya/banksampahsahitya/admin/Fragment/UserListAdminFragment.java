@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -15,10 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 
 import com.sahitya.banksampahsahitya.adapter.AdapterListUser;
+import com.sahitya.banksampahsahitya.repositories.PointRepository;
+import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.UserViewModel;
 import java.util.ArrayList;
 
@@ -27,6 +32,8 @@ import android.util.Log;
 public class UserListAdminFragment extends Fragment {
     private AdapterListUser adapter;
     private UserViewModel viewModel;
+    SharedPrefManager sharedPrefManager;
+    PointRepository pointRepository;
 
     public UserListAdminFragment() {
         // Required empty public constructor
@@ -37,6 +44,7 @@ public class UserListAdminFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         adapter = new AdapterListUser(getContext());
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
 
         viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         viewModel.init();
@@ -55,7 +63,7 @@ public class UserListAdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_user_list, container, false);
-
+        pointRepository = new PointRepository();
         SwipeRefreshLayout swipeRefreshLayout = rootView.findViewById(R.id.layoutRefresh);
         RecyclerView recyclerView = rootView.findViewById(R.id.rv_list_user);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -77,6 +85,14 @@ public class UserListAdminFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         reloadUserList();
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            ActionBar actionBar = activity.getSupportActionBar();
+            actionBar.setTitle("Total Saldo Rp. " + sharedPrefManager.getWargaPointTotal().toString());
+            actionBar.show();
+        }
+
     }
 
     @Override
@@ -87,5 +103,6 @@ public class UserListAdminFragment extends Fragment {
 
     public void reloadUserList() {
         viewModel.getUserList();
+        pointRepository.getAdminPoints();
     }
 }

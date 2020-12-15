@@ -18,6 +18,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
 import com.sahitya.banksampahsahitya.base.activity.TukarBarangActivity;
+import com.sahitya.banksampahsahitya.base.fragment.ListKategoriFragment;
 import com.sahitya.banksampahsahitya.camera.Potrait;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.HomeCoordinatorFragment;
 import com.sahitya.banksampahsahitya.coordinator.Fragment.ListSampahCoordinatorFragment;
@@ -62,7 +63,8 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.list_sampah_c :
-                        loadFragment(new ListSampahCoordinatorFragment());
+//                        loadFragment(new ListSampahCoordinatorFragment());
+                        loadFragment(new ListKategoriFragment());
                         return true;
 
                     case R.id.scan_c :

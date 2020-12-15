@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -11,9 +12,11 @@ import androidx.lifecycle.ViewModelProviders;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.repositories.PointRepository;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
 
@@ -26,6 +29,7 @@ public class HomeAdminFragment extends Fragment {
 
     ProfileViewModel profileViewModel;
     SharedPrefManager sharedPrefManager;
+    PointRepository pointRepository;
 
     public HomeAdminFragment() {
         // Required empty public constructor
@@ -44,6 +48,13 @@ public class HomeAdminFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         sharedPrefManager = new SharedPrefManager(getActivity());
+        pointRepository = new PointRepository();
+        TextView txt_point_admin = view.findViewById(R.id.txt_point_admin);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            activity.getSupportActionBar().hide();
+        }
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         profileViewModel.init();
@@ -62,6 +73,9 @@ public class HomeAdminFragment extends Fragment {
         });
 
         profileViewModel.getProfile();
+        pointRepository.getAdminPoints();
+
+        txt_point_admin.setText("Rp. " + sharedPrefManager.getAdminPointTotal().toString());
 
     }
 }

@@ -1,5 +1,6 @@
 package com.sahitya.banksampahsahitya.base.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -43,6 +45,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public SharedPrefManager sharedPrefManager;
     public ApiInterface apiInterface;
     ProfileViewModel profileViewModel;
+    ProgressDialog progressDialog;
 
     String url_photo;
 
@@ -83,6 +86,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         final TextView email_profil = view.findViewById(R.id.email_profil);
 
         final ImageView img_profil_user = view.findViewById(R.id.img_profil_user_fr);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            activity.getSupportActionBar().hide();
+        }
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading");
+        progressDialog.setCancelable(false);
 
         profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         profileViewModel.init();
@@ -139,11 +151,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btn_logout:
+                progressDialog.show();
                 sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
                 Call<BaseResponse> logout = apiInterface.logout(sharedPrefManager.getSPToken());
                 logout.enqueue(new Callback<BaseResponse>() {
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                        progressDialog.dismiss();
                         if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
                             startActivity(new Intent(getActivity(), LoginActivity.class)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -153,7 +167,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
                     @Override
                     public void onFailure(Call<BaseResponse> call, Throwable t) {
-
+                        progressDialog.dismiss();
                     }
                 });
                 break;

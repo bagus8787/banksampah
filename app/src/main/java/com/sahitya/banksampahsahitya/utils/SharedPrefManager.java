@@ -27,6 +27,8 @@ public class SharedPrefManager {
     public static final String SP_ROLE = "spRole";
     public static final String SP_CUR_USER_ID = "spCurrentUserId";
     public static final String SP_HAS_WARGA = "spHasWarga";
+    public static final String SP_TOTAL_POINT_WARGA = "spWargaPointTotal";
+    public static final String SP_TOTAL_POINT_ADMIN = "spAdminPointTotal";
 
     SharedPreferences sp;
     SharedPreferences.Editor spEditor;
@@ -98,6 +100,14 @@ public class SharedPrefManager {
 
     public Integer getCurrentUserId(){
         return sp.getInt(SP_CUR_USER_ID, 0);
+    }
+
+    public Integer getWargaPointTotal(){
+        return sp.getInt(SP_TOTAL_POINT_WARGA, 0);
+    }
+
+    public Integer getAdminPointTotal(){
+        return sp.getInt(SP_TOTAL_POINT_ADMIN, 0);
     }
 
     public void setCurrentUserId(Integer id) {

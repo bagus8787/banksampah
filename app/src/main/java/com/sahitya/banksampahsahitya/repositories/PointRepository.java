@@ -7,6 +7,7 @@ import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
+import com.sahitya.banksampahsahitya.network.response.AdminResponse;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
@@ -111,6 +112,24 @@ public class PointRepository {
 
             @Override
             public void onFailure(Call<Warga> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getAdminPoints() {
+        Call<AdminResponse> getAdminPoints = apiInterface.getAdminPoints(sharedPrefManager.getSPToken());
+        getAdminPoints.enqueue(new Callback<AdminResponse>() {
+            @Override
+            public void onResponse(Call<AdminResponse> call, Response<AdminResponse> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_TOTAL_POINT_ADMIN, response.body().getAdmin());
+                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_TOTAL_POINT_WARGA, response.body().getWarga());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AdminResponse> call, Throwable t) {
 
             }
         });

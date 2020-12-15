@@ -4,6 +4,7 @@ import com.sahitya.banksampahsahitya.model.Barang;
 import com.sahitya.banksampahsahitya.model.PointHistory;
 import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.model.Warga;
+import com.sahitya.banksampahsahitya.network.response.AdminResponse;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
@@ -152,5 +153,9 @@ public interface ApiInterface {
 
     @POST("api/admin/warga/{id}/as_role/{role}")
     Call<BaseResponse> setUserRole(@Header("Authorization") String token, @Path("id") Integer id, @Path("role") String role_name);
+
+
+    @GET("api/admin/points")
+    Call<AdminResponse> getAdminPoints(@Header("Authorization") String token);
 
 }

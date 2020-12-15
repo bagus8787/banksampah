@@ -17,6 +17,7 @@ import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.squareup.picasso.Picasso;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -77,6 +78,7 @@ public class EditProfilActivity extends AppCompatActivity {
     File file;
 
     Context mContext;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,10 @@ public class EditProfilActivity extends AppCompatActivity {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         mContext = this;
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading");
+        progressDialog.setCancelable(false);
 
         nama = findViewById(R.id.it_nama_p);
         nope = findViewById(R.id.it_nope_p);
@@ -147,6 +153,7 @@ public class EditProfilActivity extends AppCompatActivity {
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 MultipartBody.Part filename = null;
                 if (uri != null) {
                     file = new File(uri.getPath());
@@ -192,6 +199,7 @@ public class EditProfilActivity extends AppCompatActivity {
                 updateUser.enqueue(new Callback<BaseResponse>() {
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                        progressDialog.dismiss();
                         if (response.code() >= 200 && response.code() < 300) {
                             String message = response.body().getMessage();
                             Log.d("pesannya", String.valueOf(response.code()));
@@ -226,7 +234,7 @@ public class EditProfilActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<BaseResponse> call, Throwable t) {
-
+                        progressDialog.dismiss();
                     }
                 });
             }
