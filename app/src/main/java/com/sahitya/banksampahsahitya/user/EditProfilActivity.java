@@ -128,7 +128,8 @@ public class EditProfilActivity extends AppCompatActivity {
         url_photo = sharedPrefManager.getSPAvatar();
 
         Picasso.get().load(url_photo)
-                .fit()
+                .resize(150, 150)
+                .centerCrop()
                 .error(R.drawable.ic_baseline_account_circle)
                 .into(img_profil);
 
