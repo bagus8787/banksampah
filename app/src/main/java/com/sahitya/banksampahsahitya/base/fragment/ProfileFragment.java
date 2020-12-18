@@ -105,8 +105,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
                     url_photo = sharedPrefManager.getSPAvatar();
                     Picasso.get().load(url_photo)
-                            .resize(150, 150)
-                            .centerCrop()
                             .error(R.drawable.ic_baseline_account_circle)
                             .into(img_profil_user);
                     if (userResponse.getWarga() != null) {

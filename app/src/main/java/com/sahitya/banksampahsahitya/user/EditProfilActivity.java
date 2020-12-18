@@ -15,7 +15,11 @@ import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.utils.FileUtils;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -30,6 +34,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -113,14 +118,14 @@ public class EditProfilActivity extends AppCompatActivity {
         btn_img_profil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                choosePhoto();
+//                choosePhoto();
+                onSelectImageClick(v);
             }
         });
 
         nama.setHint(sharedPrefManager.getSPNama());
         nope.setHint(sharedPrefManager.getSPMobile());
         email.setHint(sharedPrefManager.getSPEmail());
-
 
         avatar_location = sharedPrefManager.getSPAvatar();
         Log.d("url_foto", avatar_location);
@@ -266,15 +271,86 @@ public class EditProfilActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE);
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
+//            if(data != null) {
+//                uri = data.getData();
+//                img_profil.setImageURI(uri);
+//            }
+//        }
+//    }
+
     @Override
+    @SuppressLint("NewApi")
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // handle result of pick image chooser
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
-            if(data != null) {
-                uri = data.getData();
-                img_profil.setImageURI(uri);
+        if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+
+            Uri imageUri = CropImage.getPickImageResultUri(this, data);
+
+            Log.d("jeneng e", String.valueOf(imageUri));
+//            if(data != null) {
+//                uri = data.getData();
+//                img_profil.setImageURI(imageUri);
+//            }
+
+            // For API >= 23 we need to check specifically that we have permissions to read external storage.
+            if (CropImage.isReadExternalStoragePermissionsRequired(this, imageUri)) {
+                // request permissions and handle the result in onRequestPermissionsResult()
+                uri = imageUri;
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            } else {
+                // no permissions required or already grunted, can start crop image activity
+                startCropImageActivity(imageUri);
             }
         }
+
+        // handle result of CropImageActivity
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if(data != null) {
+                uri = data.getData();
+                img_profil.setImageURI(result.getUri());
+            }
+
+            if (resultCode == RESULT_OK) {
+                ((ImageView) findViewById(R.id.img_profil_user)).setImageURI(result.getUri());
+
+                Log.d("result", String.valueOf(result.getUri()));
+
+                Toast.makeText(this, "Gambar berhasil di crop", Toast.LENGTH_LONG).show();
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Toast.makeText(this, "Gambar gagal di crop: " + result.getError(), Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (uri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // required permissions granted, start crop image activity
+            startCropImageActivity(uri);
+        } else {
+            Toast.makeText(this, "Cancelling, required permissions are not granted", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Start crop image activity for the given image.
+     */
+    private void startCropImageActivity(Uri imageUri) {
+        CropImage.activity(imageUri)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setMultiTouchEnabled(true)
+                .start(this);
+    }
+
+    public void onSelectImageClick(View view) {
+        CropImage.startPickImageActivity(this);
     }
 
     private int getIndex(Spinner spinner, String myString){
