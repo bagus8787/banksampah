@@ -14,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.network.ApiClient;
+import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.repositories.PointRepository;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
@@ -31,6 +34,8 @@ public class HomeAdminFragment extends Fragment {
     SharedPrefManager sharedPrefManager;
     PointRepository pointRepository;
 
+    ApiInterface apiInterface;
+
     public HomeAdminFragment() {
         // Required empty public constructor
     }
@@ -40,7 +45,14 @@ public class HomeAdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_admin, container, false);
+//        return inflater.inflate(R.layout.fragment_home_admin, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_home_admin, container, false);
+
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        return rootView;
     }
 
     @Override

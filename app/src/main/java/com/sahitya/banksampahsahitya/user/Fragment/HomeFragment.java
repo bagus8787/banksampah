@@ -18,23 +18,30 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.BarcodeImage;
 import com.sahitya.banksampahsahitya.model.User;
+import com.sahitya.banksampahsahitya.network.ApiClient;
+import com.sahitya.banksampahsahitya.network.ApiInterface;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
 import com.sahitya.banksampahsahitya.user.EditProfilActivity;
 import com.sahitya.banksampahsahitya.user.MainActivity;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.ProfileViewModel;
+import com.squareup.picasso.Picasso;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
+    public SharedPrefManager sharedPrefManager;
+    public ApiInterface apiInterface;
 
-    MainActivity mainActivity;
     ProfileViewModel profileViewModel;
     BarcodeImage barcode;
+
+    String url_photo;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -45,8 +52,15 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mainActivity = (MainActivity)getActivity();
-        return inflater.inflate(R.layout.fragment_coba, container, false);
+//        mainActivity = (MainActivity)getActivity();
+//        return inflater.inflate(R.layout.fragment_coba, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_coba, container, false);
+
+        sharedPrefManager = new SharedPrefManager(MyApp.getContext());
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        return rootView;
     }
 
     @Override
@@ -58,7 +72,7 @@ public class HomeFragment extends Fragment {
         final ImageView image_barcode = view.findViewById(R.id.image_barcode);
         final ImageView image_btn = view.findViewById(R.id.buttonprofile);
 
-        tv_name.setText(mainActivity.sharedPrefManager.getSPNama());
+        tv_name.setText(sharedPrefManager.getSPNama());
 
         image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,14 +88,24 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(User userResponse) {
                 if (userResponse != null) {
-                    mainActivity.sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
+                    sharedPrefManager.setSpAvatar(userResponse.getAvatarLocation());
+                    url_photo = sharedPrefManager.getSPAvatar();
+                    Picasso.get().load(url_photo)
+                            .error(R.drawable.ic_baseline_account_circle)
+                            .into(image_btn);
                     if (userResponse.getWarga() != null) {
-                        mainActivity.sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_POINT_TOTAL, userResponse.getWarga().getPointTotal());
                         tv_saldo.setText(Integer.toString(userResponse.getWarga().getPointTotal()));
                     }
                 }
             }
         });
+
+        url_photo = sharedPrefManager.getSPAvatar();
+        Picasso.get().load(url_photo)
+                .fit()
+                .error(R.drawable.ic_baseline_account_circle)
+                .into(image_btn);
 
         profileViewModel.getBarcodeResponseLiveData().observe(this, new Observer<BarcodeImage>() {
             @Override

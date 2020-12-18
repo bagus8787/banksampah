@@ -161,6 +161,7 @@ public class EditProfilActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressDialog.show();
                 MultipartBody.Part filename = null;
+
                 if (uri != null) {
                     file = new File(uri.getPath());
                     try {
@@ -312,10 +313,12 @@ public class EditProfilActivity extends AppCompatActivity {
         // handle result of CropImageActivity
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if(data != null) {
-                uri = data.getData();
-                img_profil.setImageURI(result.getUri());
-            }
+//            if(data != null) {
+//                uri = data.getData();
+//                img_profil.setImageURI(result.getUri());
+//            }
+
+            MultipartBody.Part filename = null;
 
             if (resultCode == RESULT_OK) {
                 ((ImageView) findViewById(R.id.img_profil_user)).setImageURI(result.getUri());
@@ -323,6 +326,7 @@ public class EditProfilActivity extends AppCompatActivity {
                 Log.d("result", String.valueOf(result.getUri()));
 
                 Toast.makeText(this, "Gambar berhasil di crop", Toast.LENGTH_LONG).show();
+
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Toast.makeText(this, "Gambar gagal di crop: " + result.getError(), Toast.LENGTH_LONG).show();
             }
