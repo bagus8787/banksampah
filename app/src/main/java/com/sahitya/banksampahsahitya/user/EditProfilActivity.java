@@ -30,6 +30,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -119,6 +120,10 @@ public class EditProfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                choosePhoto();
+
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_PICK);
+                intent.setDataAndType(uri, "image/*");
                 onSelectImageClick(v);
             }
         });
@@ -247,7 +252,6 @@ public class EditProfilActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private void choosePhoto() {
@@ -294,10 +298,6 @@ public class EditProfilActivity extends AppCompatActivity {
             Uri imageUri = CropImage.getPickImageResultUri(this, data);
 
             Log.d("jeneng e", String.valueOf(imageUri));
-//            if(data != null) {
-//                uri = data.getData();
-//                img_profil.setImageURI(imageUri);
-//            }
 
             // For API >= 23 we need to check specifically that we have permissions to read external storage.
             if (CropImage.isReadExternalStoragePermissionsRequired(this, imageUri)) {
@@ -313,17 +313,21 @@ public class EditProfilActivity extends AppCompatActivity {
         // handle result of CropImageActivity
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-//            if(data != null) {
-//                uri = data.getData();
-//                img_profil.setImageURI(result.getUri());
-//            }
-
-            MultipartBody.Part filename = null;
 
             if (resultCode == RESULT_OK) {
                 ((ImageView) findViewById(R.id.img_profil_user)).setImageURI(result.getUri());
 
-                Log.d("result", String.valueOf(result.getUri()));
+                uri = result.getUri();
+
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "cropped" , "cropped");
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("result", String.valueOf(uri));
 
                 Toast.makeText(this, "Gambar berhasil di crop", Toast.LENGTH_LONG).show();
 
@@ -351,6 +355,9 @@ public class EditProfilActivity extends AppCompatActivity {
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setMultiTouchEnabled(true)
                 .start(this);
+
+        Log.d("image_uri", String.valueOf(imageUri));
+
     }
 
     public void onSelectImageClick(View view) {
