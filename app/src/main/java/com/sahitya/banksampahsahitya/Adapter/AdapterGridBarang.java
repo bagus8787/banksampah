@@ -1,4 +1,4 @@
-package com.sahitya.banksampahsahitya.Adapter;
+package com.sahitya.banksampahsahitya.adapter;
 
 import android.content.Context;
 import android.content.Intent;
