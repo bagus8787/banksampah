@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
 
 //     public static final String url = "http://10.0.2.2:8000/";
-    public static final String url = "http://trashbank.darklogictech.com/";
+    public static final String url = "http://trashbank.iamwahid.me/";
     private static ApiInterface REST_CLIENT;
 
     private static Retrofit retrofit;
