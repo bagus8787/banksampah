@@ -77,12 +77,116 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/shadow"
-            android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="4dp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List RT"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="@drawable/background_button"
+                android:backgroundTint="@android:color/darker_gray">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txt_nama_rt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:text="RT 01" />
+
+                    <TextView
+                        android:id="@+id/txt_jumlah_warga"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/txt_nama_rt"
+                        android:layout_toRightOf="@+id/txt_nama_rt"
+                        android:text="( 10 Warga )" />
+
+                    <TextView
+                        android:id="@+id/txt_v_saldo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_nama_rt"
+                        android:layout_alignStart="@+id/txt_nama_rt"
+                        android:layout_alignLeft="@+id/txt_nama_rt"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Saldo :" />
+
+                    <TextView
+                        android:id="@+id/txt_total_saldo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/txt_v_saldo"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toEndOf="@+id/txt_v_saldo"
+                        android:layout_toRightOf="@+id/txt_v_saldo"
+                        android:text="Rp. 5000" />
+
+                    <TextView
+                        android:id="@+id/txt_v_ambil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="Total Ambil" />
+
+                    <TextView
+                        android:id="@+id/txt_total_ambil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_v_ambil"
+                        android:layout_alignEnd="@+id/txt_v_ambil"
+                        android:layout_alignRight="@+id/txt_v_ambil"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginRight="0dp"
+                        android:text="Rp. 4000" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="@dimen/activity_vertical_margin"-->
+<!--            android:background="@drawable/shadow"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:paddingRight="5dp"-->
+<!--            android:paddingBottom="4dp"/>-->
     </LinearLayout>
 </FrameLayout>
