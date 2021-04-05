@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sahitya.banksampahsahitya">
 
@@ -10,16 +9,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.READ_PROFILE"/>
-
-<!--    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
-
+    <uses-permission android:name="android.permission.READ_PROFILE" /> <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"/> -->
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="true"
-        android:smallScreens="true"/>
+        android:smallScreens="true" />
 
     <application
         android:name=".MyApp"
@@ -32,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".base.activity.ListSampahActivity"/>
+        <activity android:name=".admin.ListUserRtActivity"></activity>
+        <activity android:name=".base.activity.ListSampahActivity" />
         <activity android:name=".admin.HistoryUserActivity" />
         <activity android:name=".user.AmbilSaldoActivity" />
         <activity android:name=".base.activity.TukarBarangActivity" />
@@ -77,8 +73,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
     </application>
 
 </manifest>

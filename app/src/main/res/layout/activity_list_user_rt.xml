@@ -1,90 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/layoutRefresh"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools"
-    tools:context=".admin.Fragment.HomeAdminFragment">
+    tools:context=".admin.ListUserRtActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:padding="10dp"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="@string/hallo"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/tv_admin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Admin Desih"
-                android:textColor="@android:color/black"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginRight="5dp"-->
-<!--                android:text="Saldo : "-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textSize="18sp" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/txt_point_admin"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="-"-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold" />-->
-<!--        </LinearLayout>-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorFont"
-                android:textSize="14sp"
-                android:text="@string/tampilan_tabungan_1" />
-        </LinearLayout>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:background="@drawable/bg_ly_shape"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:background="@drawable/bg_ly_shape"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -124,7 +65,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Total Saldo"
+                        android:text="Total Saldo RT 01"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -156,8 +97,8 @@
 
                     <ImageView
                         android:id="@+id/img_user"
-                        android:layout_width="50dp"
-                        android:layout_height="45dp"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -165,12 +106,12 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="26dp"
                         android:layout_marginLeft="26dp"
-                        android:layout_marginTop="7dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginRight="24dp"
-                        android:src="@drawable/group" />
+                        android:src="@drawable/berat" />
 
-<!--                    Total pengguna Aplikasi Termasuk Koordinator-->
+                    <!--                    Total berat per RT -->
                     <TextView
                         android:id="@+id/txt_v_user"
                         android:layout_width="match_parent"
@@ -182,16 +123,16 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginLeft="0dp"
-                        android:layout_marginTop="-4dp"
+                        android:layout_marginTop="2dp"
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Pengguna"
+                        android:text="Berat"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/txt_total_user"
+                        android:id="@+id/txt_total_berat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txt_v_user"
@@ -205,7 +146,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="10"
+                        android:text="10 Kg"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -228,9 +169,9 @@
                         android:layout_marginTop="12dp"
                         android:src="@drawable/avatar" />
 
-<!--                    Total RT-->
+                    <!--                    Nama Koordinator Per RT-->
                     <TextView
-                        android:id="@+id/txt_v_rt"
+                        android:id="@+id/txt_v_coor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/img_user1"
@@ -244,7 +185,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Total RT"
+                        android:text="Koordinator"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -252,7 +193,7 @@
                         android:id="@+id/txt_total_rt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/txt_v_rt"
+                        android:layout_below="@+id/txt_v_coor"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentEnd="true"
@@ -263,7 +204,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="10"
+                        android:text="Bagus"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -272,118 +213,44 @@
 
         </HorizontalScrollView>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="5dp">
 
             <TextView
+                android:id="@+id/txt_v_warga_rt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="List Daftar RT"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:text="Warga RT :"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical"
-                android:padding="5dp"
-                android:background="@drawable/background_button"
-                android:backgroundTint="@android:color/darker_gray">
+            <TextView
+                android:id="@+id/txt_rt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/txt_v_warga_rt"
+                android:layout_toRightOf="@+id/txt_v_warga_rt"
+                android:text="01"
+                android:textStyle="bold" />
+        </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_list_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:id="@+id/txt_nama_rt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="RT 01" />
-
-                    <TextView
-                        android:id="@+id/txt_jumlah_warga"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_toEndOf="@+id/txt_nama_rt"
-                        android:layout_toRightOf="@+id/txt_nama_rt"
-                        android:text="( 10 Warga )" />
-
-                    <TextView
-                        android:id="@+id/txt_v_saldo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txt_nama_rt"
-                        android:layout_alignStart="@+id/txt_nama_rt"
-                        android:layout_alignLeft="@+id/txt_nama_rt"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="5dp"
-                        android:text="Saldo :" />
-
-                    <TextView
-                        android:id="@+id/txt_total_saldo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/txt_v_saldo"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginLeft="2dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_toEndOf="@+id/txt_v_saldo"
-                        android:layout_toRightOf="@+id/txt_v_saldo"
-                        android:text="Rp. 5000" />
-
-                    <TextView
-                        android:id="@+id/txt_v_ambil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginRight="5dp"
-                        android:text="Total Ambil" />
-
-                    <TextView
-                        android:id="@+id/txt_total_ambil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txt_v_ambil"
-                        android:layout_alignEnd="@+id/txt_v_ambil"
-                        android:layout_alignRight="@+id/txt_v_ambil"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginRight="0dp"
-                        android:text="Rp. 4000" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginTop="@dimen/activity_vertical_margin"-->
-<!--            android:background="@drawable/shadow"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingLeft="5dp"-->
-<!--            android:paddingRight="5dp"-->
-<!--            android:paddingBottom="4dp"/>-->
     </LinearLayout>
-</FrameLayout>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
