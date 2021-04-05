@@ -27,7 +27,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="157dp"
+                android:layout_height="170dp"
                 android:layout_marginHorizontal="32dp"
                 tools:targetApi="o">
 
@@ -85,8 +85,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginTop="7dp"
-                    android:text="Saldo kamu :"
+                    android:layout_marginTop="2dp"
+                    android:text="Saldo RT 01 :"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -108,9 +108,41 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tv_beratwede"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_saldowede"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Total Berat RT 01 :"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_koor_berat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/tv_beratwede"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="-1dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_toEndOf="@+id/tv_beratwede"
+                    android:layout_toRightOf="@+id/tv_beratwede"
+                    android:text="-"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_beratwede"
                     android:layout_marginTop="7dp"
                     android:text="@string/tampilan_tabungan_1"
                     android:textColor="@color/colorFont"
