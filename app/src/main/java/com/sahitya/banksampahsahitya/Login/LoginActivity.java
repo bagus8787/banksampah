@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -76,29 +78,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        password_lg.addTextChangedListener(new TextValidator(password_lg) {
-            @Override public void validate(TextView textView, String text) {
-                if (text.length() == 0) {
-                    textView.setError("Password Harus diisi");
-                }
-            }
-        });
-
-//        if (sharedPrefManager.getSPSudahLogin()){
-//            if (sharedPrefManager.getRole().equals(Role.ROLE_USER)) {
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class)
-//                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                finish();
-//            } else if (sharedPrefManager.getRole().equals(Role.ROLE_COODINATOR)) {
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class)
-//                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                finish();
-//            } else if (sharedPrefManager.getRole().equals(Role.ROLE_ADMIN)) {
-//                startActivity(new Intent(LoginActivity.this, MainActivity.class)
-//                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-//                finish();
+//        password_lg.addTextChangedListener(new TextValidator(password_lg) {
+//            @Override public void validate(TextView textView, String text) {
+//                if (text.length() == 0) {
+//                    textView.setError("Password Harus diisi");
+//                }
 //            }
-//        }
+//        });
+
 
     }
 

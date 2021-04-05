@@ -66,6 +66,7 @@ dependencies {
 
 //    image cropping
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.3.0'
+    implementation 'pub.devrel:easypermissions:1.2.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

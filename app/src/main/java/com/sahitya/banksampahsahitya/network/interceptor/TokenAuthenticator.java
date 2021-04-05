@@ -6,7 +6,6 @@ import com.sahitya.banksampahsahitya.Login.LoginActivity;
 import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.network.ApiClient;
 import com.sahitya.banksampahsahitya.network.ApiInterface;
-import com.sahitya.banksampahsahitya.network.response.UserResponse;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 
 import java.io.IOException;
