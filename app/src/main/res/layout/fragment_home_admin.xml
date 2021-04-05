@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    tools:context=".admin.Fragment.HomeAdminFragment"
-    app:srcCompat="@drawable/background">
+    tools:context=".admin.Fragment.HomeAdminFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -84,9 +84,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="List RT"
+                android:text="List Daftar RT"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <LinearLayout
