@@ -95,6 +95,12 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    @OnClick(R.id.sa_lupa_pass) void sa_lupa_pass() {
+        startActivity(new Intent(LoginActivity.this, LupaPasswordActivity.class)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+        finish();
+    }
+
     @OnClick(R.id.btn_login) void login() {
         if (email_lg.getText().toString().isEmpty()) {
             email_lg.setError("Email Harus diisi");

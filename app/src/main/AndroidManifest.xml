@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.ListUserRtActivity"></activity>
+        <activity android:name=".Login.LupaPasswordActivity"></activity>
+        <activity android:name=".admin.ListUserRtActivity" />
         <activity android:name=".base.activity.ListSampahActivity" />
         <activity android:name=".admin.HistoryUserActivity" />
         <activity android:name=".user.AmbilSaldoActivity" />
