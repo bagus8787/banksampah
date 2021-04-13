@@ -21,7 +21,7 @@ import com.sahitya.banksampahsahitya.MyApp;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.model.User;
 
-import com.sahitya.banksampahsahitya.adapter.AdapterListUser;
+import com.sahitya.banksampahsahitya.Adapter.AdapterListUser;
 import com.sahitya.banksampahsahitya.repositories.PointRepository;
 import com.sahitya.banksampahsahitya.utils.SharedPrefManager;
 import com.sahitya.banksampahsahitya.viewmodels.UserViewModel;

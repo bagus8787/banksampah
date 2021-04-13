@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.sahitya.banksampahsahitya.R;
-import com.sahitya.banksampahsahitya.adapter.AdapterListBarang;
+import com.sahitya.banksampahsahitya.Adapter.AdapterListBarang;
 import com.sahitya.banksampahsahitya.model.Barang;
 import com.sahitya.banksampahsahitya.viewmodels.BarangViewModel;
 

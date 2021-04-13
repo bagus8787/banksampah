@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.sahitya.banksampahsahitya.MyApp;
-import com.sahitya.banksampahsahitya.adapter.AdapterListBarang;
+import com.sahitya.banksampahsahitya.Adapter.AdapterListBarang;
 
 import android.content.Context;
 import android.os.Bundle;

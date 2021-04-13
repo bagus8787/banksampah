@@ -64,7 +64,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Total Saldo RT 01"
+                        android:text="Total Saldo"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -83,7 +83,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Rp. 50000"
+                        android:text="Rp. 0"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -96,8 +96,8 @@
 
                     <ImageView
                         android:id="@+id/img_user"
-                        android:layout_width="40dp"
-                        android:layout_height="35dp"
+                        android:layout_width="50dp"
+                        android:layout_height="45dp"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
@@ -105,10 +105,10 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="26dp"
                         android:layout_marginLeft="26dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="7dp"
                         android:layout_marginEnd="24dp"
                         android:layout_marginRight="24dp"
-                        android:src="@drawable/berat" />
+                        android:src="@drawable/group" />
 
                     <!--                    Total berat per RT -->
                     <TextView
@@ -122,16 +122,16 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginStart="0dp"
                         android:layout_marginLeft="0dp"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="-4dp"
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="Berat"
+                        android:text="Total Warga"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/txt_total_berat"
+                        android:id="@+id/txt_total_warga"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/txt_v_user"
@@ -145,7 +145,7 @@
                         android:layout_marginEnd="0dp"
                         android:layout_marginRight="0dp"
                         android:gravity="center_horizontal"
-                        android:text="10 Kg"
+                        android:text="0"
                         android:textAlignment="center"
                         android:textSize="12sp" />
 
@@ -246,10 +246,34 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_list_user"
+        <RelativeLayout
+            android:id="@+id/rv_no_user"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_no_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="225dp"
+                android:layout_marginBottom="289dp"
+                android:gravity="center_horizontal"
+                android:text="Belum ada Warga yang terdaftar"
+                android:textAlignment="center"
+                android:visibility="gone"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_user"
+                android:padding="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
 
     </LinearLayout>
 

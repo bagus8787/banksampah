@@ -65,6 +65,24 @@ public class UserListRepository {
         });
     }
 
+    public void getUserByRt(String rt) {
+        Call<ArrayList<User>> getUserList = apiInterface.getWargaByRT(sharedPrefManager.getSPToken(), rt);
+        getUserList.enqueue(new Callback<ArrayList<User>>() {
+            @Override
+            public void onResponse(Call<ArrayList<User>> call, Response<ArrayList<User>> response) {
+                if (response.code() >= 200 && response.code() < 300 && response.body() != null) {
+                    userResponseLiveData.postValue(response.body());
+                    Log.d("vsdvsdvsdv :" , String.valueOf(userResponseLiveData));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<User>> call, Throwable t) {
+                userResponseLiveData.postValue(null);
+            }
+        });
+    }
+
     public LiveData<ArrayList<User>> getUserResponseLiveData() {
         return userResponseLiveData;
     }

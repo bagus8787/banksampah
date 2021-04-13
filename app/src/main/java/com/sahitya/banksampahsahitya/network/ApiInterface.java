@@ -6,6 +6,7 @@ import com.sahitya.banksampahsahitya.model.User;
 import com.sahitya.banksampahsahitya.model.Warga;
 import com.sahitya.banksampahsahitya.network.response.AdminResponse;
 import com.sahitya.banksampahsahitya.network.response.BaseResponse;
+import com.sahitya.banksampahsahitya.network.response.ByRtResponse;
 import com.sahitya.banksampahsahitya.network.response.UserResponse;
 
 import java.io.File;
@@ -156,5 +157,15 @@ public interface ApiInterface {
 
     @GET("api/admin/points")
     Call<AdminResponse> getAdminPoints(@Header("Authorization") String token);
+
+    @GET("api/admin/warga/summary")
+    Call<ByRtResponse> getSummaryRT(@Header("Authorization") String token);
+
+//    @GET("api/admin/warga?rt=")
+//    Call<ByRtResponse> getByRT(@Header("Authorization") String token, @Query("rt") String rt);
+
+    // Warga
+    @GET("api/admin/warga?rt=")
+    Call<ArrayList<User>> getWargaByRT(@Header("Authorization") String token, @Query("rt") String rt);
 
 }

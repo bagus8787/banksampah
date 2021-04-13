@@ -30,6 +30,10 @@ public class UserViewModel extends AndroidViewModel{
        userListRepository.getUserList();
     }
 
+    public void getUserByRt(String rt){
+        userListRepository.getUserByRt(rt);
+    }
+
     public LiveData<ArrayList<User>> getUserResponseLiveData() {
         return userResponseLiveData;
     }
