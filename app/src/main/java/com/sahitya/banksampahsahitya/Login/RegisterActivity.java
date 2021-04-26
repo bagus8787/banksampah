@@ -180,11 +180,6 @@ public class RegisterActivity extends AppCompatActivity {
             alamat.requestFocus();
             return;
         }
-//        if (errorRt.getText().toString().isEmpty()){
-//            errorRt.setError("RT Harus dipilih");
-//            errorRt.requestFocus();
-//            return;
-//        }
 
         if (regis_rt.getSelectedItemPosition() > 0) {
             // get selected item value
