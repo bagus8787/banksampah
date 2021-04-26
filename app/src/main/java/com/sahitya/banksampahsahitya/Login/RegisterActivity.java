@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -45,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText nama, no_tlp, email, password, password_confirm, alamat;
 
-    Spinner sex;
+    Spinner sex, regis_rt;
 
     int confirm_agreement = 0;
 
@@ -56,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     Button btn_daftar;
     CheckBox checkBox;
-    TextView open_term_condition;
+    TextView open_term_condition, errorRt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
         password_confirm = findViewById(R.id.password_confirm);
         sex = findViewById(R.id.sex);
         alamat = findViewById(R.id.alamat);
+        regis_rt = findViewById(R.id.regis_rt);
+//        errorRt = (TextView) regis_rt.getSelectedItem();
 
         btn_daftar = findViewById(R.id.btn_daftar);
         checkBox = findViewById(R.id.checkbox);
@@ -176,6 +180,24 @@ public class RegisterActivity extends AppCompatActivity {
             alamat.requestFocus();
             return;
         }
+//        if (errorRt.getText().toString().isEmpty()){
+//            errorRt.setError("RT Harus dipilih");
+//            errorRt.requestFocus();
+//            return;
+//        }
+
+        if (regis_rt.getSelectedItemPosition() > 0) {
+            // get selected item value
+            String itemvalue = String.valueOf(regis_rt.getSelectedItem());
+        } else {
+            // set error message on spinner
+            TextView errorTextview = (TextView) regis_rt.getSelectedView();
+            errorTextview.setError("Your Error Message here");
+            errorTextview.setTextColor(Color.RED);
+            regis_rt.requestFocus();
+            return;
+        }
+
         if (!checkBox.isChecked()) {
             checkBox.setError("Terms & Condition Harus disetujui");
             checkBox.requestFocus();
@@ -186,11 +208,15 @@ public class RegisterActivity extends AppCompatActivity {
                 email.getText().toString(),
                 nama.getText().toString(),
                 sex.getSelectedItem().toString(),
+                regis_rt.getSelectedItem().toString(),
                 no_tlp.getText().toString(),
                 alamat.getText().toString(),
                 password_confirm.getText().toString(),
                 password.getText().toString(),
                 confirm_agreement);
+
+        Log.d("register", postRegister.toString());
+
         postRegister.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

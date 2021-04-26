@@ -49,6 +49,7 @@ public interface ApiInterface {
             @Field("email") String email,
             @Field("name") String name,
             @Field("sex") String sex,
+            @Field("rt") String rt,
             @Field("mobile") String mobile,
             @Field("address") String address,
             @Field("password_confirmation") String password_confirmation,

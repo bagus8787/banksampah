@@ -256,9 +256,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="225dp"
-                android:layout_marginBottom="289dp"
                 android:gravity="center_horizontal"
                 android:text="Belum ada Warga yang terdaftar"
                 android:textAlignment="center"
@@ -269,7 +267,7 @@
                 android:id="@+id/rv_list_user"
                 android:padding="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 

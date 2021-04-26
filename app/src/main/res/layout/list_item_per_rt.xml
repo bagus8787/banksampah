@@ -4,9 +4,10 @@
     android:id="@+id/rv_list_rt"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:layout_marginTop="10dp">
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp">
 
     <TextView
         android:id="@+id/txt_nama_rt"
@@ -68,6 +69,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
+        android:visibility="invisible"
         android:text="Total Ambil" />
 
     <TextView
@@ -80,5 +82,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
+        android:visibility="invisible"
         android:text="Rp. 4000" />
+
 </RelativeLayout>

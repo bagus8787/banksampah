@@ -17,6 +17,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sahitya.banksampahsahitya.R;
 import com.sahitya.banksampahsahitya.admin.Fragment.UserListAdminFragment;
+import com.sahitya.banksampahsahitya.base.activity.DetailTransaksiActivity;
 import com.sahitya.banksampahsahitya.base.activity.TukarBarangActivity;
 import com.sahitya.banksampahsahitya.base.fragment.ListKategoriFragment;
 import com.sahitya.banksampahsahitya.camera.Potrait;
@@ -95,19 +96,35 @@ public class HomeCoordinatorActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+//    Coordinator
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+//        if (result != null){
+//            if (result.getContents() == null){
+//                Toast.makeText(this, "Hasil tidak ditemukan", Toast.LENGTH_SHORT).show();
+//            }else{
+//                String hasil = result.getContents();
+//                startActivity(new Intent(this, TukarBarangActivity.class).putExtra("IT_BARCODE", hasil));
+//            }
+//        }else{
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
+
+//    Admin
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null){
             if (result.getContents() == null){
                 Toast.makeText(this, "Hasil tidak ditemukan", Toast.LENGTH_SHORT).show();
             }else{
                 String hasil = result.getContents();
-                startActivity(new Intent(this, TukarBarangActivity.class).putExtra("IT_BARCODE", hasil));
+                startActivity(new Intent(this, DetailTransaksiActivity.class).putExtra("IT_BARCODE", hasil));
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
-
 }
